@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Date {
+class CutDate {
     // Stores the date's month
     var month: Int = 0
     // Stores the date's day

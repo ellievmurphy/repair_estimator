@@ -8,16 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		130828652A83480500321CE3 /* estimatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130828642A83480500321CE3 /* estimatorApp.swift */; };
-		130828672A83480500321CE3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130828662A83480500321CE3 /* ContentView.swift */; };
 		130828692A83480600321CE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 130828682A83480600321CE3 /* Assets.xcassets */; };
 		1308286C2A83480600321CE3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1308286B2A83480600321CE3 /* Preview Assets.xcassets */; };
 		130828762A83480600321CE3 /* estimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130828752A83480600321CE3 /* estimatorTests.swift */; };
 		130828802A83480600321CE3 /* estimatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1308287F2A83480600321CE3 /* estimatorUITests.swift */; };
 		130828822A83480600321CE3 /* estimatorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130828812A83480600321CE3 /* estimatorUITestsLaunchTests.swift */; };
 		130828922A87D3DA00321CE3 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130828912A87D3DA00321CE3 /* Property.swift */; };
-		134F85112A8AD5E600A0EBA2 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134F85102A8AD5E600A0EBA2 /* Date.swift */; };
+		132469702A9795CF00945490 /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1324696F2A9795CF00945490 /* CategoriesView.swift */; };
+		134F85112A8AD5E600A0EBA2 /* CutDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134F85102A8AD5E600A0EBA2 /* CutDate.swift */; };
 		1373F8752A89BB5A0020A147 /* PropertyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1373F8742A89BB5A0020A147 /* PropertyTest.swift */; };
 		137AE6212A92B66100CF4961 /* DateTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE6202A92B66100CF4961 /* DateTest.swift */; };
+		13842A4B2A940DF800C823F9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13842A4A2A940DF800C823F9 /* ContentView.swift */; };
+		13842A4F2A94145D00C823F9 /* AddPropertyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13842A4E2A94145D00C823F9 /* AddPropertyView.swift */; };
 		13B17E852A93D75800F6F11B /* InknutAntiqua-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13B17E7E2A93D75800F6F11B /* InknutAntiqua-ExtraBold.ttf */; };
 		13B17E862A93D75800F6F11B /* InknutAntiqua-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13B17E7F2A93D75800F6F11B /* InknutAntiqua-Medium.ttf */; };
 		13B17E872A93D75800F6F11B /* InknutAntiqua-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13B17E802A93D75800F6F11B /* InknutAntiqua-SemiBold.ttf */; };
@@ -47,7 +49,6 @@
 /* Begin PBXFileReference section */
 		130828612A83480500321CE3 /* estimator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = estimator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		130828642A83480500321CE3 /* estimatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = estimatorApp.swift; sourceTree = "<group>"; };
-		130828662A83480500321CE3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		130828682A83480600321CE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1308286B2A83480600321CE3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		130828712A83480600321CE3 /* estimatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = estimatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,9 +57,12 @@
 		1308287F2A83480600321CE3 /* estimatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = estimatorUITests.swift; sourceTree = "<group>"; };
 		130828812A83480600321CE3 /* estimatorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = estimatorUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		130828912A87D3DA00321CE3 /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
-		134F85102A8AD5E600A0EBA2 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		1324696F2A9795CF00945490 /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
+		134F85102A8AD5E600A0EBA2 /* CutDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutDate.swift; sourceTree = "<group>"; };
 		1373F8742A89BB5A0020A147 /* PropertyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyTest.swift; sourceTree = "<group>"; };
 		137AE6202A92B66100CF4961 /* DateTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTest.swift; sourceTree = "<group>"; };
+		13842A4A2A940DF800C823F9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		13842A4E2A94145D00C823F9 /* AddPropertyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPropertyView.swift; sourceTree = "<group>"; };
 		13B17E7E2A93D75800F6F11B /* InknutAntiqua-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "InknutAntiqua-ExtraBold.ttf"; path = "Inknut_Antiqua/InknutAntiqua-ExtraBold.ttf"; sourceTree = "<group>"; };
 		13B17E7F2A93D75800F6F11B /* InknutAntiqua-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "InknutAntiqua-Medium.ttf"; path = "Inknut_Antiqua/InknutAntiqua-Medium.ttf"; sourceTree = "<group>"; };
 		13B17E802A93D75800F6F11B /* InknutAntiqua-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "InknutAntiqua-SemiBold.ttf"; path = "Inknut_Antiqua/InknutAntiqua-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -155,7 +159,9 @@
 		1308288E2A87CF8600321CE3 /* PropertyManager */ = {
 			isa = PBXGroup;
 			children = (
-				130828662A83480500321CE3 /* ContentView.swift */,
+				13842A4A2A940DF800C823F9 /* ContentView.swift */,
+				13842A4E2A94145D00C823F9 /* AddPropertyView.swift */,
+				1324696F2A9795CF00945490 /* CategoriesView.swift */,
 			);
 			path = PropertyManager;
 			sourceTree = "<group>";
@@ -182,7 +188,7 @@
 		134F850F2A8AD5C000A0EBA2 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				134F85102A8AD5E600A0EBA2 /* Date.swift */,
+				134F85102A8AD5E600A0EBA2 /* CutDate.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -379,9 +385,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13842A4B2A940DF800C823F9 /* ContentView.swift in Sources */,
+				13842A4F2A94145D00C823F9 /* AddPropertyView.swift in Sources */,
+				132469702A9795CF00945490 /* CategoriesView.swift in Sources */,
 				130828922A87D3DA00321CE3 /* Property.swift in Sources */,
-				134F85112A8AD5E600A0EBA2 /* Date.swift in Sources */,
-				130828672A83480500321CE3 /* ContentView.swift in Sources */,
+				134F85112A8AD5E600A0EBA2 /* CutDate.swift in Sources */,
 				130828652A83480500321CE3 /* estimatorApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

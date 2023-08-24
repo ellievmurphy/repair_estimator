@@ -32,15 +32,18 @@ final class PropertyTest: XCTestCase {
         // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
         let p = Property.init()
-        
-        XCTAssertEqual("", p.address)
+        let datevar = Date.init()
+        XCTAssertEqual("", p.address.street)
+        XCTAssertEqual("", p.address.city)
+        XCTAssertEqual("", p.address.zip)
         XCTAssertFalse(p.vacancy)
-        XCTAssertEqual(1, p.date.month)
-        XCTAssertEqual(1, p.date.day)
+//        XCTAssertEqual(1, p.date.month)
+//        XCTAssertEqual(1, p.date.day)
+        XCTAssertEqual(datevar.description, p.date.description)
         XCTAssertEqual(0, p.beds)
         XCTAssertEqual(0, p.baths)
         XCTAssertEqual(0, p.sqft)
-        XCTAssertEqual("Placeholder", p.inspector)
+        XCTAssertEqual("", p.inspector)
         XCTAssertEqual(0, p.totalCost)
         XCTAssertEqual(0, p.repairs.count)    
     }
