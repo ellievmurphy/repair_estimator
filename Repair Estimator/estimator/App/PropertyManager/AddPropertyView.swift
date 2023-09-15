@@ -34,52 +34,11 @@ struct AddPropertyView: View {
                 // Holds Title and text boxes
                 VStack(alignment: .leading) {
                     Text("New Estimate")
-                        .frame(height: 90)
+                        .frame(height: 75)
                         .foregroundStyle(color1)
                         .font(Font.custom("InknutAntiqua-Regular", size: 40))
-                    Group {
-                        // Label for Street Address
-                        Text("Street Address")
-                            .foregroundColor(.black)
-                            .font(Font.custom("InknutAntiqua-Regular", size: 14))
-                            .padding(.top)
-                            .frame(height: 28)
-                        TextField("Street Address", text: $street)
-                            .onSubmit {
-                                // insert setter here
-                            }.frame(width: 300, height: 50)
-                            .font(Font.custom("InknutAntiqua-Regular", size: 14))
-                            .overlay(RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.black, lineWidth: 1))
-                    }
-                    Group {
-                        // Label for City
-                        Text("City")
-                            .foregroundColor(.black)
-                            .font(Font.custom("InknutAntiqua-Regular", size: 14))
-                            .padding(.top)
-                            .frame(height: 28)
-                        TextField("City", text: $city).onSubmit {
-                            // insert setter here
-                        }.frame(width: 300, height: 50)
-                            .font(Font.custom("InknutAntiqua-Regular", size: 14))
-                            .overlay(RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.black, lineWidth: 1))
-                    }
-                    Group {
-                        // Label for Zip Code
-                        Text("Zip Code")
-                            .foregroundColor(.black)
-                            .font(Font.custom("InknutAntiqua-Regular", size: 14))
-                            .padding(.top)
-                            .frame(height: 28)
-                        TextField("Zip Code", text: $zip).onSubmit {
-                            // insert setter here
-                        }.frame(width: 300, height: 50)
-                            .font(Font.custom("InknutAntiqua-Regular", size: 14))
-                            .overlay(RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.black, lineWidth: 1))
-                    }
+                    
+                    //TODO: add StreetAddressView
                     
                     HStack { // Row containing Vacancy and Date of inspection
                         Toggle("Vacant?", isOn: $isVacant)
@@ -98,7 +57,7 @@ struct AddPropertyView: View {
                                 .foregroundColor(.black)
                                 .font(Font.custom("InknutAntiqua-Regular", size: 14))
                                 .padding(.top)
-                                .frame(height: 28)
+                                .frame(height: 25)
                             TextField("Beds", value: $beds, formatter: NumberFormatter())
                                 .onSubmit {
                                     // ensures input only contains numbers -> might need to move into a .onReceive field
@@ -117,7 +76,7 @@ struct AddPropertyView: View {
                                 .foregroundColor(.black)
                                 .font(Font.custom("InknutAntiqua-Regular", size: 14))
                                 .padding(.top)
-                                .frame(height: 28)
+                                .frame(height: 25)
                             TextField("Baths", value: $baths, formatter: NumberFormatter())
                                 .onSubmit {
                                     // ensures input only contains numbers
@@ -138,7 +97,7 @@ struct AddPropertyView: View {
                             .foregroundColor(.black)
                             .font(Font.custom("InknutAntiqua-Regular", size: 14))
                             .padding(.top)
-                            .frame(height: 28)
+                            .frame(height: 25)
                         TextField("Sq. Ft.", value: $sqft, formatter: NumberFormatter()).onSubmit {
                             // ensures input only contains numbers
                             let filtered = sqft.filter{ "0123456789.".contains($0)}
@@ -155,7 +114,7 @@ struct AddPropertyView: View {
                             .foregroundColor(.black)
                             .font(Font.custom("InknutAntiqua-Regular", size: 14))
                             .padding(.top)
-                            .frame(height: 28)
+                            .frame(height: 25)
                         TextField("Inspected By", text: $inspector).onSubmit {
                             // insert setter here
                         }.frame(width: 300, height: 50)
@@ -163,42 +122,28 @@ struct AddPropertyView: View {
                             .overlay(RoundedRectangle(cornerRadius: 8)
                                 .stroke(Color.black, lineWidth: 1))
                     }
-                    HStack {
-                        Button( // TODO: update how photo is taken -- consider condensing page
-                            action: {
-                                print(property.inspector)
+                   
+                    Button(
+                        action: {
+                            print(property.inspector)
                                 
-                            }, label: {
-                                Text("Take Picture")
-                                    .font(Font.custom("InknutAntiqua-Regular", size: 20))
-                                    .foregroundColor(color3)
-                                    .padding(.trailing)
-//                                    .background(color2
-//                                        .cornerRadius(10)
-//                                        .shadow(color: .gray, radius: 5, x: 0, y: 3)
-//                                    )
-                            }
-                        )
-                        
-                        Button(
-                            action: {
-                                print(property.inspector)
-                                
-                            }, label: {
-                                Text("Submit")
-                                    .padding([.top, .bottom], 0)
-                                    .padding([.leading, .trailing], 30)
-                                    .font(Font.custom("InknutAntiqua-Regular", size: 20))
-                                    .foregroundColor(color2)
-                                    .background(color1
-                                        .cornerRadius(10)
-                                        .shadow(color: .gray, radius: 5, x: 0, y: 3)
-                                    )
-                            }
-                        ).onSubmit {
-                            let success = handleSubmit(beds: beds, baths: baths, sqft: sqft)
+                        }, label: {
+                            Text("Start Estimate") // make full width
+                                .padding([.top, .bottom], 0)
+                                .padding([.leading, .trailing], 70)
+                                .font(Font.custom("InknutAntiqua-Regular", size: 20))
+                                .foregroundColor(color2)
+                                .background(color1
+                                    .cornerRadius(10)
+                                    .shadow(color: .gray, radius: 5, x: 0, y: 3)
+                                )
                         }
+                    ).onSubmit {
+                        let success = handleSubmit(beds: beds, baths: baths, sqft: sqft)
+                        // TODO: prompts to take picture instead of separate button
+                        // TODO: make full width
                     }
+                    
                 }.padding(.horizontal)
             }
             
@@ -211,6 +156,8 @@ func handleSubmit(beds: String, baths: String, sqft: String) -> Bool {
     let dBaths = convertDouble(str: baths)
     let dSqft = convertDouble(str: sqft)
     // create property objects
+    // TODO: prompt to take picture for profile shot of property
+    // consider putting resulting image
     
     return true
 }
@@ -226,3 +173,4 @@ struct AddPropertyView_Previews: PreviewProvider {
         AddPropertyView(property: Property.init())
     }
 }
+

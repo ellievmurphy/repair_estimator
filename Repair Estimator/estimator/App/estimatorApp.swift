@@ -11,7 +11,7 @@ import SwiftUI
 struct estimatorApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(property: Property.init())
+            ContentView()
         }
     }
 }

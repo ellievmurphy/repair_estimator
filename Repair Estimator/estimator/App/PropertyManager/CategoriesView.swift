@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CategoriesView: View {
+    
+//    @State private var exterior: Bool = false
     var body: some View {
         let color1 = Color(red: 90/255, green: 109/255, blue: 93/255) //green
         let color2 = Color(red: 245/255, green: 245/255, blue: 244/255) //light grey
@@ -24,6 +26,36 @@ struct CategoriesView: View {
                         .font(Font.custom("InknutAntiqua-Regular", size: 40))
                     Text("Select Category")
                         .font(Font.custom("InknutAntiqua-Regular", size: 16))
+                    Group{
+                        DisclosureGroup("Exterior") { // TODO: Consider abstracting these to another view
+                            NavigationLink(destination: AbstractCategoryView()) {
+                                Text("Roof")
+                                    .font(Font.custom("InknutAntiqua-Regular", size: 16))
+                            }
+                        }.foregroundColor(.black)
+                            .font(Font.custom("InknutAntiqua-Regular", size: 16))
+                        DisclosureGroup("Interior") {
+                            NavigationLink(destination: AbstractCategoryView()) {
+                                Text("Hardwood")
+                                    .font(Font.custom("InknutAntiqua-Regular", size: 16))
+                            }
+                        }.foregroundColor(.black)
+                            .font(Font.custom("InknutAntiqua-Regular", size: 16))
+                        DisclosureGroup("Mechanicals") {
+                            NavigationLink(destination: AbstractCategoryView()) {
+                                Text("HVAC")
+                                    .font(Font.custom("InknutAntiqua-Regular", size: 16))
+                            }
+                        }.foregroundColor(.black)
+                            .font(Font.custom("InknutAntiqua-Regular", size: 16))
+                        DisclosureGroup("Other") {
+                            NavigationLink(destination: AbstractCategoryView()) {
+                                Text("Demo + Dumpsters")
+                                    .font(Font.custom("InknutAntiqua-Regular", size: 16))
+                            }
+                        }.foregroundColor(.black)
+                            .font(Font.custom("InknutAntiqua-Regular", size: 16))
+                    }
                 }.frame(width: 350, alignment: .leading)
             }
         }
