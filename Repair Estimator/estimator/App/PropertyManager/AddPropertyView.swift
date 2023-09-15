@@ -38,7 +38,7 @@ struct AddPropertyView: View {
                         .foregroundStyle(color1)
                         .font(Font.custom("InknutAntiqua-Regular", size: 40))
                     
-                    //TODO: add StreetAddressView
+                    StreetAddressView(street: $street, city: $city, zip: $zip)
                     
                     HStack { // Row containing Vacancy and Date of inspection
                         Toggle("Vacant?", isOn: $isVacant)
@@ -50,78 +50,10 @@ struct AddPropertyView: View {
                             .padding(.leading, 10)
                             .frame(width: 185)
                     }
-                    HStack { // Row containing Number of Beds and Baths
-                        VStack(alignment: .leading) {
-                            // Label for number of bedrooms
-                            Text("Beds")
-                                .foregroundColor(.black)
-                                .font(Font.custom("InknutAntiqua-Regular", size: 14))
-                                .padding(.top)
-                                .frame(height: 25)
-                            TextField("Beds", value: $beds, formatter: NumberFormatter())
-                                .onSubmit {
-                                    // ensures input only contains numbers -> might need to move into a .onReceive field
-                                    // src: https://stackoverflow.com/questions/58733003/how-to-create-textfield-that-only-accepts-numbers
-                                    let filtered = beds.filter{ "0123456789".contains($0)}
-                                    if filtered != beds { beds = filtered }
-                                    // insert setter here
-                                }.frame(width: 120, height: 50)
-                                .font(Font.custom("InknutAntiqua-Regular", size: 14))
-                                .overlay(RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.black, lineWidth: 1))
-                        }.padding(.trailing, 50)
-                        VStack(alignment: .leading) {
-                            // Label for number of bathrooms
-                            Text("Baths")
-                                .foregroundColor(.black)
-                                .font(Font.custom("InknutAntiqua-Regular", size: 14))
-                                .padding(.top)
-                                .frame(height: 25)
-                            TextField("Baths", value: $baths, formatter: NumberFormatter())
-                                .onSubmit {
-                                    // ensures input only contains numbers
-                                    let filtered = baths.filter{ "0123456789.".contains($0)}
-                                    if filtered != baths { baths = filtered }
-                                    // insert setter here
-                                }.frame(width: 120, height: 50)
-                                .font(Font.custom("InknutAntiqua-Regular", size: 14))
-                                .overlay(RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.black, lineWidth: 1))
-                                .keyboardType(.numberPad)
-                        }
-                        
-                    }
-                    Group {
-                        // Label for square footage of property
-                        Text("Sq. Ft.")
-                            .foregroundColor(.black)
-                            .font(Font.custom("InknutAntiqua-Regular", size: 14))
-                            .padding(.top)
-                            .frame(height: 25)
-                        TextField("Sq. Ft.", value: $sqft, formatter: NumberFormatter()).onSubmit {
-                            // ensures input only contains numbers
-                            let filtered = sqft.filter{ "0123456789.".contains($0)}
-                            if filtered != sqft { sqft = filtered }
-                            // insert setter here
-                        }.frame(width: 300, height: 50)
-                            .font(Font.custom("InknutAntiqua-Regular", size: 14))
-                            .overlay(RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.black, lineWidth: 1))
-                    }
-                    Group {
-                        // Label for Inspector
-                        Text("Inspected By")
-                            .foregroundColor(.black)
-                            .font(Font.custom("InknutAntiqua-Regular", size: 14))
-                            .padding(.top)
-                            .frame(height: 25)
-                        TextField("Inspected By", text: $inspector).onSubmit {
-                            // insert setter here
-                        }.frame(width: 300, height: 50)
-                            .font(Font.custom("InknutAntiqua-Regular", size: 14))
-                            .overlay(RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.black, lineWidth: 1))
-                    }
+                    
+                    BedandBathView(beds: $beds, baths: $baths)
+                    SqftView(sqft: $sqft)
+                    InspectorView(inspector: $inspector)
                    
                     Button(
                         action: {
@@ -139,9 +71,13 @@ struct AddPropertyView: View {
                                 )
                         }
                     ).onSubmit {
-                        let success = handleSubmit(beds: beds, baths: baths, sqft: sqft)
+                        // TODO: does this does not work properly and there are issues w loading the page??
+                        
+                        let retProperty = handleSubmit(street: street, city: city, zip: zip, isVacant: isVacant, date: date, beds: beds, baths: baths, sqft: sqft, inspector: inspector)
                         // TODO: prompts to take picture instead of separate button
                         // TODO: make full width
+                        property = retProperty
+                        print(property)
                     }
                     
                 }.padding(.horizontal)
@@ -151,15 +87,15 @@ struct AddPropertyView: View {
     }
 }
 
-func handleSubmit(beds: String, baths: String, sqft: String) -> Bool {
+func handleSubmit(street: String, city: String, zip: String, isVacant: Bool, date: Date, beds: String, baths: String, sqft: String, inspector: String) -> Property {
     let dBeds = convertDouble(str: beds)
     let dBaths = convertDouble(str: baths)
     let dSqft = convertDouble(str: sqft)
     // create property objects
     // TODO: prompt to take picture for profile shot of property
     // consider putting resulting image
-    
-    return true
+    let property = Property.init(street: street, city: city, zip: zip, vacancy: isVacant, date: date, beds: dBeds, baths: dBaths, sqft: dSqft, inspector: inspector, totalCost: 0, repairs: [])
+    return property
 }
 
 func convertDouble(str: String) -> Double {
