@@ -7,7 +7,34 @@
 
 import Foundation
 
-class AbstractCategory {
+/// Represents the outline for any Category object.
+/// All category objects will contain the type of category (ex. roof or landscaping),
+///     and a list of subcategories which represent the repairs that fall under each
+///     category (ex. "full landscaping makeover large lot")
+class AbstractCategory: Hashable, Identifiable {
+    static func == (lhs: AbstractCategory, rhs: AbstractCategory) -> Bool {
+        return lhs.type == rhs.type
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(type)
+        hasher.combine(repairs)
+    }
+    
+    var type: String
+    var repairs: [Subcategory]
+    
+    init(type: String, repairs: [Subcategory]) {
+        self.type = type
+        self.repairs = repairs
+    }
+    
+    /// Represents the type of available units for repairs:
+    /// - lf: linear feet
+    /// - sf: square feet
+    /// - ea: each
+    /// - ls: lump sum
+    /// - sy: square yards
     enum ReUnit {
         case lf
         case sf
@@ -16,36 +43,20 @@ class AbstractCategory {
         case sy
     }
     
-    struct Subcategory {
+    /// Struct containing the outline for each subcategory in a repair category
+    /// contains the following variables:
+    /// - needed: Bool representing whether this repair type will be needed
+    /// - name: String representing the name of the subcategory
+    /// - quantity: Double representing the number of units estimated for this repair
+    /// - unit: ReUnit representing the kind of units this repair uses (lf, sf, ea, ls, or sy)
+    /// - costPerUnit: Double representing the cost per unit of the estimated repair
+    /// - total: Double representing the *costPerUnit* _multiplied by_ *quantity* of repair
+    struct Subcategory: Hashable {
         var needed: Bool
-        var repairType: String
+        var name: String
         var quantity: Double
         var unit: ReUnit
         var costPerUnit: Double
         var total: Double
-    }
-    
-    private var name: String
-    private var subcategories: [Subcategory]
-    
-    init(name: String, subcategories: [Subcategory]) {
-        self.name = name
-        self.subcategories = subcategories
-    }
-    
-    func set_name(name: String) -> Void {
-        self.name = name
-    }
-    
-    func get_name() -> String {
-        return name
-    }
-    
-    func set_subcategories(subcategories: [Subcategory]) -> Void {
-        self.subcategories = subcategories
-    }
-    
-    func get_subcategories() -> [Subcategory] {
-        return subcategories
     }
 }

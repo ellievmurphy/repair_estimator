@@ -20,69 +20,67 @@ struct AddPropertyView: View {
     @State private var sqft: String = ""
     @State private var inspector: String = ""
     
+    @State var path: NavigationPath
     
     var body: some View {
         // have to divide each of the rgb values by 255 to create double values
         let color1 = Color(red: 90/255, green: 109/255, blue: 93/255) //green
         let color2 = Color(red: 245/255, green: 245/255, blue: 244/255) //light grey
-        let color3 = Color(red: 123/255, green: 133/255, blue: 140/255) //dark grey
-        ScrollView {
-            // Change background color to grey
-            color2.ignoresSafeArea()
-            
-            ZStack(alignment: Alignment(horizontal: .center, vertical: .top)) {
-                // Holds Title and text boxes
-                VStack(alignment: .leading) {
-                    Text("New Estimate")
-                        .frame(height: 75)
-                        .foregroundStyle(color1)
-                        .font(Font.custom("InknutAntiqua-Regular", size: 40))
-                    
-                    StreetAddressView(street: $street, city: $city, zip: $zip)
-                    
-                    HStack { // Row containing Vacancy and Date of inspection
-                        Toggle("Vacant?", isOn: $isVacant)
-                            .toggleStyle(.switch)
-                            .font(Font.custom("InknutAntiqua-Regular", size: 14))
-                            .frame(width:120)
-                        DatePicker("Date", selection: $date, displayedComponents: .date)
-                            .font(Font.custom("InknutAntiqua-Regular", size: 14))
-                            .padding(.leading, 10)
-                            .frame(width: 185)
-                    }
-                    
-                    BedandBathView(beds: $beds, baths: $baths)
-                    SqftView(sqft: $sqft)
-                    InspectorView(inspector: $inspector)
-                   
-                    Button(
-                        action: {
-                            print(property.inspector)
-                                
-                        }, label: {
-                            Text("Start Estimate") // make full width
-                                .padding([.top, .bottom], 0)
-                                .padding([.leading, .trailing], 70)
-                                .font(Font.custom("InknutAntiqua-Regular", size: 20))
-                                .foregroundColor(color2)
-                                .background(color1
-                                    .cornerRadius(10)
-                                    .shadow(color: .gray, radius: 5, x: 0, y: 3)
-                                )
-                        }
-                    ).onSubmit {
-                        // TODO: does this does not work properly and there are issues w loading the page??
+//        let color3 = Color(red: 123/255, green: 133/255, blue: 140/255) //dark grey
+        NavigationStack(path: $path) {
+            ScrollView {
+                // Change background color to grey
+                color2.ignoresSafeArea()
+                
+                ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
+                    // Holds Title and text boxes
+                    VStack(alignment: .leading) {
+                        Text("New Estimate")
+                            .frame(height: 75)
+                            .foregroundStyle(color1)
+                            .font(Font.custom("InknutAntiqua-Regular", size: 40))
                         
-                        let retProperty = handleSubmit(street: street, city: city, zip: zip, isVacant: isVacant, date: date, beds: beds, baths: baths, sqft: sqft, inspector: inspector)
-                        // TODO: prompts to take picture instead of separate button
-                        // TODO: make full width
-                        property = retProperty
-                        print(property)
-                    }
-                    
-                }.padding(.horizontal)
+                        StreetAddressView(street: $street, city: $city, zip: $zip)
+                        
+                        HStack { // Row containing Vacancy and Date of inspection
+                            Toggle("Vacant?", isOn: $isVacant)
+                                .toggleStyle(.switch)
+                                .font(Font.custom("InknutAntiqua-Regular", size: 14))
+                                .frame(width:120)
+                            DatePicker("Date", selection: $date, displayedComponents: .date)
+                                .font(Font.custom("InknutAntiqua-Regular", size: 14))
+                                .padding(.leading, 10)
+                                .frame(width: 185)
+                        }
+                        
+                        NumericalInputs(beds: $beds, baths: $baths, sqft: $sqft)
+                        //                    InspectorView(inspector: $inspector)
+                        Button(
+                            action: {
+                                
+                                let retProperty = handleSubmit(street: street, city: city, zip: zip, isVacant: isVacant, date: date, beds: beds, baths: baths, sqft: sqft, inspector: inspector)
+                                // TODO: prompts to take picture instead of separate button
+                                property = retProperty
+                                let _ = print(property.to_string())
+                                path.append(property)
+                            }, label: {
+                                Text("Start Estimate") // make full width
+                                    .padding([.top, .bottom], 0)
+                                    .padding([.leading, .trailing], 70)
+                                    .font(Font.custom("InknutAntiqua-Regular", size: 20))
+                                    .foregroundColor(color2)
+                                    .background(color1
+                                        .cornerRadius(10)
+                                        .shadow(color: .gray, radius: 5, x: 0, y: 3)
+                                    )
+                            }
+                        )
+                        
+                    }.padding(.horizontal)
+                }
+            }.navigationDestination(for: Property.self) { property in
+                CategoriesView(property: property)
             }
-            
         }
     }
 }
@@ -104,9 +102,9 @@ func convertDouble(str: String) -> Double {
     return double
 }
 
-struct AddPropertyView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddPropertyView(property: Property.init())
-    }
-}
+//struct AddPropertyView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddPropertyView(property: Property.init())
+//    }
+//}
 

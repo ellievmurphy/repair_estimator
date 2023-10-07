@@ -24,8 +24,7 @@
 		13842A4F2A94145D00C823F9 /* AddPropertyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13842A4E2A94145D00C823F9 /* AddPropertyView.swift */; };
 		13A57A192AB4B39A008F1D5D /* StreetAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A57A182AB4B39A008F1D5D /* StreetAddressView.swift */; };
 		13A57A1B2AB4C5D5008F1D5D /* IntroductoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A57A1A2AB4C5D5008F1D5D /* IntroductoryView.swift */; };
-		13A57A1D2AB4D9B8008F1D5D /* BedandBathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A57A1C2AB4D9B8008F1D5D /* BedandBathView.swift */; };
-		13A57A1F2AB4DC9F008F1D5D /* SqftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A57A1E2AB4DC9F008F1D5D /* SqftView.swift */; };
+		13A57A1D2AB4D9B8008F1D5D /* NumericalInputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A57A1C2AB4D9B8008F1D5D /* NumericalInputs.swift */; };
 		13A57A212AB4DD24008F1D5D /* InspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A57A202AB4DD24008F1D5D /* InspectorView.swift */; };
 		13B17E852A93D75800F6F11B /* InknutAntiqua-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13B17E7E2A93D75800F6F11B /* InknutAntiqua-ExtraBold.ttf */; };
 		13B17E862A93D75800F6F11B /* InknutAntiqua-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13B17E7F2A93D75800F6F11B /* InknutAntiqua-Medium.ttf */; };
@@ -34,6 +33,8 @@
 		13B17E892A93D75800F6F11B /* InknutAntiqua-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13B17E822A93D75800F6F11B /* InknutAntiqua-Regular.ttf */; };
 		13B17E8A2A93D75800F6F11B /* InknutAntiqua-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13B17E832A93D75800F6F11B /* InknutAntiqua-Black.ttf */; };
 		13B17E8B2A93D75800F6F11B /* InknutAntiqua-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13B17E842A93D75800F6F11B /* InknutAntiqua-Bold.ttf */; };
+		13D6D3E32AD1B88C00C65F50 /* Roof.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D6D3E22AD1B88C00C65F50 /* Roof.swift */; };
+		13D6D3E52AD1BAEB00C65F50 /* Gutters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D6D3E42AD1BAEB00C65F50 /* Gutters.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,8 +75,7 @@
 		13842A4E2A94145D00C823F9 /* AddPropertyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPropertyView.swift; sourceTree = "<group>"; };
 		13A57A182AB4B39A008F1D5D /* StreetAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetAddressView.swift; sourceTree = "<group>"; };
 		13A57A1A2AB4C5D5008F1D5D /* IntroductoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductoryView.swift; sourceTree = "<group>"; };
-		13A57A1C2AB4D9B8008F1D5D /* BedandBathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedandBathView.swift; sourceTree = "<group>"; };
-		13A57A1E2AB4DC9F008F1D5D /* SqftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SqftView.swift; sourceTree = "<group>"; };
+		13A57A1C2AB4D9B8008F1D5D /* NumericalInputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericalInputs.swift; sourceTree = "<group>"; };
 		13A57A202AB4DD24008F1D5D /* InspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorView.swift; sourceTree = "<group>"; };
 		13B17E7E2A93D75800F6F11B /* InknutAntiqua-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "InknutAntiqua-ExtraBold.ttf"; path = "Inknut_Antiqua/InknutAntiqua-ExtraBold.ttf"; sourceTree = "<group>"; };
 		13B17E7F2A93D75800F6F11B /* InknutAntiqua-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "InknutAntiqua-Medium.ttf"; path = "Inknut_Antiqua/InknutAntiqua-Medium.ttf"; sourceTree = "<group>"; };
@@ -85,6 +85,8 @@
 		13B17E832A93D75800F6F11B /* InknutAntiqua-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "InknutAntiqua-Black.ttf"; path = "Inknut_Antiqua/InknutAntiqua-Black.ttf"; sourceTree = "<group>"; };
 		13B17E842A93D75800F6F11B /* InknutAntiqua-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "InknutAntiqua-Bold.ttf"; path = "Inknut_Antiqua/InknutAntiqua-Bold.ttf"; sourceTree = "<group>"; };
 		13B17E8F2A93DA6200F6F11B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		13D6D3E22AD1B88C00C65F50 /* Roof.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roof.swift; sourceTree = "<group>"; };
+		13D6D3E42AD1BAEB00C65F50 /* Gutters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gutters.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +217,8 @@
 			isa = PBXGroup;
 			children = (
 				132C26D12A98EC9A0036A739 /* AbstractCategory.swift */,
+				13D6D3E22AD1B88C00C65F50 /* Roof.swift */,
+				13D6D3E42AD1BAEB00C65F50 /* Gutters.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -263,8 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				13A57A182AB4B39A008F1D5D /* StreetAddressView.swift */,
-				13A57A1C2AB4D9B8008F1D5D /* BedandBathView.swift */,
-				13A57A1E2AB4DC9F008F1D5D /* SqftView.swift */,
+				13A57A1C2AB4D9B8008F1D5D /* NumericalInputs.swift */,
 				13A57A202AB4DD24008F1D5D /* InspectorView.swift */,
 			);
 			path = PropertyDataViews;
@@ -434,14 +437,15 @@
 				13A57A192AB4B39A008F1D5D /* StreetAddressView.swift in Sources */,
 				13842A4B2A940DF800C823F9 /* ContentView.swift in Sources */,
 				13842A4F2A94145D00C823F9 /* AddPropertyView.swift in Sources */,
-				13A57A1D2AB4D9B8008F1D5D /* BedandBathView.swift in Sources */,
+				13D6D3E32AD1B88C00C65F50 /* Roof.swift in Sources */,
+				13A57A1D2AB4D9B8008F1D5D /* NumericalInputs.swift in Sources */,
+				13D6D3E52AD1BAEB00C65F50 /* Gutters.swift in Sources */,
 				132C26D42A98EEF60036A739 /* AbstractCategoryView.swift in Sources */,
 				132C26D22A98EC9A0036A739 /* AbstractCategory.swift in Sources */,
 				132469702A9795CF00945490 /* CategoriesView.swift in Sources */,
 				130828922A87D3DA00321CE3 /* Property.swift in Sources */,
 				134F85112A8AD5E600A0EBA2 /* CutDate.swift in Sources */,
 				13A57A212AB4DD24008F1D5D /* InspectorView.swift in Sources */,
-				13A57A1F2AB4DC9F008F1D5D /* SqftView.swift in Sources */,
 				130828652A83480500321CE3 /* estimatorApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

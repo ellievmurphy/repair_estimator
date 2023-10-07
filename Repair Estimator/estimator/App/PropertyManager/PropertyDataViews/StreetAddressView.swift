@@ -30,7 +30,7 @@ public struct StreetAddressView: View {
                 }.frame(width: 300, height: 50)
                 .font(Font.custom("InknutAntiqua-Regular", size: 14))
                 .overlay(RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color.black, lineWidth: 1))
+                .stroke(Color.black, lineWidth: 1))
             
             // Label for City
             Text("City")
@@ -43,7 +43,7 @@ public struct StreetAddressView: View {
             }.frame(width: 300, height: 50)
                 .font(Font.custom("InknutAntiqua-Regular", size: 14))
                 .overlay(RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color.black, lineWidth: 1))
+                .stroke(Color.black, lineWidth: 1))
                 
             // Label for Zip Code
                 Text("Zip Code")
@@ -56,7 +56,7 @@ public struct StreetAddressView: View {
                 }.frame(width: 300, height: 50)
                     .font(Font.custom("InknutAntiqua-Regular", size: 14))
                     .overlay(RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.black, lineWidth: 1))
+                    .stroke(Color.black, lineWidth: 1))
         }
     }
 }

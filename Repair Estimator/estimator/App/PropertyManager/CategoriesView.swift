@@ -9,11 +9,13 @@ import SwiftUI
 
 struct CategoriesView: View {
     
-//    @State private var exterior: Bool = false
+    @State var property: Property
+    
     var body: some View {
         let color1 = Color(red: 90/255, green: 109/255, blue: 93/255) //green
         let color2 = Color(red: 245/255, green: 245/255, blue: 244/255) //light grey
-        let color3 = Color(red: 123/255, green: 133/255, blue: 140/255) //dark grey
+//        let color3 = Color(red: 123/255, green: 133/255, blue: 140/255) //dark grey
+        let formattedTotal = String(format: "%.2f", property.totalCost)
         ScrollView {
             // Change background color to grey
             color2.ignoresSafeArea()
@@ -24,7 +26,7 @@ struct CategoriesView: View {
                         .frame(height: 90)
                         .foregroundStyle(color1)
                         .font(Font.custom("InknutAntiqua-Regular", size: 40))
-                    Text("Select Category")
+                    Text("Select Category | Total: \(formattedTotal)") // TODO: format decimal value
                         .font(Font.custom("InknutAntiqua-Regular", size: 16))
                     Group{
                         DisclosureGroup("Exterior") { // TODO: Consider abstracting these to another view
@@ -62,8 +64,15 @@ struct CategoriesView: View {
     }
 }
 
-struct CategoriesView_Previews: PreviewProvider {
-    static var previews: some View {
-        CategoriesView()
-    }
+func initCategories() -> [AbstractCategory] {
+    var exCategories = [AbstractCategory]()
+    exCategories.append(Roof())
+    exCategories.append(Gutters())
+    return exCategories
 }
+
+//struct CategoriesView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CategoriesView()
+//    }
+//}

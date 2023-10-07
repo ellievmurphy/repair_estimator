@@ -10,14 +10,12 @@ import UIKit
 
 struct AbstractCategoryView: View {
     
-    @State var category: AbstractCategory = AbstractCategory.init(name: "Roof",
-                                                                  subcategories: [AbstractCategory.Subcategory.init(needed: true, repairType: "Roof (rip and replace) - architectural shingle", quantity: 0, unit: AbstractCategory.ReUnit.sf, costPerUnit: 4, total: 0)])
-    
     @State var isNeeded: Bool = false
     var body: some View {
         let color1 = Color(red: 90/255, green: 109/255, blue: 93/255) //green
         let color2 = Color(red: 245/255, green: 245/255, blue: 244/255) //light grey
         let color3 = Color(red: 123/255, green: 133/255, blue: 140/255) //dark grey
+        
         ScrollView {
             ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
                 VStack {
@@ -49,9 +47,9 @@ struct AbstractCategoryView: View {
     
 }
 
-struct AbstractCategoryView_Previews: PreviewProvider {
-
-    static var previews: some View {
-        AbstractCategoryView()
-    }
-}
+//struct AbstractCategoryView_Previews: PreviewProvider {
+//
+//    static var previews: some View {
+//        AbstractCategoryView()
+//    }
+//}

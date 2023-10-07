@@ -9,10 +9,20 @@ import SwiftUI
 ///      a list of type Category referring to the specific repairs estimated.
 ///
 ///  Created by Ellie Murphy on 8/12/23.
-class Property {
+struct Property: Hashable {
+    
+    /// equals method
+    /// if the addresses of two properties are the same, they are the same property
+    static func == (lhs: Property, rhs: Property) -> Bool {
+        if(lhs.address.street == rhs.address.street &&
+           lhs.address.city == rhs.address.city &&
+           lhs.address.zip == rhs.address.zip) { return true }
+        return false
+    }
+    
     
     /// address of the property containing the street, city, and zip code
-    struct Address {
+    struct Address: Hashable {
         var street: String
         var city: String
         var zip: String
@@ -71,12 +81,12 @@ class Property {
     }
     
     /// Constructs propInfo with default values. Default date is set to January 1st
-    convenience init() {
+    init() {
         self.init(street: "", city: "", zip: "", vacancy: false, date: Date.init(), beds: 0, baths: 0, sqft: 0, inspector: "", totalCost: 0, repairs: [])
     }
     
     /// sets the property's address using the provided string
-    func set_address(street: String, city: String, zip: String) -> Void {
+    mutating func set_address(street: String, city: String, zip: String) -> Void {
         address = Address.init(street: street, city: city, zip: zip)
     }
 
@@ -86,7 +96,7 @@ class Property {
     }
 
     /// sets the property's vacancy using the provided boolean
-    func set_vacancy(vacancy: Bool) -> Void {
+    mutating func set_vacancy(vacancy: Bool) -> Void {
         self.vacancy = vacancy
     }
 
@@ -96,7 +106,7 @@ class Property {
     }
 
     /// sets the date of the property's estimation / inspection with provided Date
-    func set_date(date: Date) -> Void {
+    mutating func set_date(date: Date) -> Void {
         self.date = date
     }
 
@@ -106,7 +116,7 @@ class Property {
     }
 
     /// sets the number of bedrooms in the property using the provided Double
-    func set_beds(beds: Double) -> Void {
+    mutating func set_beds(beds: Double) -> Void {
         self.beds = beds
     }
 
@@ -116,7 +126,7 @@ class Property {
     }
 
     /// sets the number of bathrooms in the property with the provided Double
-    func set_baths(baths: Double) -> Void {
+    mutating func set_baths(baths: Double) -> Void {
         self.baths = baths
     }
 
@@ -126,7 +136,7 @@ class Property {
     }
 
     /// sets the property's square footage using the provided Double
-    func set_sqft(sqft: Double) -> Void {
+    mutating func set_sqft(sqft: Double) -> Void {
         self.sqft = sqft
     }
 
@@ -136,7 +146,7 @@ class Property {
     }
 
     /// sets the property's inspector with provided String
-    func set_inspector(inspector: String) -> Void {
+    mutating func set_inspector(inspector: String) -> Void {
         self.inspector = inspector
     }
 
@@ -146,7 +156,7 @@ class Property {
     }
 
     /// sets property's total cost of estimated repairs with provided Double
-    func set_total_cost(totalCost: Double) -> Void {
+    mutating func set_total_cost(totalCost: Double) -> Void {
         self.totalCost = totalCost
     }
 
@@ -156,13 +166,18 @@ class Property {
     }
 
     /// sets property's list of repairs with provided list of Categories
-    func set_repairs(repairs: [String]) -> Void {
+    mutating func set_repairs(repairs: [String]) -> Void {
         self.repairs = repairs
     }
 
     /// returns property's list of categories as an array of Categories
     func get_repairs() -> [String] {
         return self.repairs
+    }
+    
+    func to_string() -> String {
+        let formatter = DateFormatter()
+        return "Property: \(address), \(vacancy), \(formatter.string(from: date)), \(beds), \(baths), \(sqft), \(inspector)"
     }
 
 }
