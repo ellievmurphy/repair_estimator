@@ -27,7 +27,7 @@ struct NumericalInputs: View {
                         .padding(.top)
                         .frame(height: 25)
                     TextField("Beds", text: $beds)
-                        .keyboardType(.numberPad)
+                        .keyboardType(.decimalPad)
 //                        .onReceive(Just(beds)) { newVal in
 //                            // ensures input only contains numbers -> might need to move into a .onReceive field
 //                            // src: https://stackoverflow.com/questions/58733003/how-to-create-textfield-that-only-accepts-numbers
@@ -48,7 +48,7 @@ struct NumericalInputs: View {
                         .padding(.top)
                         .frame(height: 25)
                     TextField("Baths", text: $baths)
-                        .keyboardType(.numberPad)
+                        .keyboardType(.decimalPad)
 //                        .onReceive(Just(baths)) { newVal in
 //                            // ensures input only contains numbers
 //                            let filtered = newVal.filter{ "0123456789.".contains($0)}

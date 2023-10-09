@@ -10,7 +10,7 @@ import Foundation
 
 struct ContentView: View {
     var body: some View {
-        IntroductoryView(path: NavigationPath(), property: Property())
+        IntroductoryView(path: NavigationPath(), property: Property.instance)
     }
 }
 

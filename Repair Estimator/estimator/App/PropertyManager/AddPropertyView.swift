@@ -18,7 +18,7 @@ struct AddPropertyView: View {
     @State private var beds: String = ""
     @State private var baths: String = ""
     @State private var sqft: String = ""
-    @State private var inspector: String = ""
+    @State private var inspector: String = "Ellie" //placeholder
     
     @State var path: NavigationPath
     
@@ -57,12 +57,9 @@ struct AddPropertyView: View {
                         //                    InspectorView(inspector: $inspector)
                         Button(
                             action: {
-                                
-                                let retProperty = handleSubmit(street: street, city: city, zip: zip, isVacant: isVacant, date: date, beds: beds, baths: baths, sqft: sqft, inspector: inspector)
                                 // TODO: prompts to take picture instead of separate button
-                                property = retProperty
-                                let _ = print(property.to_string())
-                                path.append(property)
+//                                let _ = print(property.to_string())
+                                path.append("Add Property")
                             }, label: {
                                 Text("Start Estimate") // make full width
                                     .padding([.top, .bottom], 0)
@@ -78,8 +75,17 @@ struct AddPropertyView: View {
                         
                     }.padding(.horizontal)
                 }
-            }.navigationDestination(for: Property.self) { property in
-                CategoriesView(property: property)
+            }.navigationDestination(for: String.self) { string in
+                switch string {
+                case "Add Property":
+//                    let _ = print(property.to_string())
+                    let _ = print(Property.instance.address.street)
+                    CategoriesView(property: handleSubmit(street: street, city: city, zip: zip, isVacant: isVacant, date: date, beds: beds, baths: baths, sqft: sqft, inspector: inspector))
+//                    Text("Categories")
+                default:
+                    Text("No view with name: \(string)")
+                }
+            
             }
         }
     }
@@ -92,8 +98,17 @@ func handleSubmit(street: String, city: String, zip: String, isVacant: Bool, dat
     // create property objects
     // TODO: prompt to take picture for profile shot of property
     // consider putting resulting image
-    let property = Property.init(street: street, city: city, zip: zip, vacancy: isVacant, date: date, beds: dBeds, baths: dBaths, sqft: dSqft, inspector: inspector, totalCost: 0, repairs: [])
-    return property
+    Property.instance.set_address(street: street, city: city, zip: zip)
+    Property.instance.set_vacancy(vacancy: isVacant)
+    Property.instance.set_date(date: date)
+    Property.instance.set_beds(beds: dBeds)
+    Property.instance.set_baths(baths: dBaths)
+    Property.instance.set_sqft(sqft: dSqft)
+    Property.instance.set_inspector(inspector: inspector)
+    Property.instance.set_repairs(repairs: [])
+//
+//    let property = Property.init(street: street, city: city, zip: zip, vacancy: isVacant, date: date, beds: dBeds, baths: dBaths, sqft: dSqft, inspector: inspector, totalCost: 0, repairs: [])
+    return Property.instance
 }
 
 func convertDouble(str: String) -> Double {

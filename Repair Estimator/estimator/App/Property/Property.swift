@@ -11,6 +11,8 @@ import SwiftUI
 ///  Created by Ellie Murphy on 8/12/23.
 struct Property: Hashable {
     
+    static var instance = Property() // Singleton instance
+    
     /// equals method
     /// if the addresses of two properties are the same, they are the same property
     static func == (lhs: Property, rhs: Property) -> Bool {
@@ -45,7 +47,7 @@ struct Property: Hashable {
     /// total estimated cost of repairs on the property
     var totalCost: Double
     /// list of Category objects containing the specific repairs required for the property
-    var repairs: [String] //String is a placeholder for the actual data type which will be Category
+    var repairs: [AbstractCategory] //String is a placeholder for the actual data type which will be Category
     
     /// Constructs the propInfo object with specified address, vacancy, date, beds, baths, sqft, inspector, total cost, and repairs
     /// - Parameter street: String representing what street the property is on
@@ -59,7 +61,7 @@ struct Property: Hashable {
     /// - Parameter inspector: String containing the name of the inspector who walked the property
     /// - Parameter totalCost: Double representing the total cost of estimated repairs
     /// - Parameter repairs: Array of Categories representing the different repairs that are estimated for the property
-    init(street: String, city: String, zip: String, vacancy: Bool, date: Date, beds: Double, baths: Double, sqft: Double, inspector: String, totalCost: Double, repairs: [String]) {
+    private init(street: String, city: String, zip: String, vacancy: Bool, date: Date, beds: Double, baths: Double, sqft: Double, inspector: String, totalCost: Double, repairs: [AbstractCategory]) {
 //        set_address(address: address)
 //        set_vacancy(vacancy: vacancy)
 //        set_date(date: date)
@@ -81,8 +83,12 @@ struct Property: Hashable {
     }
     
     /// Constructs propInfo with default values. Default date is set to January 1st
-    init() {
+    private init() {
         self.init(street: "", city: "", zip: "", vacancy: false, date: Date.init(), beds: 0, baths: 0, sqft: 0, inspector: "", totalCost: 0, repairs: [])
+    }
+    
+    static func resetInstance() -> Void {
+        instance = Property()
     }
     
     /// sets the property's address using the provided string
@@ -166,12 +172,12 @@ struct Property: Hashable {
     }
 
     /// sets property's list of repairs with provided list of Categories
-    mutating func set_repairs(repairs: [String]) -> Void {
+    mutating func set_repairs(repairs: [AbstractCategory]) -> Void {
         self.repairs = repairs
     }
 
     /// returns property's list of categories as an array of Categories
-    func get_repairs() -> [String] {
+    func get_repairs() -> [AbstractCategory] {
         return self.repairs
     }
     

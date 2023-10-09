@@ -23,10 +23,32 @@ class AbstractCategory: Hashable, Identifiable {
     
     var type: String
     var repairs: [Subcategory]
+    var totalCost: Double
     
     init(type: String, repairs: [Subcategory]) {
         self.type = type
         self.repairs = repairs
+        self.totalCost = 0.0
+    }
+    
+    func updateCost() -> Double {
+        for repair in repairs {
+            totalCost += repair.total
+        }
+        return totalCost
+    }
+    
+    func setNeededRepair(repairName: String) -> Void {
+        var intendedRepair: Subcategory
+        for repair in repairs {
+            if(repairName == repair.name) {
+                intendedRepair = repair
+                intendedRepair.needed = intendedRepair.needed == true ? false : true
+                
+                break
+            }
+        }
+        
     }
     
     /// Represents the type of available units for repairs:
@@ -51,7 +73,8 @@ class AbstractCategory: Hashable, Identifiable {
     /// - unit: ReUnit representing the kind of units this repair uses (lf, sf, ea, ls, or sy)
     /// - costPerUnit: Double representing the cost per unit of the estimated repair
     /// - total: Double representing the *costPerUnit* _multiplied by_ *quantity* of repair
-    struct Subcategory: Hashable {
+    struct Subcategory: Hashable, Identifiable {
+        var id: String{name}
         var needed: Bool
         var name: String
         var quantity: Double

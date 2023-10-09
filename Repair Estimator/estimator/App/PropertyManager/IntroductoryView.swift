@@ -9,7 +9,7 @@ import SwiftUI
 
 struct IntroductoryView: View {
     
-    @State var path: NavigationPath
+    @State var path: NavigationPath = .init()
     @State var property: Property
     
     var body: some View {
@@ -27,7 +27,7 @@ struct IntroductoryView: View {
                 VStack {
                     Text("Estimator").foregroundStyle(color1).font(Font.custom("InknutAntiqua-Regular", size: 48))
                     // NavLink indicates text that can be used to navigate views
-                    NavigationLink("Create New", destination: AddPropertyView(property: Property(), path: path))
+                    NavigationLink("Create New", destination: AddPropertyView(property: Property.instance, path: path))
                         .padding([.top, .bottom], 0)
                         .padding([.leading, .trailing], 20)
                         .font(Font.custom("InknutAntiqua-Regular", size: 20))
