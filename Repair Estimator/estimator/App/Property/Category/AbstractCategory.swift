@@ -51,6 +51,21 @@ class AbstractCategory: Hashable, Identifiable {
         
     }
     
+    func get_unit(unit: ReUnit) -> String {
+        switch(unit) {
+        case ReUnit.lf:
+            return "lf"
+        case ReUnit.sf:
+            return "sf"
+        case ReUnit.ea:
+            return "ea"
+        case ReUnit.ls:
+            return "ls"
+        default:
+            return "sy"
+        }
+    }
+    
     /// Represents the type of available units for repairs:
     /// - lf: linear feet
     /// - sf: square feet

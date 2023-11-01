@@ -43,7 +43,7 @@ struct CategoriesView: View {
                         ForEach(exteriors) { category in
                             NavigationLink(category.type,
                                            destination: AbstractCategoryView(repairCategory: category, repairsNeeded: Dictionary()))
-                        }
+                        } // probably remove the dictionary initializations + move them to initialize in-line w declaration in AbstractCategoryView
                         
                         
                     }

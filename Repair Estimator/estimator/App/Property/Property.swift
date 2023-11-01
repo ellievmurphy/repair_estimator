@@ -183,7 +183,9 @@ struct Property: Hashable {
     
     func to_string() -> String {
         let formatter = DateFormatter()
-        return "Property: \(address), \(vacancy), \(formatter.string(from: date)), \(beds), \(baths), \(sqft), \(inspector)"
+        var retVal = "Property: \(address), \(vacancy), \(formatter.string(from: date)), \(beds), \(baths), \(sqft), \(inspector)"
+        retVal += "" //add repairs to retval
+        return retVal
     }
 
 }

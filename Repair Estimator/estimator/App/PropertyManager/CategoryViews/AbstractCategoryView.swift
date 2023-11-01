@@ -16,6 +16,7 @@ struct AbstractCategoryView: View {
     // TODO: create one dictionary w/ struct value representation that holds all the subcategory info
     @State var quantity: String = ""
     @State var repairsNeeded: Dictionary<String, Bool>
+//    @State var repairTracker: Dictionary<String, RepairData>
     @State var comments: String = ""
     var body: some View {
 //        let color1 = Color(red: 90/255, green: 109/255, blue: 93/255) //green
@@ -50,7 +51,7 @@ struct AbstractCategoryView: View {
                         DisclosureGroup(repair.name) {
                                 Grid {
                                     GridRow {
-                                        Text("Per Unit: $\(String(format: "%.2f", repair.costPerUnit))")
+                                        Text("Per \(repairCategory.get_unit(unit: repair.unit)): $\(String(format: "%.2f", repair.costPerUnit))")
                                         Text("Total: $\(String(format: "%.2f", repair.costPerUnit * (Double(quantity) ?? 0.0)))")
                                     }
                                     GridRow {
@@ -59,17 +60,6 @@ struct AbstractCategoryView: View {
                                     }
                                 }.ignoresSafeArea()
                             
-//                            if let needtorepair = repairsNeeded[repair.name] {
-//                                Button(action: {repairsNeeded[repair.name] = !needtorepair}, label: {
-//                                    var yes = "✅"
-//                                    var no = "❌"
-//                                    if needtorepair {
-//                                        Text(yes)
-//                                    } else {
-//                                        Text(no)
-//                                    }
-//                                })
-//                            }
                         }.font(Font.custom("InknutAntiqua-Regular", size: 14))
 //                        } else {
 //                            Grid{
@@ -83,7 +73,7 @@ struct AbstractCategoryView: View {
 //                            }
 //                            
 //                        }
-                    }.listStyle(.plain).frame(minHeight: minRowHeight * CGFloat(repairCategory.repairs.count) * 1.5)
+                    }.listStyle(.plain).frame(minHeight: minRowHeight * CGFloat(repairCategory.repairs.count) * 1.25)
                     
                     TextField("Comments", text: $comments).font(Font.custom("InknutAntiqua-Regular", size: 14))
                 }.frame(width: 350, alignment: .leading).padding(.trailing, 0)
@@ -91,6 +81,7 @@ struct AbstractCategoryView: View {
             }
         }.onAppear() {
             repairsNeeded = initNeededRepairs(repairs: repairCategory.repairs)
+//            repairTracker = initRepairTracker(repairs: repairCategory.repairs)
         }
     }
 }
@@ -106,8 +97,22 @@ func initNeededRepairs(repairs: [AbstractCategory.Subcategory]) -> Dictionary<St
     
     return retVal
 }
+
+///// Sets and returns a Dictionary data structure with the keys representing the name of a repair and the value representing
+/////     whether or not it is needed
+//func initRepairTracker(repairs: [AbstractCategory.Subcategory]) -> Dictionary<String, RepairData> {
+//    var retVal = Dictionary<String, RepairData>.init(minimumCapacity: repairs.count)
+//    
+//    for repair in repairs {
+//        let data = RepairData(needtorepair: repair.needed, total: repair.total,
+//                              quantity: repair.quantity, costPerUnit: repair.costPerUnit)
+//        retVal.updateValue(data, forKey: repair.name)
+//    }
+//    
+//    return retVal
+//}
 //
-//struct RepairData {
+//struct RepairData: Hashable {
 //    var needtorepair: Bool
 //    var total: Double
 //    var quantity: Double

@@ -19,6 +19,7 @@ struct AddPropertyView: View {
     @State private var baths: String = ""
     @State private var sqft: String = ""
     @State private var inspector: String = "Ellie" //placeholder
+//    @State private var profile: Image
     
     @State var path: NavigationPath
     
@@ -77,11 +78,19 @@ struct AddPropertyView: View {
                 }
             }.navigationDestination(for: String.self) { string in
                 switch string {
-                case "Add Property":
-//                    let _ = print(property.to_string())
-                    let _ = print(Property.instance.address.street)
-                    CategoriesView(property: handleSubmit(street: street, city: city, zip: zip, isVacant: isVacant, date: date, beds: beds, baths: baths, sqft: sqft, inspector: inspector))
-//                    Text("Categories")
+                    case "Add Property":
+    //                  let _ = print(property.to_string())
+                        let _ = print(Property.instance.address.street)
+                        
+                        CategoriesView(property: handleSubmit(street: street,
+                                                              city: city,
+                                                              zip: zip,
+                                                              isVacant: isVacant,
+                                                              date: date,
+                                                              beds: beds,
+                                                              baths: baths,
+                                                              sqft: sqft,
+                                                              inspector: inspector))
                 default:
                     Text("No view with name: \(string)")
                 }
@@ -91,6 +100,7 @@ struct AddPropertyView: View {
     }
 }
 
+/// Initializes singleton Property instance
 func handleSubmit(street: String, city: String, zip: String, isVacant: Bool, date: Date, beds: String, baths: String, sqft: String, inspector: String) -> Property {
     let dBeds = convertDouble(str: beds)
     let dBaths = convertDouble(str: baths)
