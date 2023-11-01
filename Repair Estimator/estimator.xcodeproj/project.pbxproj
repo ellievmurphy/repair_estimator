@@ -40,6 +40,7 @@
 		13B17E8B2A93D75800F6F11B /* InknutAntiqua-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13B17E842A93D75800F6F11B /* InknutAntiqua-Bold.ttf */; };
 		13D6D3E32AD1B88C00C65F50 /* Roof.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D6D3E22AD1B88C00C65F50 /* Roof.swift */; };
 		13D6D3E52AD1BAEB00C65F50 /* Gutters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D6D3E42AD1BAEB00C65F50 /* Gutters.swift */; };
+		13EE61A02AF2E4BE002CDA22 /* Landscaping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EE619F2AF2E4BE002CDA22 /* Landscaping.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		13B17E8F2A93DA6200F6F11B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		13D6D3E22AD1B88C00C65F50 /* Roof.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roof.swift; sourceTree = "<group>"; };
 		13D6D3E42AD1BAEB00C65F50 /* Gutters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gutters.swift; sourceTree = "<group>"; };
+		13EE619F2AF2E4BE002CDA22 /* Landscaping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Landscaping.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +228,7 @@
 		132C26D02A98EC710036A739 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				13EE619F2AF2E4BE002CDA22 /* Landscaping.swift */,
 				132C26D12A98EC9A0036A739 /* AbstractCategory.swift */,
 				13D6D3E22AD1B88C00C65F50 /* Roof.swift */,
 				13D6D3E42AD1BAEB00C65F50 /* Gutters.swift */,
@@ -460,6 +463,7 @@
 				132C26D42A98EEF60036A739 /* AbstractCategoryView.swift in Sources */,
 				139D7A792AD32F8B000E7BBD /* Garage.swift in Sources */,
 				132C26D22A98EC9A0036A739 /* AbstractCategory.swift in Sources */,
+				13EE61A02AF2E4BE002CDA22 /* Landscaping.swift in Sources */,
 				132469702A9795CF00945490 /* CategoriesView.swift in Sources */,
 				130828922A87D3DA00321CE3 /* Property.swift in Sources */,
 				134F85112A8AD5E600A0EBA2 /* CutDate.swift in Sources */,
