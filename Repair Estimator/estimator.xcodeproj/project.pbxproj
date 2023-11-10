@@ -31,6 +31,21 @@
 		13A57A1B2AB4C5D5008F1D5D /* IntroductoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A57A1A2AB4C5D5008F1D5D /* IntroductoryView.swift */; };
 		13A57A1D2AB4D9B8008F1D5D /* NumericalInputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A57A1C2AB4D9B8008F1D5D /* NumericalInputs.swift */; };
 		13A57A212AB4DD24008F1D5D /* InspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A57A202AB4DD24008F1D5D /* InspectorView.swift */; };
+		13AA71622AFDFCD3001ADCED /* Fence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AA71532AFDFCD3001ADCED /* Fence.swift */; };
+		13AA71632AFDFCD3001ADCED /* Landscaping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AA71542AFDFCD3001ADCED /* Landscaping.swift */; };
+		13AA71642AFDFCD3001ADCED /* ConcreteAsphalt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AA71552AFDFCD3001ADCED /* ConcreteAsphalt.swift */; };
+		13AA71652AFDFCD3001ADCED /* Gutters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AA71562AFDFCD3001ADCED /* Gutters.swift */; };
+		13AA71662AFDFCD3001ADCED /* Pergola.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AA71572AFDFCD3001ADCED /* Pergola.swift */; };
+		13AA71672AFDFCD3001ADCED /* Garage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AA71582AFDFCD3001ADCED /* Garage.swift */; };
+		13AA71682AFDFCD3001ADCED /* Finish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AA71592AFDFCD3001ADCED /* Finish.swift */; };
+		13AA71692AFDFCD3001ADCED /* Septic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AA715A2AFDFCD3001ADCED /* Septic.swift */; };
+		13AA716A2AFDFCD3001ADCED /* Decks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AA715B2AFDFCD3001ADCED /* Decks.swift */; };
+		13AA716B2AFDFCD3001ADCED /* Pool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AA715C2AFDFCD3001ADCED /* Pool.swift */; };
+		13AA716C2AFDFCD3001ADCED /* Windows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AA715D2AFDFCD3001ADCED /* Windows.swift */; };
+		13AA716D2AFDFCD3001ADCED /* AbstractCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AA715E2AFDFCD3001ADCED /* AbstractCategory.swift */; };
+		13AA716E2AFDFCD3001ADCED /* Roof.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AA715F2AFDFCD3001ADCED /* Roof.swift */; };
+		13AA716F2AFDFCD3001ADCED /* Masonry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AA71602AFDFCD3001ADCED /* Masonry.swift */; };
+		13AA71702AFDFCD3001ADCED /* ExtPainting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AA71612AFDFCD3001ADCED /* ExtPainting.swift */; };
 		13B17E852A93D75800F6F11B /* InknutAntiqua-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13B17E7E2A93D75800F6F11B /* InknutAntiqua-ExtraBold.ttf */; };
 		13B17E862A93D75800F6F11B /* InknutAntiqua-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13B17E7F2A93D75800F6F11B /* InknutAntiqua-Medium.ttf */; };
 		13B17E872A93D75800F6F11B /* InknutAntiqua-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13B17E802A93D75800F6F11B /* InknutAntiqua-SemiBold.ttf */; };
@@ -88,6 +103,21 @@
 		13A57A1A2AB4C5D5008F1D5D /* IntroductoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductoryView.swift; sourceTree = "<group>"; };
 		13A57A1C2AB4D9B8008F1D5D /* NumericalInputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericalInputs.swift; sourceTree = "<group>"; };
 		13A57A202AB4DD24008F1D5D /* InspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorView.swift; sourceTree = "<group>"; };
+		13AA71532AFDFCD3001ADCED /* Fence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fence.swift; sourceTree = "<group>"; };
+		13AA71542AFDFCD3001ADCED /* Landscaping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Landscaping.swift; sourceTree = "<group>"; };
+		13AA71552AFDFCD3001ADCED /* ConcreteAsphalt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcreteAsphalt.swift; sourceTree = "<group>"; };
+		13AA71562AFDFCD3001ADCED /* Gutters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gutters.swift; sourceTree = "<group>"; };
+		13AA71572AFDFCD3001ADCED /* Pergola.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pergola.swift; sourceTree = "<group>"; };
+		13AA71582AFDFCD3001ADCED /* Garage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Garage.swift; sourceTree = "<group>"; };
+		13AA71592AFDFCD3001ADCED /* Finish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Finish.swift; sourceTree = "<group>"; };
+		13AA715A2AFDFCD3001ADCED /* Septic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Septic.swift; sourceTree = "<group>"; };
+		13AA715B2AFDFCD3001ADCED /* Decks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decks.swift; sourceTree = "<group>"; };
+		13AA715C2AFDFCD3001ADCED /* Pool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pool.swift; sourceTree = "<group>"; };
+		13AA715D2AFDFCD3001ADCED /* Windows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Windows.swift; sourceTree = "<group>"; };
+		13AA715E2AFDFCD3001ADCED /* AbstractCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractCategory.swift; sourceTree = "<group>"; };
+		13AA715F2AFDFCD3001ADCED /* Roof.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Roof.swift; sourceTree = "<group>"; };
+		13AA71602AFDFCD3001ADCED /* Masonry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Masonry.swift; sourceTree = "<group>"; };
+		13AA71612AFDFCD3001ADCED /* ExtPainting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtPainting.swift; sourceTree = "<group>"; };
 		13B17E7E2A93D75800F6F11B /* InknutAntiqua-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "InknutAntiqua-ExtraBold.ttf"; path = "Inknut_Antiqua/InknutAntiqua-ExtraBold.ttf"; sourceTree = "<group>"; };
 		13B17E7F2A93D75800F6F11B /* InknutAntiqua-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "InknutAntiqua-Medium.ttf"; path = "Inknut_Antiqua/InknutAntiqua-Medium.ttf"; sourceTree = "<group>"; };
 		13B17E802A93D75800F6F11B /* InknutAntiqua-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "InknutAntiqua-SemiBold.ttf"; path = "Inknut_Antiqua/InknutAntiqua-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -228,6 +258,21 @@
 		132C26D02A98EC710036A739 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				13AA715E2AFDFCD3001ADCED /* AbstractCategory.swift */,
+				13AA71552AFDFCD3001ADCED /* ConcreteAsphalt.swift */,
+				13AA715B2AFDFCD3001ADCED /* Decks.swift */,
+				13AA71612AFDFCD3001ADCED /* ExtPainting.swift */,
+				13AA71532AFDFCD3001ADCED /* Fence.swift */,
+				13AA71592AFDFCD3001ADCED /* Finish.swift */,
+				13AA71582AFDFCD3001ADCED /* Garage.swift */,
+				13AA71562AFDFCD3001ADCED /* Gutters.swift */,
+				13AA71542AFDFCD3001ADCED /* Landscaping.swift */,
+				13AA71602AFDFCD3001ADCED /* Masonry.swift */,
+				13AA71572AFDFCD3001ADCED /* Pergola.swift */,
+				13AA715C2AFDFCD3001ADCED /* Pool.swift */,
+				13AA715F2AFDFCD3001ADCED /* Roof.swift */,
+				13AA715A2AFDFCD3001ADCED /* Septic.swift */,
+				13AA715D2AFDFCD3001ADCED /* Windows.swift */,
 				13EE619F2AF2E4BE002CDA22 /* Landscaping.swift */,
 				132C26D12A98EC9A0036A739 /* AbstractCategory.swift */,
 				13D6D3E22AD1B88C00C65F50 /* Roof.swift */,
@@ -453,22 +498,37 @@
 			files = (
 				13A57A1B2AB4C5D5008F1D5D /* IntroductoryView.swift in Sources */,
 				139D7A772AD32F21000E7BBD /* Windows.swift in Sources */,
+				13AA71672AFDFCD3001ADCED /* Garage.swift in Sources */,
+				13AA716D2AFDFCD3001ADCED /* AbstractCategory.swift in Sources */,
+				13AA71632AFDFCD3001ADCED /* Landscaping.swift in Sources */,
 				139D7A732AD32D70000E7BBD /* Masonry.swift in Sources */,
 				13A57A192AB4B39A008F1D5D /* StreetAddressView.swift in Sources */,
 				13842A4B2A940DF800C823F9 /* ContentView.swift in Sources */,
+				13AA71692AFDFCD3001ADCED /* Septic.swift in Sources */,
+				13AA71622AFDFCD3001ADCED /* Fence.swift in Sources */,
+				13AA716B2AFDFCD3001ADCED /* Pool.swift in Sources */,
+				13AA716A2AFDFCD3001ADCED /* Decks.swift in Sources */,
 				13842A4F2A94145D00C823F9 /* AddPropertyView.swift in Sources */,
 				13D6D3E32AD1B88C00C65F50 /* Roof.swift in Sources */,
+				13AA716E2AFDFCD3001ADCED /* Roof.swift in Sources */,
 				13A57A1D2AB4D9B8008F1D5D /* NumericalInputs.swift in Sources */,
 				13D6D3E52AD1BAEB00C65F50 /* Gutters.swift in Sources */,
 				132C26D42A98EEF60036A739 /* AbstractCategoryView.swift in Sources */,
 				139D7A792AD32F8B000E7BBD /* Garage.swift in Sources */,
 				132C26D22A98EC9A0036A739 /* AbstractCategory.swift in Sources */,
+				13AA71652AFDFCD3001ADCED /* Gutters.swift in Sources */,
 				13EE61A02AF2E4BE002CDA22 /* Landscaping.swift in Sources */,
 				132469702A9795CF00945490 /* CategoriesView.swift in Sources */,
 				130828922A87D3DA00321CE3 /* Property.swift in Sources */,
 				134F85112A8AD5E600A0EBA2 /* CutDate.swift in Sources */,
+				13AA71702AFDFCD3001ADCED /* ExtPainting.swift in Sources */,
+				13AA71642AFDFCD3001ADCED /* ConcreteAsphalt.swift in Sources */,
+				13AA716C2AFDFCD3001ADCED /* Windows.swift in Sources */,
+				13AA71662AFDFCD3001ADCED /* Pergola.swift in Sources */,
 				13A57A212AB4DD24008F1D5D /* InspectorView.swift in Sources */,
+				13AA71682AFDFCD3001ADCED /* Finish.swift in Sources */,
 				130828652A83480500321CE3 /* estimatorApp.swift in Sources */,
+				13AA716F2AFDFCD3001ADCED /* Masonry.swift in Sources */,
 				139D7A712AD32C0A000E7BBD /* Finish.swift in Sources */,
 				139D7A752AD32E64000E7BBD /* ExtPainting.swift in Sources */,
 			);

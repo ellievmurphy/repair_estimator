@@ -31,6 +31,24 @@ class AbstractCategory: Hashable, Identifiable {
         self.totalCost = 0.0
     }
     
+    /// Function to determine if the  category is needed
+    /// Checks if the total cost for all repairs is 0, if so
+    /// @return false
+    /// otherwise,
+    /// @return true
+    func checkNeeded() -> Bool {
+        return !(totalCost == 0)
+    }
+    
+    /// Function to determine if the subcategory is needed
+    /// Checks if the total cost for all repairs is 0, if so
+    /// @return false
+    /// otherwise,
+    /// @return true
+    func checkNeededSub(subcat: Subcategory) -> Bool {
+        return !(subcat.total == 0)
+    }
+    
     func updateCost() -> Double {
         for repair in repairs {
             totalCost += repair.total
@@ -49,6 +67,18 @@ class AbstractCategory: Hashable, Identifiable {
             }
         }
         
+    }
+    
+    func to_string() -> String {
+        var retVal = "Type of Repair: \(type)\n"
+        retVal += "Needed Repairs:\n"
+        
+        repairs.forEach { repair in
+//            if checkNeededSub(subcat: repair) {
+                retVal += "\t\(repair.name): $\(repair.total)\n"
+//            }
+        }
+        return retVal
     }
     
     func get_unit(unit: ReUnit) -> String {

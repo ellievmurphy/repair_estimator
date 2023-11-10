@@ -85,6 +85,7 @@ struct Property: Hashable {
     /// Constructs propInfo with default values. Default date is set to January 1st
     private init() {
         self.init(street: "", city: "", zip: "", vacancy: false, date: Date.init(), beds: 0, baths: 0, sqft: 0, inspector: "", totalCost: 0, repairs: [])
+        repairs = initRepairs()
     }
     
     static func resetInstance() -> Void {
@@ -94,6 +95,26 @@ struct Property: Hashable {
     /// sets the property's address using the provided string
     mutating func set_address(street: String, city: String, zip: String) -> Void {
         address = Address.init(street: street, city: city, zip: zip)
+    }
+    
+    public func initRepairs() -> [AbstractCategory] {
+        var emptyRepairs = [AbstractCategory]()
+        emptyRepairs.append(Roof())
+        emptyRepairs.append(Gutters())
+        emptyRepairs.append(Finish())
+        emptyRepairs.append(Masonry())
+        emptyRepairs.append(ExtPainting())
+        emptyRepairs.append(Windows())
+        emptyRepairs.append(Garage())
+        emptyRepairs.append(Landscaping())
+        emptyRepairs.append(ConcreteAsphalt())
+        emptyRepairs.append(Decks())
+        emptyRepairs.append(Pergola())
+        emptyRepairs.append(Fence())
+        emptyRepairs.append(Pool())
+        emptyRepairs.append(Septic())
+        
+        return emptyRepairs
     }
 
     /// returns the property's address as a String
@@ -184,7 +205,10 @@ struct Property: Hashable {
     func to_string() -> String {
         let formatter = DateFormatter()
         var retVal = "Property: \(address), \(vacancy), \(formatter.string(from: date)), \(beds), \(baths), \(sqft), \(inspector)"
-        retVal += "" //add repairs to retval
+        repairs.forEach { repair in
+            retVal += repair.to_string() //add repairs to retval
+        }
+        
         return retVal
     }
 

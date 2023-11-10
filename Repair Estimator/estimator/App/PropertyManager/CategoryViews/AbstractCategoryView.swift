@@ -61,18 +61,6 @@ struct AbstractCategoryView: View {
                                 }.ignoresSafeArea()
                             
                         }.font(Font.custom("InknutAntiqua-Regular", size: 14))
-//                        } else {
-//                            Grid{
-//                                GridRow {
-//                                    Text(repair.name).font(Font.custom("InknutAntiqua-Regular", size: 14))
-//                                    Button("Not Included", action: {
-//                                        repairCategory.setNeededRepair(repairName: repair.name)
-//                                        
-//                                    }).font(Font.custom("InknutAntiqua-Regular", size: 10))
-//                                }
-//                            }
-//                            
-//                        }
                     }.listStyle(.plain).frame(minHeight: minRowHeight * CGFloat(repairCategory.repairs.count) * 1.25)
                     
                     TextField("Comments", text: $comments).font(Font.custom("InknutAntiqua-Regular", size: 14))

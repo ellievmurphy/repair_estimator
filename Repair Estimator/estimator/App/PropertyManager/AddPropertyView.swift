@@ -113,7 +113,7 @@ func handleSubmit(street: String, city: String, zip: String, isVacant: Bool, dat
     Property.instance.set_baths(baths: dBaths)
     Property.instance.set_sqft(sqft: dSqft)
     Property.instance.set_inspector(inspector: inspector)
-    Property.instance.set_repairs(repairs: [])
+    Property.instance.set_repairs(repairs: Property.instance.initRepairs()) // TODO: I don't like how this is done, prob a better way
 //
 //    let property = Property.init(street: street, city: city, zip: zip, vacancy: isVacant, date: date, beds: dBeds, baths: dBaths, sqft: dSqft, inspector: inspector, totalCost: 0, repairs: [])
     return Property.instance

@@ -14,6 +14,7 @@ struct CategoriesView: View {
 //    @State var path: NavigationPath = .init()
     @State var property: Property
     @State private var showingExporter = false
+    @State var cost = 0.0
     
     let pdfURL = Bundle.main.url(forResource: "Repair Estimator", withExtension: "pdf")
     
@@ -21,7 +22,7 @@ struct CategoriesView: View {
         let color1 = Color(red: 90/255, green: 109/255, blue: 93/255) //green
 //        let color2 = Color(red: 245/255, green: 245/255, blue: 244/255) //light grey
 //        let color3 = Color(red: 123/255, green: 133/255, blue: 140/255) //dark grey
-        let formattedTotal = String(format: "%.2f", property.totalCost)
+        let formattedTotal = String(format: "%.2f", cost)
         
         // calls function to initialize the exterior categories
         let exteriors = initCategories()
@@ -43,6 +44,7 @@ struct CategoriesView: View {
                         ForEach(exteriors) { category in
                             NavigationLink(category.type,
                                            destination: AbstractCategoryView(repairCategory: category, repairsNeeded: Dictionary()))
+                            .font(Font.custom("InknutAntiqua-Regular", size: 14))
                         } // probably remove the dictionary initializations + move them to initialize in-line w declaration in AbstractCategoryView
                         
                         
@@ -71,6 +73,13 @@ func initCategories() -> [AbstractCategory] {
     exCategories.append(ExtPainting())
     exCategories.append(Windows())
     exCategories.append(Garage())
+    exCategories.append(Landscaping())
+    exCategories.append(ConcreteAsphalt())
+    exCategories.append(Decks())
+    exCategories.append(Pergola())
+    exCategories.append(Fence())
+    exCategories.append(Pool())
+    exCategories.append(Septic())
     
     return exCategories
 }
@@ -140,8 +149,8 @@ struct PDFKitView: UIViewRepresentable {
     }
 }
 
-//struct CategoriesView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CategoriesView(property: .init())
-//    }
-//}
+struct CategoriesView_Previews: PreviewProvider {
+    static var previews: some View {
+        CategoriesView(property: Property.instance)
+    }
+}
