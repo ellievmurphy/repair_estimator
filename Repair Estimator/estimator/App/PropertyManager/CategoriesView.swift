@@ -43,7 +43,7 @@ struct CategoriesView: View {
                         
                         ForEach(exteriors) { category in
                             NavigationLink(category.type,
-                                           destination: AbstractCategoryView(repairCategory: category, repairsNeeded: Dictionary()))
+                                           destination: AbstractCategoryView(repairCategory: category))
                             .font(Font.custom("InknutAntiqua-Regular", size: 14))
                         } // probably remove the dictionary initializations + move them to initialize in-line w declaration in AbstractCategoryView
                         
@@ -52,7 +52,8 @@ struct CategoriesView: View {
                     .frame(width: geo.size.width, alignment: .leading)
                     .padding()
                     
-                    NavigationLink("Export", destination: PDFKitView(url: pdfURL ?? URL(filePath: "../../Resources"), property: property))
+                    // TODO: Pop-up menu if picture hasn't been taken, gives opportunity to take one now
+                    NavigationLink("Generate Report", destination: PDFKitView(url: pdfURL ?? URL(filePath: "../../Resources"), property: property))
                         .padding()
                 }
                 
@@ -118,6 +119,7 @@ func createPDF() -> Data {
             NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14),
             NSAttributedString.Key.paragraphStyle: paragraphStyle
         ]
+        // TODO: Add placeholder "No Image" temporary image until picture has been taken
         let text = Property.instance.to_string() // text in PDF
         
         // Created textRect struct describing specific rect where the text would be drawn.

@@ -75,7 +75,8 @@ struct AddPropertyView: View {
                                     .cornerRadius(10)
                                     .shadow(color: .gray, radius: 5, x: 0, y: 3)
                                 )
-                            NavigationLink("Add Property", destination: CategoriesView(property: handleSubmit(street: street, city: city, zip: zip, isVacant: isVacant, date: date, beds: beds, baths: baths, sqft: sqft, inspector: inspector)))
+                            // TODO: add error message that picture has to be taken first if one hasn't been already
+                            NavigationLink("Start Estimate", destination: CategoriesView(property: handleSubmit(street: street, city: city, zip: zip, isVacant: isVacant, date: date, beds: beds, baths: baths, sqft: sqft, inspector: inspector)))
                                 .padding([.top, .bottom], 5)
                                 .padding([.leading, .trailing], 10)
                                 .font(Font.custom("InknutAntiqua-Regular", size: 20))
