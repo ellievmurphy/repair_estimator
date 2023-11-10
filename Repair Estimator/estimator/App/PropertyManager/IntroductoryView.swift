@@ -18,7 +18,7 @@ struct IntroductoryView: View {
         let color2 = Color(red: 245/255, green: 245/255, blue: 244/255)
         let color3 = Color(red: 123/255, green: 133/255, blue: 140/255)
         
-        NavigationStack {  // Wrapper that allows us to switch between Views
+        NavigationStack(path: $path) {  // Wrapper that allows us to switch between Views
             ZStack {
                 // Change background color to grey
                 color2.ignoresSafeArea()
@@ -27,7 +27,7 @@ struct IntroductoryView: View {
                 VStack {
                     Text("Estimator").foregroundStyle(color1).font(Font.custom("InknutAntiqua-Regular", size: 48))
                     // NavLink indicates text that can be used to navigate views
-                    NavigationLink("Create New", destination: AddPropertyView(property: Property.instance, path: path))
+                    NavigationLink("Create New", destination: AddPropertyView(property: Property.instance))
                         .padding([.top, .bottom], 0)
                         .padding([.leading, .trailing], 20)
                         .font(Font.custom("InknutAntiqua-Regular", size: 20))
@@ -40,8 +40,8 @@ struct IntroductoryView: View {
     }
 }
 
-//struct IntroductoryView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        IntroductoryView(path: <#NavigationPath#>)
-//    }
-//}
+struct IntroductoryView_Previews: PreviewProvider {
+    static var previews: some View {
+        IntroductoryView(path: NavigationPath.init(), property: Property.instance)
+    }
+}

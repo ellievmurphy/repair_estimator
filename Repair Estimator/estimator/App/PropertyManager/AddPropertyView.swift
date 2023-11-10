@@ -28,17 +28,15 @@ struct AddPropertyView: View {
     @State private var baths: String = ""
     @State private var sqft: String = ""
     @State private var inspector: String = "Ellie" //placeholder
-//    @State private var profile: Image
-    
-    @State var path: NavigationPath
+    //    @State private var profile: Image
     
     var body: some View {
         // have to divide each of the rgb values by 255 to create double values
         let color1 = Color(red: 90/255, green: 109/255, blue: 93/255) //green
         let color2 = Color(red: 245/255, green: 245/255, blue: 244/255) //light grey
-//        let color3 = Color(red: 123/255, green: 133/255, blue: 140/255) //dark grey
+        let color3 = Color(red: 123/255, green: 133/255, blue: 140/255) //dark grey
         
-        NavigationStack(path: $path) {
+        NavigationStack {
             ScrollView {
                 // Change background color to grey
                 color2.ignoresSafeArea()
@@ -66,75 +64,39 @@ struct AddPropertyView: View {
                         
                         NumericalInputs(beds: $beds, baths: $baths, sqft: $sqft)
                         //                    InspectorView(inspector: $inspector)
-                        Button(
-                            action: {
-                                // TODO: prompts to take picture instead of separate button
-                                
-//                                let _ = print(property.to_string())
-                                if !picTaken {
-                                    picTaken = true
-                                    path.append("Take Picture")
-                                } else {
-                                    path.append("Add Property")
-                                }
-                                //
-                            }, label: {
-                                if picTaken {
-                                    Text("Start Estimate") // make full width
-                                        .padding([.top, .bottom], 0)
-                                        .padding([.leading, .trailing], 70)
-                                        .font(Font.custom("InknutAntiqua-Regular", size: 20))
-                                        .foregroundColor(color2)
-                                        .background(color1
-                                            .cornerRadius(10)
-                                            .shadow(color: .gray, radius: 5, x: 0, y: 3)
-                                        )
-                                    
-                                } else {
-                                    Text("Take Picture") // make full width
-                                        .padding([.top, .bottom], 0)
-                                        .padding([.leading, .trailing], 70)
-                                        .font(Font.custom("InknutAntiqua-Regular", size: 20))
-                                        .foregroundColor(color2)
-                                        .background(color1
-                                            .cornerRadius(10)
-                                            .shadow(color: .gray, radius: 5, x: 0, y: 3)
-                                        )
-                                }
-                                
-                            }
-                        )
                         
-                    }.padding(.horizontal)
-                }
-            }.navigationDestination(for: String.self) { string in
-                switch string {
-                    case "Take Picture":
+                        HStack {
+                            NavigationLink("Take Photo", destination: ImagePicker(show: $imagepicker, image: $imageData, source: source))
+                                .padding([.top, .bottom], 5)
+                                .padding([.leading, .trailing], 20)
+                                .font(Font.custom("InknutAntiqua-Regular", size: 20))
+                                .foregroundColor(color2)
+                                .background(color1
+                                    .cornerRadius(10)
+                                    .shadow(color: .gray, radius: 5, x: 0, y: 3)
+                                )
+                            NavigationLink("Add Property", destination: CategoriesView(property: handleSubmit(street: street, city: city, zip: zip, isVacant: isVacant, date: date, beds: beds, baths: baths, sqft: sqft, inspector: inspector)))
+                                .padding([.top, .bottom], 5)
+                                .padding([.leading, .trailing], 10)
+                                .font(Font.custom("InknutAntiqua-Regular", size: 20))
+                                .foregroundColor(color3)
+                            //                            .background(color1
+                            //                                .cornerRadius(10)
+                            //                                .shadow(color: .gray, radius: 5, x: 0, y: 3)
+                            //                            )
+                        }
                         
-                        ImagePicker(show: $imagepicker, image: $imageData, source: source)
-//                        let _ = print(imageData) // yeah... debugs maybe
-                    case "Add Property":
-    //                  let _ = print(property.to_string())
-                        let _ = print(Property.instance.address.street)
                         
-                        CategoriesView(property: handleSubmit(street: street,
-                                                              city: city,
-                                                              zip: zip,
-                                                              isVacant: isVacant,
-                                                              date: date,
-                                                              beds: beds,
-                                                              baths: baths,
-                                                              sqft: sqft,
-                                                              inspector: inspector))
-                default:
-                    Text("No view with name: \(string)")
-                }
-            
+                    }
+                    //
+                    
+                }.padding(.horizontal)
             }
         }
     }
-    
 }
+    
+
 
 /// Initializes singleton Property instance
 func handleSubmit(street: String, city: String, zip: String, isVacant: Bool, date: Date, beds: String, baths: String, sqft: String, inspector: String) -> Property {
@@ -202,10 +164,10 @@ struct ImagePicker : UIViewControllerRepresentable {
         }
     }
 }
-
+//
 //struct AddPropertyView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        AddPropertyView(property: Property.init())
+//        AddPropertyView(property: Property.instance)
 //    }
 //}
 
