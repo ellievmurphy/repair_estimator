@@ -7,11 +7,13 @@
 
 import SwiftUI
 import AVFoundation
+import PopupView
 
 @available(iOS 17.0, *)
 struct AddPropertyView: View {
     @State var property: Property
-    @State private var picTaken : Bool = false
+    @State private var noPicTaken : Bool = false
+    @State private var camOpened : Bool = false
     
     // Below are the fields required for taking and storing a picture
     @State var imageData: Data = .init(capacity: 0)
@@ -40,9 +42,10 @@ struct AddPropertyView: View {
         NavigationStack {
             ScrollView {
                 // Change background color to grey
-                color2.ignoresSafeArea()
+//                color2.ignoresSafeArea()
                 
                 ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
+                    
                     // Holds Title and text boxes
                     VStack(alignment: .leading) {
                         Text("New Estimate")
@@ -67,30 +70,67 @@ struct AddPropertyView: View {
                         //                    InspectorView(inspector: $inspector)
                         
                         HStack {
-                            NavigationLink("Take Photo", destination: ImagePicker(show: $imagepicker, image: $imageData, source: source))
-                                .padding([.top, .bottom], 5)
-                                .padding([.leading, .trailing], 20)
-                                .font(Font.custom("InknutAntiqua-Regular", size: 20))
-                                .foregroundColor(color2)
-                                .background(color1
-                                    .cornerRadius(10)
-                                    .shadow(color: .gray, radius: 5, x: 0, y: 3)
-                                )
+                            Button(action: {
+                                camOpened = true
+                                if UIImage(#imageLiteral(resourceName: "placeholder-img.png")) == Property.instance.image {
+                                    noPicTaken = true
+                                }
+                            }) {
+//                                NavigationLink("Take Photo", destination: ImagePicker(show: $imagepicker, image: $imageData, source: source))
+                                Text("Take Photo")
+                                    .padding([.top, .bottom], 5)
+                                    .padding([.leading, .trailing], 20)
+                                    .font(Font.custom("InknutAntiqua-Regular", size: 20))
+                                    .foregroundColor(color2)
+                                    .background(color1
+                                        .cornerRadius(10)
+                                        .shadow(color: .gray, radius: 5, x: 0, y: 3)
+                                    )
+                            }
+                            
                             // TODO: add error message that picture has to be taken first if one hasn't been already
+                            
                             NavigationLink("Start Estimate", destination: CategoriesView(property: handleSubmit(street: street, city: city, zip: zip, isVacant: isVacant, date: date, beds: beds, baths: baths, sqft: sqft, inspector: inspector)))
                                 .padding([.top, .bottom], 5)
                                 .padding([.leading, .trailing], 10)
                                 .font(Font.custom("InknutAntiqua-Regular", size: 20))
                                 .foregroundColor(color3)
-                            //                            .background(color1
-                            //                                .cornerRadius(10)
-                            //                                .shadow(color: .gray, radius: 5, x: 0, y: 3)
-                            //                            )
+                            
                         }
                         
                         
                     }
                     //
+                    if camOpened && noPicTaken {
+                        GeometryReader{ geometry in
+                            VStack {
+                                Text("Should add photo first").font(Font.custom("InknutAntiqua-Regular", size: 20))
+                                
+                                //TODO: change to buttons instead of links
+                                HStack{
+                                    Button("Skip") {
+                                        noPicTaken = false
+                                    }
+                                    .font(Font.custom("InknutAntiqua-Regular", size: 20))
+                                    .foregroundColor(color1)
+                                    .padding([.trailing], 10)
+                                    
+                                    
+                                    NavigationLink("Take Photo", destination: ImagePicker(show: $imagepicker, image: $imageData, source: source))
+                                        .font(Font.custom("InknutAntiqua-Regular", size: 20))
+                                        .foregroundColor(color1)
+                                    
+                                    
+                                }
+                            }
+                            .frame(width: geometry.size.width * 0.75, height: geometry.size.height * 0.25)
+                            .background(color2.opacity(0.75))
+                            .cornerRadius(8.0)
+                            .shadow(color: .gray, radius: 5)
+                            .position(x: geometry.size.width / 2, y:geometry.size.height / 2)
+                            
+                        }
+                    }
                     
                 }.padding(.horizontal)
             }

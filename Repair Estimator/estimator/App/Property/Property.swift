@@ -82,6 +82,7 @@ struct Property: Hashable {
         self.inspector = inspector
         self.totalCost = totalCost
         self.repairs = repairs
+        self.image = UIImage(#imageLiteral(resourceName: "placeholder-img.png"))
     }
     
     /// Constructs propInfo with default values. Default date is set to January 1st

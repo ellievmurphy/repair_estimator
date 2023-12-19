@@ -45,9 +45,11 @@
 		13B17E892A93D75800F6F11B /* InknutAntiqua-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13B17E822A93D75800F6F11B /* InknutAntiqua-Regular.ttf */; };
 		13B17E8A2A93D75800F6F11B /* InknutAntiqua-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13B17E832A93D75800F6F11B /* InknutAntiqua-Black.ttf */; };
 		13B17E8B2A93D75800F6F11B /* InknutAntiqua-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13B17E842A93D75800F6F11B /* InknutAntiqua-Bold.ttf */; };
+		13B6BE0F2B316FD900206195 /* Camera-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 13B6BE0E2B316FD900206195 /* Camera-SwiftUI */; };
 		13D6D3E32AD1B88C00C65F50 /* Roof.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D6D3E22AD1B88C00C65F50 /* Roof.swift */; };
 		13D6D3E52AD1BAEB00C65F50 /* Gutters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D6D3E42AD1BAEB00C65F50 /* Gutters.swift */; };
 		13D6F21E2B30EA7B00A7BEF5 /* placeholder-img.png in Resources */ = {isa = PBXBuildFile; fileRef = 13D6F21D2B30EA7B00A7BEF5 /* placeholder-img.png */; };
+		13E59C322B31E744004AE071 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 13E59C312B31E744004AE071 /* PopupView */; };
 		13E90A282B2BBDA20008511F /* IntPainting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E90A272B2BBDA20008511F /* IntPainting.swift */; };
 		13E90A2A2B2BBE0B0008511F /* Hardwood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E90A292B2BBE0B0008511F /* Hardwood.swift */; };
 		13E90A2C2B2BBEB70008511F /* CarpetVinyl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E90A2B2B2BBEB70008511F /* CarpetVinyl.swift */; };
@@ -173,6 +175,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13E59C322B31E744004AE071 /* PopupView in Frameworks */,
+				13B6BE0F2B316FD900206195 /* Camera-SwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +439,10 @@
 			dependencies = (
 			);
 			name = estimator;
+			packageProductDependencies = (
+				13B6BE0E2B316FD900206195 /* Camera-SwiftUI */,
+				13E59C312B31E744004AE071 /* PopupView */,
+			);
 			productName = estimator;
 			productReference = 130828612A83480500321CE3 /* estimator.app */;
 			productType = "com.apple.product-type.application";
@@ -507,6 +515,10 @@
 				Base,
 			);
 			mainGroup = 130828582A83480500321CE3;
+			packageReferences = (
+				13B6BE0D2B316FD900206195 /* XCRemoteSwiftPackageReference "Camera-SwiftUI" */,
+				13E59C302B31E744004AE071 /* XCRemoteSwiftPackageReference "PopupView" */,
+			);
 			productRefGroup = 130828622A83480500321CE3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -935,6 +947,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		13B6BE0D2B316FD900206195 /* XCRemoteSwiftPackageReference "Camera-SwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rorodriguez116/Camera-SwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.0;
+			};
+		};
+		13E59C302B31E744004AE071 /* XCRemoteSwiftPackageReference "PopupView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/PopupView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		13B6BE0E2B316FD900206195 /* Camera-SwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 13B6BE0D2B316FD900206195 /* XCRemoteSwiftPackageReference "Camera-SwiftUI" */;
+			productName = "Camera-SwiftUI";
+		};
+		13E59C312B31E744004AE071 /* PopupView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 13E59C302B31E744004AE071 /* XCRemoteSwiftPackageReference "PopupView" */;
+			productName = PopupView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 130828592A83480500321CE3 /* Project object */;
 }

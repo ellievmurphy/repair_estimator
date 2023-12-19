@@ -32,60 +32,65 @@ struct CategoriesView: View {
         let others = initOthCategories()
             
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
+            GeometryReader { geometry in
+                VStack(alignment: .leading) {
+                    Text("Estimator")
+                        .frame(height: 70)
+                        .foregroundStyle(color1)
+                        .font(Font.custom("InknutAntiqua-Regular", size: 40))
+                        .padding([.top, .trailing, .leading])
+                    Text("Select Category | Total: \(formattedTotal)")
+                        .font(Font.custom("InknutAntiqua-Regular", size: 16))
+                        .padding([.trailing, .leading])
                     
-            VStack(alignment: .leading) {
-                Text("Estimator")
-                    .frame(height: 70)
-                    .foregroundStyle(color1)
-                    .font(Font.custom("InknutAntiqua-Regular", size: 40))
-                    .padding([.top, .trailing, .leading])
-                Text("Select Category | Total: \(formattedTotal)")
-                    .font(Font.custom("InknutAntiqua-Regular", size: 16))
-                    .padding([.trailing, .leading])
-                
-                // Prints the list of repair categories
-                List {
-                    // Lists all the exterior repair categories
-                    Section(header: Text("Exterior").font(Font.custom("InknutAntiqua-Regular", size: 16))) {
-                        ForEach(exteriors) { category in
-                            NavigationLink(category.type,
-                                           destination: AbstractCategoryView(repairCategory: category))
-                            .font(Font.custom("InknutAntiqua-Regular", size: 14))
+                    // Prints the list of repair categories
+                    List {
+                        // Lists all the exterior repair categories
+                        Section(header: Text("Exterior").font(Font.custom("InknutAntiqua-Regular", size: 16))) {
+                            ForEach(exteriors) { category in
+                                NavigationLink(category.type,
+                                               destination: AbstractCategoryView(repairCategory: category))
+                                .font(Font.custom("InknutAntiqua-Regular", size: 14))
+                            }
                         }
-                    }
-                    // Lists all the interior repair categories
-                    Section(header: Text("Interior").font(Font.custom("InknutAntiqua-Regular", size: 16))) {
-                        ForEach(interiors) { category in
-                            NavigationLink(category.type,
-                                           destination: AbstractCategoryView(repairCategory: category))
-                            .font(Font.custom("InknutAntiqua-Regular", size: 14))
+                        // Lists all the interior repair categories
+                        Section(header: Text("Interior").font(Font.custom("InknutAntiqua-Regular", size: 16))) {
+                            ForEach(interiors) { category in
+                                NavigationLink(category.type,
+                                               destination: AbstractCategoryView(repairCategory: category))
+                                .font(Font.custom("InknutAntiqua-Regular", size: 14))
+                            }
                         }
-                    }
-                    // Lists all the mechanical repair categories
-                    Section(header: Text("Mechanical").font(Font.custom("InknutAntiqua-Regular", size: 16))) {
-                        ForEach(mechanicals) { category in
-                            NavigationLink(category.type,
-                                           destination: AbstractCategoryView(repairCategory: category))
-                            .font(Font.custom("InknutAntiqua-Regular", size: 14))
+                        // Lists all the mechanical repair categories
+                        Section(header: Text("Mechanical").font(Font.custom("InknutAntiqua-Regular", size: 16))) {
+                            ForEach(mechanicals) { category in
+                                NavigationLink(category.type,
+                                               destination: AbstractCategoryView(repairCategory: category))
+                                .font(Font.custom("InknutAntiqua-Regular", size: 14))
+                            }
                         }
-                    }
-                    // Lists all the other repair categories
-                    Section(header: Text("Other").font(Font.custom("InknutAntiqua-Regular", size: 16))) {
-                        ForEach(others) { category in
-                            NavigationLink(category.type,
-                                           destination: AbstractCategoryView(repairCategory: category))
-                            .font(Font.custom("InknutAntiqua-Regular", size: 14))
+                        // Lists all the other repair categories
+                        Section(header: Text("Other").font(Font.custom("InknutAntiqua-Regular", size: 16))) {
+                            ForEach(others) { category in
+                                NavigationLink(category.type,
+                                               destination: AbstractCategoryView(repairCategory: category))
+                                .font(Font.custom("InknutAntiqua-Regular", size: 14))
+                            }
                         }
-                    }
-                    
-                }.listStyle(PlainListStyle())
                         
-            }
+                    }.listStyle(PlainListStyle())
                     
-            // TODO: Pop-up menu if picture hasn't been taken, gives opportunity to take one now
-            NavigationLink("Generate Report") {
-                PDFKitView(url: pdfURL ?? URL(filePath: "../../Resources"))
-            }.padding()
+                    Section {
+                        NavigationLink("Generate Report") {
+                            PDFKitView(url: pdfURL ?? URL(filePath: "../../Resources"))
+                        }.padding(.leading)
+                    }
+                    
+                }
+                
+                // TODO: Pop-up menu if picture hasn't been taken, gives opportunity to take one now
+                
+            }
         }
                 
             
