@@ -30,6 +30,8 @@ struct Property: Hashable {
         var zip: String
     }
 
+    /// variable represents the image of the property
+    var image: UIImage? = UIImage(#imageLiteral(resourceName: "placeholder-img.png"))
     /// variable representation of Address struct
     var address: Address
     /// whether the property is currently vacant
@@ -113,6 +115,27 @@ struct Property: Hashable {
         emptyRepairs.append(Fence())
         emptyRepairs.append(Pool())
         emptyRepairs.append(Septic())
+        emptyRepairs.append(IntPainting())
+        emptyRepairs.append(Hardwood())
+        emptyRepairs.append(CarpetVinyl())
+        emptyRepairs.append(Tiling())
+        emptyRepairs.append(KitchenGrouped())
+        emptyRepairs.append(AppliancesGrouped())
+        emptyRepairs.append(KitchenItem())
+        emptyRepairs.append(BathroomGrouped())
+        emptyRepairs.append(BathroomItem())
+        emptyRepairs.append(Framing())
+        emptyRepairs.append(Insulation())
+        emptyRepairs.append(Walls())
+        emptyRepairs.append(DoorsTrim())
+        emptyRepairs.append(Basement())
+        emptyRepairs.append(HomeFoundation())
+        emptyRepairs.append(HVAC())
+        emptyRepairs.append(Plumbing())
+        emptyRepairs.append(Electrical())
+        emptyRepairs.append(DemoDumpster())
+        emptyRepairs.append(TermitesAbatement())
+        emptyRepairs.append(Permits())
         
         return emptyRepairs
     }
@@ -202,11 +225,27 @@ struct Property: Hashable {
         return self.repairs
     }
     
+    func list_repairs() -> String {
+        var retVal = ""
+        repairs.forEach { repair in
+            if repair.needed {
+                retVal += repair.to_string() //add repairs to retval
+            }
+        }
+        return retVal
+    }
+    
     func to_string() -> String {
         let formatter = DateFormatter()
-        var retVal = "Property: \(address), \(vacancy), \(formatter.string(from: date)), \(beds), \(baths), \(sqft), \(inspector)"
+        let dateasstring = formatter.string(from: date)
+        let isVacant = vacancy ? "Vacant" : "Not Vacant"
+        
+        // TODO: figure out why date isn't printing on pdf
+        var retVal = "\(address.street)\n\(address.city), \(address.zip)\n\(inspector), \(dateasstring)\n \(isVacant), Beds: \(beds), Baths: \(baths), \(String(sqft)) sq. ft."
         repairs.forEach { repair in
-            retVal += repair.to_string() //add repairs to retval
+            if repair.needed {
+                retVal += repair.to_string() //add repairs to retval
+            }
         }
         
         return retVal

@@ -24,11 +24,13 @@ class AbstractCategory: Hashable, Identifiable {
     var type: String
     var repairs: [Subcategory]
     var totalCost: Double
+    var needed: Bool
     
     init(type: String, repairs: [Subcategory]) {
         self.type = type
         self.repairs = repairs
         self.totalCost = 0.0
+        self.needed = false
     }
     
     /// Function to determine if the  category is needed

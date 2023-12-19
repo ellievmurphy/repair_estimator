@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 17.0, *)
 struct IntroductoryView: View {
     
     @State var path: NavigationPath = .init()
@@ -40,6 +41,7 @@ struct IntroductoryView: View {
     }
 }
 
+@available(iOS 17.0, *)
 struct IntroductoryView_Previews: PreviewProvider {
     static var previews: some View {
         IntroductoryView(path: NavigationPath.init(), property: Property.instance)

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 17.0, *)
 @main
 struct estimatorApp: App {
     var body: some Scene {

@@ -8,6 +8,7 @@
 import SwiftUI
 import AVFoundation
 
+@available(iOS 17.0, *)
 struct AddPropertyView: View {
     @State var property: Property
     @State private var picTaken : Bool = false

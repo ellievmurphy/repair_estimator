@@ -7,70 +7,64 @@
 
 import Foundation
 
-class Mechanicals: AbstractCategory {
+class HVAC: AbstractCategory {
     
     init() {
         var repairs = [AbstractCategory.Subcategory]()
         repairs.append(AbstractCategory.Subcategory(needed: false,
-                                                    name: "HVAC",
+                                                    name: "Gas fired forced hot air heating system, ac system, ductwork",
                                                     quantity: 0.00,
                                                     unit: AbstractCategory.ReUnit.ea,
                                                     costPerUnit: 6000.00,
                                                     total: 0))
         repairs.append(AbstractCategory.Subcategory(needed: false,
-                                                    name: "New interior doors, closet doors, hardware, & trim (1500 sq ft house)",
+                                                    name: "Gas fired forced hot air heating system, ductwork",
                                                     quantity: 0.00,
                                                     unit: AbstractCategory.ReUnit.ea,
-                                                    costPerUnit: 2000.0,
-                                                    total: 0.00))
+                                                    costPerUnit: 4000.00,
+                                                    total: 0))
         repairs.append(AbstractCategory.Subcategory(needed: false,
-                                                    name: "Interior door - prehung hollow-core dore",
+                                                    name: "Gas fired forced hot air unit only",
                                                     quantity: 0.00,
                                                     unit: AbstractCategory.ReUnit.ea,
-                                                    costPerUnit: 175.00,
-                                                    total: 0.00))
+                                                    costPerUnit: 1700.00,
+                                                    total: 0))
         repairs.append(AbstractCategory.Subcategory(needed: false,
-                                                    name: "Interior sliding closet door",
+                                                    name: "Air conditioning unit only",
                                                     quantity: 0.00,
                                                     unit: AbstractCategory.ReUnit.ea,
-                                                    costPerUnit: 175.00,
+                                                    costPerUnit: 2000.00,
                                                     total: 0.00))
         repairs.append(AbstractCategory.Subcategory(needed: false,
-                                                    name: "Exterior front door - single door w/ hardware + deadbolt",
+                                                    name: "Replace forced air ductwork only",
                                                     quantity: 0.00,
                                                     unit: AbstractCategory.ReUnit.ea,
-                                                    costPerUnit: 150.00,
+                                                    costPerUnit: 2300.00,
                                                     total: 0.00))
         repairs.append(AbstractCategory.Subcategory(needed: false,
-                                                    name: "Exterior french patio door - double door",
+                                                    name: "Replace boiler & hot water baseboard system",
                                                     quantity: 0.00,
                                                     unit: AbstractCategory.ReUnit.ea,
-                                                    costPerUnit: 700.00,
+                                                    costPerUnit: 6500.00,
                                                     total: 0.00))
         repairs.append(AbstractCategory.Subcategory(needed: false,
-                                                    name: "Exterior sliding glass door - double door",
+                                                    name: "Replace boiler unit only",
                                                     quantity: 0.00,
                                                     unit: AbstractCategory.ReUnit.ea,
-                                                    costPerUnit: 850.00,
+                                                    costPerUnit: 3000.00,
                                                     total: 0.00))
         repairs.append(AbstractCategory.Subcategory(needed: false,
-                                                    name: "Crown molding",
+                                                    name: "Wall heater (install new or remove & replace",
                                                     quantity: 0.00,
-                                                    unit: AbstractCategory.ReUnit.lf,
-                                                    costPerUnit: 3.75,
+                                                    unit: AbstractCategory.ReUnit.ea,
+                                                    costPerUnit: 600.00,
                                                     total: 0.00))
         repairs.append(AbstractCategory.Subcategory(needed: false,
-                                                    name: "New baseboard trim",
+                                                    name: "Service heating & cooling system only",
                                                     quantity: 0.00,
-                                                    unit: AbstractCategory.ReUnit.lf,
-                                                    costPerUnit: 2.75,
+                                                    unit: AbstractCategory.ReUnit.ea,
+                                                    costPerUnit: 500.00,
                                                     total: 0.00))
-        repairs.append(AbstractCategory.Subcategory(needed: false,
-                                                    name: "Raised panel wood wainscoting",
-                                                    quantity: 0.00,
-                                                    unit: AbstractCategory.ReUnit.lf,
-                                                    costPerUnit: 17.50,
-                                                    total: 0.00))
-        super.init(type: "Mechanicals", repairs: repairs)
+        super.init(type: "HVAC", repairs: repairs)
     }
 }

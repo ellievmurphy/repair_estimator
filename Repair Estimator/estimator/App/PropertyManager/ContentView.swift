@@ -8,6 +8,7 @@
 import SwiftUI
 import Foundation
 
+@available(iOS 17.0, *)
 struct ContentView: View {
     var body: some View {
         IntroductoryView(path: NavigationPath(), property: Property.instance)

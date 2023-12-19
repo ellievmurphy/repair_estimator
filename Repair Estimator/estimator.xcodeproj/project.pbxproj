@@ -15,18 +15,14 @@
 		130828822A83480600321CE3 /* estimatorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130828812A83480600321CE3 /* estimatorUITestsLaunchTests.swift */; };
 		130828922A87D3DA00321CE3 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130828912A87D3DA00321CE3 /* Property.swift */; };
 		132469702A9795CF00945490 /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1324696F2A9795CF00945490 /* CategoriesView.swift */; };
-		132C26D22A98EC9A0036A739 /* AbstractCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132C26D12A98EC9A0036A739 /* AbstractCategory.swift */; };
 		132C26D42A98EEF60036A739 /* AbstractCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132C26D32A98EEF60036A739 /* AbstractCategoryView.swift */; };
 		134F85112A8AD5E600A0EBA2 /* CutDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134F85102A8AD5E600A0EBA2 /* CutDate.swift */; };
 		1373F8752A89BB5A0020A147 /* PropertyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1373F8742A89BB5A0020A147 /* PropertyTest.swift */; };
 		137AE6212A92B66100CF4961 /* DateTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE6202A92B66100CF4961 /* DateTest.swift */; };
 		13842A4B2A940DF800C823F9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13842A4A2A940DF800C823F9 /* ContentView.swift */; };
 		13842A4F2A94145D00C823F9 /* AddPropertyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13842A4E2A94145D00C823F9 /* AddPropertyView.swift */; };
-		139D7A712AD32C0A000E7BBD /* Finish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D7A702AD32C0A000E7BBD /* Finish.swift */; };
 		139D7A732AD32D70000E7BBD /* Masonry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D7A722AD32D70000E7BBD /* Masonry.swift */; };
-		139D7A752AD32E64000E7BBD /* ExtPainting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D7A742AD32E64000E7BBD /* ExtPainting.swift */; };
 		139D7A772AD32F21000E7BBD /* Windows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D7A762AD32F21000E7BBD /* Windows.swift */; };
-		139D7A792AD32F8B000E7BBD /* Garage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D7A782AD32F8B000E7BBD /* Garage.swift */; };
 		13A57A192AB4B39A008F1D5D /* StreetAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A57A182AB4B39A008F1D5D /* StreetAddressView.swift */; };
 		13A57A1B2AB4C5D5008F1D5D /* IntroductoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A57A1A2AB4C5D5008F1D5D /* IntroductoryView.swift */; };
 		13A57A1D2AB4D9B8008F1D5D /* NumericalInputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A57A1C2AB4D9B8008F1D5D /* NumericalInputs.swift */; };
@@ -34,17 +30,13 @@
 		13AA71622AFDFCD3001ADCED /* Fence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AA71532AFDFCD3001ADCED /* Fence.swift */; };
 		13AA71632AFDFCD3001ADCED /* Landscaping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AA71542AFDFCD3001ADCED /* Landscaping.swift */; };
 		13AA71642AFDFCD3001ADCED /* ConcreteAsphalt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AA71552AFDFCD3001ADCED /* ConcreteAsphalt.swift */; };
-		13AA71652AFDFCD3001ADCED /* Gutters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AA71562AFDFCD3001ADCED /* Gutters.swift */; };
 		13AA71662AFDFCD3001ADCED /* Pergola.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AA71572AFDFCD3001ADCED /* Pergola.swift */; };
 		13AA71672AFDFCD3001ADCED /* Garage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AA71582AFDFCD3001ADCED /* Garage.swift */; };
 		13AA71682AFDFCD3001ADCED /* Finish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AA71592AFDFCD3001ADCED /* Finish.swift */; };
 		13AA71692AFDFCD3001ADCED /* Septic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AA715A2AFDFCD3001ADCED /* Septic.swift */; };
 		13AA716A2AFDFCD3001ADCED /* Decks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AA715B2AFDFCD3001ADCED /* Decks.swift */; };
 		13AA716B2AFDFCD3001ADCED /* Pool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AA715C2AFDFCD3001ADCED /* Pool.swift */; };
-		13AA716C2AFDFCD3001ADCED /* Windows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AA715D2AFDFCD3001ADCED /* Windows.swift */; };
 		13AA716D2AFDFCD3001ADCED /* AbstractCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AA715E2AFDFCD3001ADCED /* AbstractCategory.swift */; };
-		13AA716E2AFDFCD3001ADCED /* Roof.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AA715F2AFDFCD3001ADCED /* Roof.swift */; };
-		13AA716F2AFDFCD3001ADCED /* Masonry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AA71602AFDFCD3001ADCED /* Masonry.swift */; };
 		13AA71702AFDFCD3001ADCED /* ExtPainting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AA71612AFDFCD3001ADCED /* ExtPainting.swift */; };
 		13B17E852A93D75800F6F11B /* InknutAntiqua-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13B17E7E2A93D75800F6F11B /* InknutAntiqua-ExtraBold.ttf */; };
 		13B17E862A93D75800F6F11B /* InknutAntiqua-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13B17E7F2A93D75800F6F11B /* InknutAntiqua-Medium.ttf */; };
@@ -55,7 +47,29 @@
 		13B17E8B2A93D75800F6F11B /* InknutAntiqua-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13B17E842A93D75800F6F11B /* InknutAntiqua-Bold.ttf */; };
 		13D6D3E32AD1B88C00C65F50 /* Roof.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D6D3E22AD1B88C00C65F50 /* Roof.swift */; };
 		13D6D3E52AD1BAEB00C65F50 /* Gutters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D6D3E42AD1BAEB00C65F50 /* Gutters.swift */; };
-		13EE61A02AF2E4BE002CDA22 /* Landscaping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EE619F2AF2E4BE002CDA22 /* Landscaping.swift */; };
+		13D6F21E2B30EA7B00A7BEF5 /* placeholder-img.png in Resources */ = {isa = PBXBuildFile; fileRef = 13D6F21D2B30EA7B00A7BEF5 /* placeholder-img.png */; };
+		13E90A282B2BBDA20008511F /* IntPainting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E90A272B2BBDA20008511F /* IntPainting.swift */; };
+		13E90A2A2B2BBE0B0008511F /* Hardwood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E90A292B2BBE0B0008511F /* Hardwood.swift */; };
+		13E90A2C2B2BBEB70008511F /* CarpetVinyl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E90A2B2B2BBEB70008511F /* CarpetVinyl.swift */; };
+		13E90A2E2B2BBF070008511F /* Tiling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E90A2D2B2BBF070008511F /* Tiling.swift */; };
+		13E90A302B2BC0300008511F /* KitchenGrouped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E90A2F2B2BC0300008511F /* KitchenGrouped.swift */; };
+		13E90A322B2BC0EC0008511F /* AppliancesGrouped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E90A312B2BC0EC0008511F /* AppliancesGrouped.swift */; };
+		13E90A342B2BC17C0008511F /* KitchenItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E90A332B2BC17C0008511F /* KitchenItem.swift */; };
+		13E90A362B2BC2450008511F /* BathroomGrouped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E90A352B2BC2450008511F /* BathroomGrouped.swift */; };
+		13E90A382B2BC2A90008511F /* BathroomItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E90A372B2BC2A90008511F /* BathroomItem.swift */; };
+		13E90A3A2B2BC3A00008511F /* Framing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E90A392B2BC3A00008511F /* Framing.swift */; };
+		13E90A3C2B2BC4520008511F /* Insulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E90A3B2B2BC4520008511F /* Insulation.swift */; };
+		13E90A3E2B2BC4A50008511F /* Walls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E90A3D2B2BC4A50008511F /* Walls.swift */; };
+		13E90A402B2BC5860008511F /* DoorsTrim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E90A3F2B2BC5860008511F /* DoorsTrim.swift */; };
+		13E90A422B2BC6AD0008511F /* Basement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E90A412B2BC6AD0008511F /* Basement.swift */; };
+		13E90A442B2BC7620008511F /* Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E90A432B2BC7620008511F /* Foundation.swift */; };
+		13E90A462B2BC87B0008511F /* HVAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E90A452B2BC87B0008511F /* HVAC.swift */; };
+		13E90A482B2BC9E20008511F /* Plumbing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E90A472B2BC9E20008511F /* Plumbing.swift */; };
+		13E90A4A2B2BCA970008511F /* Electrical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E90A492B2BCA970008511F /* Electrical.swift */; };
+		13E90A4C2B2BCBDC0008511F /* DemoDumpster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E90A4B2B2BCBDC0008511F /* DemoDumpster.swift */; };
+		13E90A4E2B2BCC2D0008511F /* TermitesAbatement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E90A4D2B2BCC2D0008511F /* TermitesAbatement.swift */; };
+		13E90A502B2BCC9A0008511F /* Permits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E90A4F2B2BCC9A0008511F /* Permits.swift */; };
+		13E90A522B2BCF780008511F /* Staging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E90A512B2BCF780008511F /* Staging.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +142,29 @@
 		13B17E8F2A93DA6200F6F11B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		13D6D3E22AD1B88C00C65F50 /* Roof.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roof.swift; sourceTree = "<group>"; };
 		13D6D3E42AD1BAEB00C65F50 /* Gutters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gutters.swift; sourceTree = "<group>"; };
+		13D6F21D2B30EA7B00A7BEF5 /* placeholder-img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder-img.png"; sourceTree = "<group>"; };
+		13E90A272B2BBDA20008511F /* IntPainting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntPainting.swift; sourceTree = "<group>"; };
+		13E90A292B2BBE0B0008511F /* Hardwood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hardwood.swift; sourceTree = "<group>"; };
+		13E90A2B2B2BBEB70008511F /* CarpetVinyl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarpetVinyl.swift; sourceTree = "<group>"; };
+		13E90A2D2B2BBF070008511F /* Tiling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tiling.swift; sourceTree = "<group>"; };
+		13E90A2F2B2BC0300008511F /* KitchenGrouped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KitchenGrouped.swift; sourceTree = "<group>"; };
+		13E90A312B2BC0EC0008511F /* AppliancesGrouped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppliancesGrouped.swift; sourceTree = "<group>"; };
+		13E90A332B2BC17C0008511F /* KitchenItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KitchenItem.swift; sourceTree = "<group>"; };
+		13E90A352B2BC2450008511F /* BathroomGrouped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathroomGrouped.swift; sourceTree = "<group>"; };
+		13E90A372B2BC2A90008511F /* BathroomItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathroomItem.swift; sourceTree = "<group>"; };
+		13E90A392B2BC3A00008511F /* Framing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Framing.swift; sourceTree = "<group>"; };
+		13E90A3B2B2BC4520008511F /* Insulation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Insulation.swift; sourceTree = "<group>"; };
+		13E90A3D2B2BC4A50008511F /* Walls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Walls.swift; sourceTree = "<group>"; };
+		13E90A3F2B2BC5860008511F /* DoorsTrim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorsTrim.swift; sourceTree = "<group>"; };
+		13E90A412B2BC6AD0008511F /* Basement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Basement.swift; sourceTree = "<group>"; };
+		13E90A432B2BC7620008511F /* Foundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foundation.swift; sourceTree = "<group>"; };
+		13E90A452B2BC87B0008511F /* HVAC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HVAC.swift; sourceTree = "<group>"; };
+		13E90A472B2BC9E20008511F /* Plumbing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plumbing.swift; sourceTree = "<group>"; };
+		13E90A492B2BCA970008511F /* Electrical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Electrical.swift; sourceTree = "<group>"; };
+		13E90A4B2B2BCBDC0008511F /* DemoDumpster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoDumpster.swift; sourceTree = "<group>"; };
+		13E90A4D2B2BCC2D0008511F /* TermitesAbatement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermitesAbatement.swift; sourceTree = "<group>"; };
+		13E90A4F2B2BCC9A0008511F /* Permits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permits.swift; sourceTree = "<group>"; };
+		13E90A512B2BCF780008511F /* Staging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Staging.swift; sourceTree = "<group>"; };
 		13EE619F2AF2E4BE002CDA22 /* Landscaping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Landscaping.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -282,6 +319,28 @@
 				139D7A742AD32E64000E7BBD /* ExtPainting.swift */,
 				139D7A762AD32F21000E7BBD /* Windows.swift */,
 				139D7A782AD32F8B000E7BBD /* Garage.swift */,
+				13E90A272B2BBDA20008511F /* IntPainting.swift */,
+				13E90A292B2BBE0B0008511F /* Hardwood.swift */,
+				13E90A2B2B2BBEB70008511F /* CarpetVinyl.swift */,
+				13E90A2D2B2BBF070008511F /* Tiling.swift */,
+				13E90A2F2B2BC0300008511F /* KitchenGrouped.swift */,
+				13E90A312B2BC0EC0008511F /* AppliancesGrouped.swift */,
+				13E90A332B2BC17C0008511F /* KitchenItem.swift */,
+				13E90A352B2BC2450008511F /* BathroomGrouped.swift */,
+				13E90A372B2BC2A90008511F /* BathroomItem.swift */,
+				13E90A392B2BC3A00008511F /* Framing.swift */,
+				13E90A3B2B2BC4520008511F /* Insulation.swift */,
+				13E90A3D2B2BC4A50008511F /* Walls.swift */,
+				13E90A3F2B2BC5860008511F /* DoorsTrim.swift */,
+				13E90A412B2BC6AD0008511F /* Basement.swift */,
+				13E90A432B2BC7620008511F /* Foundation.swift */,
+				13E90A452B2BC87B0008511F /* HVAC.swift */,
+				13E90A472B2BC9E20008511F /* Plumbing.swift */,
+				13E90A492B2BCA970008511F /* Electrical.swift */,
+				13E90A4B2B2BCBDC0008511F /* DemoDumpster.swift */,
+				13E90A4D2B2BCC2D0008511F /* TermitesAbatement.swift */,
+				13E90A4F2B2BCC9A0008511F /* Permits.swift */,
+				13E90A512B2BCF780008511F /* Staging.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -339,6 +398,7 @@
 		13B17E7C2A93D66800F6F11B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				13D6F21D2B30EA7B00A7BEF5 /* placeholder-img.png */,
 				13B17E7D2A93D67800F6F11B /* Fonts */,
 				130828682A83480600321CE3 /* Assets.xcassets */,
 			);
@@ -423,7 +483,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					130828602A83480500321CE3 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -470,6 +530,7 @@
 				1308286C2A83480600321CE3 /* Preview Assets.xcassets in Resources */,
 				13B17E892A93D75800F6F11B /* InknutAntiqua-Regular.ttf in Resources */,
 				13B17E8B2A93D75800F6F11B /* InknutAntiqua-Bold.ttf in Resources */,
+				13D6F21E2B30EA7B00A7BEF5 /* placeholder-img.png in Resources */,
 				13B17E862A93D75800F6F11B /* InknutAntiqua-Medium.ttf in Resources */,
 				130828692A83480600321CE3 /* Assets.xcassets in Resources */,
 			);
@@ -497,10 +558,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				13A57A1B2AB4C5D5008F1D5D /* IntroductoryView.swift in Sources */,
+				13E90A3E2B2BC4A50008511F /* Walls.swift in Sources */,
 				139D7A772AD32F21000E7BBD /* Windows.swift in Sources */,
 				13AA71672AFDFCD3001ADCED /* Garage.swift in Sources */,
+				13E90A302B2BC0300008511F /* KitchenGrouped.swift in Sources */,
 				13AA716D2AFDFCD3001ADCED /* AbstractCategory.swift in Sources */,
 				13AA71632AFDFCD3001ADCED /* Landscaping.swift in Sources */,
+				13E90A4E2B2BCC2D0008511F /* TermitesAbatement.swift in Sources */,
 				139D7A732AD32D70000E7BBD /* Masonry.swift in Sources */,
 				13A57A192AB4B39A008F1D5D /* StreetAddressView.swift in Sources */,
 				13842A4B2A940DF800C823F9 /* ContentView.swift in Sources */,
@@ -508,29 +572,39 @@
 				13AA71622AFDFCD3001ADCED /* Fence.swift in Sources */,
 				13AA716B2AFDFCD3001ADCED /* Pool.swift in Sources */,
 				13AA716A2AFDFCD3001ADCED /* Decks.swift in Sources */,
+				13E90A2E2B2BBF070008511F /* Tiling.swift in Sources */,
 				13842A4F2A94145D00C823F9 /* AddPropertyView.swift in Sources */,
 				13D6D3E32AD1B88C00C65F50 /* Roof.swift in Sources */,
-				13AA716E2AFDFCD3001ADCED /* Roof.swift in Sources */,
+				13E90A442B2BC7620008511F /* Foundation.swift in Sources */,
+				13E90A482B2BC9E20008511F /* Plumbing.swift in Sources */,
 				13A57A1D2AB4D9B8008F1D5D /* NumericalInputs.swift in Sources */,
 				13D6D3E52AD1BAEB00C65F50 /* Gutters.swift in Sources */,
+				13E90A322B2BC0EC0008511F /* AppliancesGrouped.swift in Sources */,
 				132C26D42A98EEF60036A739 /* AbstractCategoryView.swift in Sources */,
-				139D7A792AD32F8B000E7BBD /* Garage.swift in Sources */,
-				132C26D22A98EC9A0036A739 /* AbstractCategory.swift in Sources */,
-				13AA71652AFDFCD3001ADCED /* Gutters.swift in Sources */,
-				13EE61A02AF2E4BE002CDA22 /* Landscaping.swift in Sources */,
+				13E90A2C2B2BBEB70008511F /* CarpetVinyl.swift in Sources */,
+				13E90A502B2BCC9A0008511F /* Permits.swift in Sources */,
+				13E90A282B2BBDA20008511F /* IntPainting.swift in Sources */,
+				13E90A342B2BC17C0008511F /* KitchenItem.swift in Sources */,
+				13E90A402B2BC5860008511F /* DoorsTrim.swift in Sources */,
+				13E90A2A2B2BBE0B0008511F /* Hardwood.swift in Sources */,
 				132469702A9795CF00945490 /* CategoriesView.swift in Sources */,
+				13E90A422B2BC6AD0008511F /* Basement.swift in Sources */,
 				130828922A87D3DA00321CE3 /* Property.swift in Sources */,
+				13E90A4A2B2BCA970008511F /* Electrical.swift in Sources */,
 				134F85112A8AD5E600A0EBA2 /* CutDate.swift in Sources */,
 				13AA71702AFDFCD3001ADCED /* ExtPainting.swift in Sources */,
 				13AA71642AFDFCD3001ADCED /* ConcreteAsphalt.swift in Sources */,
-				13AA716C2AFDFCD3001ADCED /* Windows.swift in Sources */,
+				13E90A4C2B2BCBDC0008511F /* DemoDumpster.swift in Sources */,
+				13E90A362B2BC2450008511F /* BathroomGrouped.swift in Sources */,
+				13E90A462B2BC87B0008511F /* HVAC.swift in Sources */,
+				13E90A3C2B2BC4520008511F /* Insulation.swift in Sources */,
+				13E90A382B2BC2A90008511F /* BathroomItem.swift in Sources */,
 				13AA71662AFDFCD3001ADCED /* Pergola.swift in Sources */,
 				13A57A212AB4DD24008F1D5D /* InspectorView.swift in Sources */,
 				13AA71682AFDFCD3001ADCED /* Finish.swift in Sources */,
 				130828652A83480500321CE3 /* estimatorApp.swift in Sources */,
-				13AA716F2AFDFCD3001ADCED /* Masonry.swift in Sources */,
-				139D7A712AD32C0A000E7BBD /* Finish.swift in Sources */,
-				139D7A752AD32E64000E7BBD /* ExtPainting.swift in Sources */,
+				13E90A522B2BCF780008511F /* Staging.swift in Sources */,
+				13E90A3A2B2BC3A00008511F /* Framing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -605,6 +679,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -665,6 +740,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
