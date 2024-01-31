@@ -83,7 +83,10 @@ struct CategoriesView: View {
                     Section {
                         NavigationLink("Generate Report") {
                             PDFKitView(url: pdfURL ?? URL(filePath: "../../Resources"))
-                        }.padding(.leading)
+                        }
+                        .font(Font.custom("InknutAntiqua-Regular", size: 14))
+                        .padding(.leading)
+                        
                     }
                     
                 }

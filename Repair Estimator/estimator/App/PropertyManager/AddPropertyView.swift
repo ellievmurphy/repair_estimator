@@ -206,10 +206,14 @@ struct ImagePicker : UIViewControllerRepresentable {
         }
     }
 }
-//
-//struct AddPropertyView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AddPropertyView(property: Property.instance)
-//    }
-//}
+
+struct AddPropertyView_Previews: PreviewProvider {
+    static var previews: some View {
+        if #available(iOS 17.0, *) {
+            AddPropertyView(property: Property.instance)
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+}
 

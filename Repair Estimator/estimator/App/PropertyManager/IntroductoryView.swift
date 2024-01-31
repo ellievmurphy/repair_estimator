@@ -26,7 +26,9 @@ struct IntroductoryView: View {
                 
                 // Holds Button and Estimator text
                 VStack {
-                    Text("Estimator").foregroundStyle(color1).font(Font.custom("InknutAntiqua-Regular", size: 48))
+                    Text("Estimator")
+                        .foregroundStyle(color1)
+                        .font(Font.custom("InknutAntiqua-Regular", size: 48))
                     // NavLink indicates text that can be used to navigate views
                     NavigationLink("Create New", destination: AddPropertyView(property: Property.instance))
                         .padding([.top, .bottom], 0)
