@@ -58,6 +58,10 @@ function AddProperty({ navigation }) {
     }
   }
 
+  function takePicture() {
+    navigation.navigate("Camera");
+  }
+
   // green: #5A6D5D
   // light grey: #F5F5F4
   // dark grey: #7B858C
@@ -129,8 +133,12 @@ function AddProperty({ navigation }) {
           {/* Take Photo and Start Estimate buttons */}
           <View style={styles.buttonContainer}>
             <DefaultButton
-              style={{ borderColor: Colors.green, backgroundColor: Colors.green }}
+              style={{
+                borderColor: Colors.green,
+                backgroundColor: Colors.green,
+              }}
               text={"Take Photo"}
+              pressHandler={takePicture}
             />
             <Pressable
               style={({ pressed }) =>

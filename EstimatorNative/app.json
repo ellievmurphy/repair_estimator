@@ -7,6 +7,14 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "backgroundColor": "#F5F5F4",
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow Estimator to access your camera."
+        }
+      ]
+    ],
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",

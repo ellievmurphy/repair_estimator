@@ -7,6 +7,7 @@ import IntroductoryScreen from "./screens/IntroductoryScreen";
 import AddPropertyScreen from "./screens/AddPropertyScreen";
 import Colors from "./constants/colors";
 import ViewCategory from "./components/util/ViewCategory";
+import CameraScreen from "./screens/CameraScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -39,6 +40,10 @@ export default function App() {
         <Stack.Screen 
           name="ViewCategory"
           component={ViewCategory}
+        />
+        <Stack.Screen 
+          name="Camera"
+          component={CameraScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>
