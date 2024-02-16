@@ -4,13 +4,12 @@ import {
   SectionList,
   StyleSheet,
   View,
+  Image,
 } from "react-native";
 
 import DefaultText from "../components/ui/DefaultText";
-import DefaultButton from "../components/ui/DefaultButton";
 import { CATEGORIES, EXTERIOR } from "../data/category-data";
 import Colors from "../constants/colors";
-import ViewCategory from "../components/util/ViewCategory";
 import ListItem from "../components/ui/ListItem";
 
 function ListCategoriesScreen({ navigation, route }) {
@@ -60,7 +59,19 @@ function ListCategoriesScreen({ navigation, route }) {
         />
       </View>
       <View>
-        <Pressable>
+        {/* {property.imageUrl ? (
+          <Image
+            source={{ uri: property.imageUrl }}
+            style={{ width: 100, height: 200 }}
+          />
+        ) : (
+          <DefaultText>No Image</DefaultText>
+        )} */}
+        <Pressable
+          onPress={() => {
+            navigation.navigate("GenerateReport", { property: property });
+          }}
+        >
           <DefaultText style={{ color: Colors.green }}>
             Generate Report
           </DefaultText>

@@ -6,17 +6,17 @@ import * as MediaLibrary from "expo-media-library";
 import CameraButton from "../components/ui/CameraButton";
 import DefaultText from "../components/ui/DefaultText";
 
-function CameraScreen() {
+function CameraScreen({ navigation, route }) {
   const [type, setType] = useState(CameraType.back);
   const [permission, setCameraHasPermission] = useState(null);
   const [image, setImage] = useState(null);
   const cameraRef = useRef(null);
 
-  function toggleCameraType() {
-    setType((current) =>
-      current === CameraType.back ? CameraType.front : CameraType.back
-    );
-  }
+  // function toggleCameraType() {
+  //   setType((current) =>
+  //     current === CameraType.back ? CameraType.front : CameraType.back
+  //   );
+  // }
 
   useEffect(() => {
     (async () => {
@@ -34,7 +34,7 @@ function CameraScreen() {
     if (cameraRef) {
       try {
         const data = await cameraRef.current.takePictureAsync();
-        console.log(data);
+        // console.log(data);
         setImage(data.uri);
       } catch (e) {
         console.log(e);
@@ -45,8 +45,14 @@ function CameraScreen() {
     if (image) {
       try {
         await MediaLibrary.createAssetAsync(image);
+        navigation.navigate({
+          name: "NewProperty",
+          params: { propImage: image },
+          merge: true,
+        });
         alert("Saved ✅");
         setImage(null);
+        // console.log(route.params.propImage);
       } catch (e) {
         console.log(e);
       }
@@ -56,9 +62,7 @@ function CameraScreen() {
   return (
     <View style={styles.container}>
       {!image ? (
-        <Camera style={styles.camera} type={type} ref={cameraRef}>
-          <DefaultText>Hello</DefaultText>
-        </Camera>
+        <Camera style={styles.camera} type={type} ref={cameraRef}></Camera>
       ) : (
         <Image source={{ uri: image }} style={styles.camera} />
       )}

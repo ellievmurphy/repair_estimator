@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   View,
   StyleSheet,
@@ -6,6 +6,7 @@ import {
   Switch,
   KeyboardAvoidingView,
   ScrollView,
+  Image,
 } from "react-native";
 
 import { getFormattedDate } from "../util/date";
@@ -16,7 +17,9 @@ import Property from "../models/property";
 import Title from "../components/ui/Title";
 import Colors from "../constants/colors";
 
-function AddProperty({ navigation }) {
+function AddProperty({ navigation, route }) {
+  const placeholderImg = require("../assets/images/placeholder.png");
+
   const [streetAddress, setStreetAddress] = useState("");
   const [city, setCity] = useState("");
   const [zip, setZip] = useState("");
@@ -24,15 +27,24 @@ function AddProperty({ navigation }) {
   const [beds, setBeds] = useState("");
   const [baths, setBaths] = useState("");
   const [sqft, setSqft] = useState("");
+  const [image, setImage] = useState(null);
+  // let image = null;
 
   const date = new Date();
+
+  useEffect(() => {
+    if (route.params?.propImage) {
+      // console.log("new image: " + route.params?.propImage);
+      setImage(route.params?.propImage);
+      // console.log("new image: " + image);
+    }
+  }, [route.params?.propImage]);
 
   function handleStart() {
     const numZip = parseInt(zip);
     const numBeds = parseInt(beds);
     const numBaths = parseInt(baths);
     const numSqft = parseInt(sqft);
-
     if (
       !isNaN(numZip) &&
       !isNaN(numBeds) &&
@@ -44,7 +56,7 @@ function AddProperty({ navigation }) {
         city,
         numZip,
         vacant,
-        null,
+        image,
         numBeds,
         numBaths,
         numSqft,
@@ -53,13 +65,14 @@ function AddProperty({ navigation }) {
         0.0,
         null
       );
+      console.log(newProperty.imageUrl);
       navigation.navigate("ListCategories", { property: newProperty });
       // console.log(newProperty);
     }
   }
 
   function takePicture() {
-    navigation.navigate("Camera");
+    navigation.navigate("Camera", { propImage: placeholderImg });
   }
 
   // green: #5A6D5D
@@ -89,7 +102,6 @@ function AddProperty({ navigation }) {
             target={zip}
             targetFunction={setZip}
           />
-
           {/* Vacancy and date of inspection */}
           <View style={styles.bbContainer}>
             <DefaultText>Vacant?</DefaultText>
@@ -104,7 +116,6 @@ function AddProperty({ navigation }) {
               <DefaultText>{getFormattedDate(date)}</DefaultText>
             </View>
           </View>
-
           {/* Contains numerical inputs (bed, baths, sqft) */}
           <PropertyInput
             title={"Sq. Ft."}
@@ -155,6 +166,15 @@ function AddProperty({ navigation }) {
               </View>
             </Pressable>
           </View>
+          {/* {image ? (
+            <Image
+              source={{ uri: image }}
+              defaultSource={require("../assets/images/placeholder.png")}
+              style={{ width: 100, height: 200 }}
+            />
+          ) : (
+            <DefaultText>No Image</DefaultText>
+          )} */}
         </View>
       </KeyboardAvoidingView>
     </ScrollView>

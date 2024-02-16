@@ -8,6 +8,7 @@ import AddPropertyScreen from "./screens/AddPropertyScreen";
 import Colors from "./constants/colors";
 import ViewCategory from "./components/util/ViewCategory";
 import CameraScreen from "./screens/CameraScreen";
+import GenerateReportScreen from "./screens/GenerateReportScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -37,14 +38,13 @@ export default function App() {
           component={ListCategoriesScreen}
           options={{ title: "" }}
         />
-        <Stack.Screen 
+        <Stack.Screen
           name="ViewCategory"
           component={ViewCategory}
+          options={{ headerShown: false }}
         />
-        <Stack.Screen 
-          name="Camera"
-          component={CameraScreen}
-        />
+        <Stack.Screen name="Camera" component={CameraScreen} />
+        <Stack.Screen name="GenerateReport" component={GenerateReportScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

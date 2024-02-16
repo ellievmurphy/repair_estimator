@@ -1,11 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Pressable, StyleSheet, View } from "react-native";
 
 import DefaultText from "../ui/DefaultText";
 import RepairInfo from "./RepairInfo";
 
-function RepairCard({ repair }) {
+function RepairCard({ repair, currCategory, updateCatTotal }) {
   const [showInfo, setShowInfo] = useState(true);
+  const [total, setTotal] = useState(repair.total);
+  const [oldTotal, setOldTotal] = useState(0.0);
+
+  // Represents RepairInfo.updateTotal()
+  function handleUpdateTotal(quantity) {
+    // console.log("NaN old: " + isNaN(total));
+    // console.log("NaN new: " + isNaN(quantity));
+    setOldTotal(total);
+    setTotal(quantity);
+    
+    // repair.total = total;
+    console.log("total: $" + total);
+  }
+
+  useEffect(() => {
+    // repair.total = total;
+    updateCatTotal(total, oldTotal);
+  }, [updateCatTotal, total, oldTotal]);
 
   function updateShowing() {
     setShowInfo(!showInfo);
@@ -24,8 +42,13 @@ function RepairCard({ repair }) {
         <DefaultText style={styles.text}>{repair.name}</DefaultText>
 
         <View style={styles.underline} />
-        
-        <RepairInfo repair={repair} show={showInfo} />
+
+        <RepairInfo
+          repair={repair}
+          show={showInfo}
+          updateTotal={handleUpdateTotal}
+          repTotal={total}
+        />
       </Pressable>
     </View>
   );
