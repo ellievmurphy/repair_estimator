@@ -38,6 +38,7 @@ function RepairInfo({ repair, show, updateTotal, repTotal }) {
             value={quantity}
             placeholder="Quantity"
             onChangeText={handleChangeAmt}
+            style={{width: 200}}
           />
         </View>
       </View>

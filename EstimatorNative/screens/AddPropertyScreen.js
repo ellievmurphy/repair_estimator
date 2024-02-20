@@ -32,6 +32,8 @@ function AddProperty({ navigation, route }) {
 
   const date = new Date();
 
+
+  // Updates whenever an image is saved from CameraScreen
   useEffect(() => {
     if (route.params?.propImage) {
       // console.log("new image: " + route.params?.propImage);
@@ -65,7 +67,7 @@ function AddProperty({ navigation, route }) {
         0.0,
         null
       );
-      console.log(newProperty.imageUrl);
+      // console.log(newProperty.imageUrl);
       navigation.navigate("ListCategories", { property: newProperty });
       // console.log(newProperty);
     }
@@ -141,6 +143,7 @@ function AddProperty({ navigation, route }) {
               />
             </View>
           </View>
+          <DefaultText>Property Type</DefaultText><DefaultText>Insert dropdown</DefaultText>
           {/* Take Photo and Start Estimate buttons */}
           <View style={styles.buttonContainer}>
             <DefaultButton

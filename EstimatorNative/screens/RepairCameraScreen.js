@@ -1,12 +1,11 @@
 import { Camera, CameraType } from "expo-camera";
 import { useState, useEffect, useRef } from "react";
-import { StyleSheet, Text, Image, View, StatusBar, SafeAreaView } from "react-native";
+import { StyleSheet, Text, Image, View, SafeAreaView, StatusBar } from "react-native";
 import * as MediaLibrary from "expo-media-library";
 
 import CameraButton from "../components/ui/CameraButton";
-import DefaultText from "../components/ui/DefaultText";
 
-function CameraScreen({ navigation, route }) {
+function RepairCameraScreen({ navigation, route }) {
   const [type, setType] = useState(CameraType.back);
   const [permission, setCameraHasPermission] = useState(null);
   const [image, setImage] = useState(null);
@@ -45,14 +44,10 @@ function CameraScreen({ navigation, route }) {
     if (image) {
       try {
         await MediaLibrary.createAssetAsync(image);
-        navigation.navigate({
-          name: "NewProperty",
-          params: { propImage: image },
-          merge: true,
-        });
+        navigation.goBack();
+        // TODO: save image to repair
         alert("Saved ✅");
         setImage(null);
-        // console.log(route.params.propImage);
       } catch (e) {
         console.log(e);
       }
@@ -90,7 +85,7 @@ function CameraScreen({ navigation, route }) {
   );
 }
 
-export default CameraScreen;
+export default RepairCameraScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -98,7 +93,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "#000",
     paddingVertical: 20,
-    paddingTop: StatusBar.currentHeight
+    paddingTop: StatusBar.currentHeight,
   },
   buttonContainer: {
     flexDirection: "row",

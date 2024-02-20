@@ -3,7 +3,7 @@ import DefaultText from "./DefaultText";
 
 function ListItem({ category, onPress }) {
   return (
-    <View>
+    <View style={styles.rootContainer}>
       <Pressable
         android_ripple={{ color: "#ccc" }}
         style={({ pressed }) => [
@@ -21,6 +21,10 @@ function ListItem({ category, onPress }) {
 export default ListItem;
 
 const styles = StyleSheet.create({
+  rootContainer: {
+    paddingLeft: 10,
+    paddingVertical: 2,
+  },
   button: {
     flex: 1,
   },

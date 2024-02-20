@@ -8,30 +8,12 @@ import {
 } from "react-native";
 
 import DefaultText from "../components/ui/DefaultText";
-import { CATEGORIES, EXTERIOR } from "../data/category-data";
+import { CATEGORIES, EXTERIOR, INTERIOR } from "../data/category-data";
 import Colors from "../constants/colors";
 import ListItem from "../components/ui/ListItem";
 
 function ListCategoriesScreen({ navigation, route }) {
   const property = route.params.property;
-
-  // Render function for each item in the section
-  const renderItem = ({ item }) => (
-    <View style={{ padding: 10 }}>
-      <DefaultText>{item}</DefaultText>
-    </View>
-  );
-
-  // Render function for section headers
-  const renderSectionHeader = ({ section: { title } }) => (
-    <View style={{ padding: 10, backgroundColor: "lightgray" }}>
-      <DefaultText>{title}</DefaultText>
-    </View>
-  );
-
-  function pressCategory({ category }) {
-    navigation.navigate("ViewCategory", { category: category });
-  }
 
   return (
     <View style={styles.screen}>
@@ -39,7 +21,7 @@ function ListCategoriesScreen({ navigation, route }) {
         Select Category | Total: ${property.totalCost.toFixed(2)}
       </DefaultText>
       <View style={styles.listContainer}>
-        <FlatList
+        {/* <FlatList
           data={CATEGORIES}
           keyExtractor={(item) => item.id}
           renderItem={(itemData) => {
@@ -56,17 +38,38 @@ function ListCategoriesScreen({ navigation, route }) {
               </View>
             );
           }}
+        /> */}
+        <SectionList
+          sections={[...EXTERIOR, ...INTERIOR]}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => {
+            // console.log(item)
+            return (
+              <View>
+                <ListItem
+                  category={item}
+                  onPress={() => {
+                    navigation.navigate("ViewCategory", {
+                      category: item,
+                    });
+                  }}
+                />
+              </View>
+            );
+          }}
+          renderSectionHeader={({ section: { type } }) => {
+            return (
+              <View style={{ backgroundColor: "#b1bbb3ff", borderRadius: 10 }}>
+                <DefaultText style={{ fontSize: 20, paddingLeft: 10 }}>
+                  {type}
+                </DefaultText>
+              </View>
+            );
+          }}
+          stickySectionHeadersEnabled
         />
       </View>
       <View>
-        {/* {property.imageUrl ? (
-          <Image
-            source={{ uri: property.imageUrl }}
-            style={{ width: 100, height: 200 }}
-          />
-        ) : (
-          <DefaultText>No Image</DefaultText>
-        )} */}
         <Pressable
           onPress={() => {
             navigation.navigate("GenerateReport", { property: property });

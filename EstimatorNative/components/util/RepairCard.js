@@ -17,7 +17,7 @@ function RepairCard({ repair, currCategory, updateCatTotal }) {
     setTotal(quantity);
     
     // repair.total = total;
-    console.log("total: $" + total);
+    // console.log("total: $" + total);
   }
 
   useEffect(() => {

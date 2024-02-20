@@ -9,6 +9,7 @@ import Colors from "./constants/colors";
 import ViewCategory from "./components/util/ViewCategory";
 import CameraScreen from "./screens/CameraScreen";
 import GenerateReportScreen from "./screens/GenerateReportScreen";
+import RepairCameraScreen from "./screens/RepairCameraScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -41,9 +42,14 @@ export default function App() {
         <Stack.Screen
           name="ViewCategory"
           component={ViewCategory}
-          options={{ headerShown: false }}
+          options={{ title: "" }}
         />
         <Stack.Screen name="Camera" component={CameraScreen} />
+        <Stack.Screen
+          name="RepairCamera"
+          component={RepairCameraScreen}
+          options={{ title: "Camera" }}
+        />
         <Stack.Screen name="GenerateReport" component={GenerateReportScreen} />
       </Stack.Navigator>
     </NavigationContainer>
