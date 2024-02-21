@@ -44,12 +44,6 @@ export default function App() {
           component={ViewCategory}
           options={{ title: "" }}
         />
-        <Stack.Screen name="Camera" component={CameraScreen} />
-        <Stack.Screen
-          name="RepairCamera"
-          component={RepairCameraScreen}
-          options={{ title: "Camera" }}
-        />
         <Stack.Screen name="GenerateReport" component={GenerateReportScreen} />
       </Stack.Navigator>
     </NavigationContainer>

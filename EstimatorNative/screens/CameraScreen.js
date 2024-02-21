@@ -1,10 +1,19 @@
-import { Camera, CameraType } from "expo-camera";
+import { Camera, CameraOrientation, CameraType } from "expo-camera";
+import * as ImagePicker from 'expo-image-picker';
 import { useState, useEffect, useRef } from "react";
-import { StyleSheet, Text, Image, View, StatusBar, SafeAreaView } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  Image,
+  View,
+  StatusBar,
+  SafeAreaView,
+} from "react-native";
 import * as MediaLibrary from "expo-media-library";
 
 import CameraButton from "../components/ui/CameraButton";
 import DefaultText from "../components/ui/DefaultText";
+import DefaultButton from "../components/ui/DefaultButton";
 
 function CameraScreen({ navigation, route }) {
   const [type, setType] = useState(CameraType.back);
@@ -31,15 +40,16 @@ function CameraScreen({ navigation, route }) {
   }
 
   const takePicture = async () => {
-    if (cameraRef) {
-      try {
-        const data = await cameraRef.current.takePictureAsync();
-        // console.log(data);
-        setImage(data.uri);
-      } catch (e) {
-        console.log(e);
-      }
-    }
+    // if (cameraRef) {
+    //   try {
+    //     const data = await cameraRef.current.takePictureAsync();
+    //     // console.log(data);
+    //     setImage(data.uri);
+    //   } catch (e) {
+    //     console.log(e);
+    //   }
+    // }
+    const image = await ImagePicker.launchCameraAsync({allowsEditing: true, aspect: [16, 9], quality: 0.5})
   };
   const saveImage = async () => {
     if (image) {
@@ -61,11 +71,19 @@ function CameraScreen({ navigation, route }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      {!image ? (
-        <Camera style={styles.camera} type={type} ref={cameraRef}></Camera>
-      ) : (
-        <Image source={{ uri: image }} style={styles.camera} />
-      )}
+      <DefaultButton pressHandler={takePicture} text={"Take Picture"} style={{backgroundColor: "black"}}/>
+      {/* <View style={{flex: 1, paddingHorizontal: 5}}>
+        {!image ? (
+          <Camera
+            style={styles.camera}
+            type={type}
+            ref={cameraRef}
+            orientation={CameraOrientation.landscapeLeft}
+          ></Camera>
+        ) : (
+          <Image source={{ uri: image }} style={styles.camera} />
+        )}
+      </View>
       <View>
         {image ? (
           <View style={styles.buttonContainer}>
@@ -85,7 +103,7 @@ function CameraScreen({ navigation, route }) {
             onPress={takePicture}
           />
         )}
-      </View>
+      </View> */}
     </SafeAreaView>
   );
 }
@@ -96,9 +114,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    backgroundColor: "#000",
-    paddingVertical: 20,
-    paddingTop: StatusBar.currentHeight
+    // // paddingVertical: 20,
+    paddingTop: StatusBar.currentHeight,
+    // zIndex: 0,
   },
   buttonContainer: {
     flexDirection: "row",

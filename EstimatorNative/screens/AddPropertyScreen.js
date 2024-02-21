@@ -7,7 +7,13 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   Image,
+  Alert,
 } from "react-native";
+import {
+  launchCameraAsync,
+  useCameraPermissions,
+  PermissionStatus,
+} from "expo-image-picker";
 
 import { getFormattedDate } from "../util/date";
 import DefaultText from "../components/ui/DefaultText";
@@ -18,7 +24,8 @@ import Title from "../components/ui/Title";
 import Colors from "../constants/colors";
 
 function AddProperty({ navigation, route }) {
-  const placeholderImg = require("../assets/images/placeholder.png");
+  const placeholderImg =
+    "https://github.com/ellievmurphy/repair_estimator/blob/development/EstimatorNative/assets/images/placeholder.png?raw=true";
 
   const [streetAddress, setStreetAddress] = useState("");
   const [city, setCity] = useState("");
@@ -27,26 +34,98 @@ function AddProperty({ navigation, route }) {
   const [beds, setBeds] = useState("");
   const [baths, setBaths] = useState("");
   const [sqft, setSqft] = useState("");
-  const [image, setImage] = useState(null);
-  // let image = null;
-
   const date = new Date();
 
+  const [image, setImage] = useState(null);
+  const [takenImage, setTakenImage] = useState(placeholderImg);
+  const [cameraPermissionInformation, requestPermission] =
+    useCameraPermissions();
 
-  // Updates whenever an image is saved from CameraScreen
-  useEffect(() => {
-    if (route.params?.propImage) {
-      // console.log("new image: " + route.params?.propImage);
-      setImage(route.params?.propImage);
-      // console.log("new image: " + image);
+  async function verifyPermissions() {
+    if (cameraPermissionInformation.status === PermissionStatus.UNDETERMINED) {
+      const permissionResponse = await requestPermission();
+
+      return permissionResponse.granted;
     }
-  }, [route.params?.propImage]);
+
+    if (cameraPermissionInformation.status === PermissionStatus.DENIED) {
+      Alert.alert(
+        "Insufficient Permissions!",
+        "You need to grant camera permissions to use this app."
+      );
+      return false;
+    }
+
+    return true;
+  }
+
+  // async function getPropertyImage(uri) {
+  //   // console.log(uri);
+  //   await fetchImageData(uri).then((data) => setImage(data));
+  //   return image;
+  // }
+
+  // const fetchImageData = async (uri) => {
+  //   // console.log(uri);
+  //   // fetch Base64 string of image data
+  //   if (uri) {
+  //     try {
+  //       const data = await FileSystem.readAsStringAsync(uri, {
+  //         encoding: FileSystem.EncodingType.Base64,
+  //       });
+  //       const base64 = "data:image/png;base64, " + data;
+  //       // console.log(base64);
+  //       return base64;
+  //     } catch (error) {
+  //       // Handle error
+  //       console.error("Error reading file:", error);
+  //       throw error; // You might want to rethrow or handle the error appropriately
+  //     }
+  //   }
+  // };
+
+  async function takePicture() {
+    const hasPermission = await verifyPermissions();
+    if (!hasPermission) {
+      return;
+    }
+    const takenimage = await launchCameraAsync({
+      quality: 0.5,
+      base64: true,
+    });
+    setTakenImage(takenimage.assets);
+  }
+
+  useEffect(() => {
+    if (takenImage) {
+      setImage("data:image/png;base64, " + takenImage[0].base64);
+    }
+  }, [takenImage]);
+
+  // useEffect(() => {
+  //   (async () => {
+  //     MediaLibrary.requestPermissionsAsync();
+  //     const cameraStatus = await Camera.requestCameraPermissionsAsync();
+  //     setCameraHasPermission(cameraStatus);
+  //   })();
+  // }, []);
+
+  // // Updates whenever an image is saved from CameraScreen
+  // useEffect(() => {
+  //   if (route.params?.propImage) {
+  //     // console.log("new image: " + route.params?.propImage);
+  //     let imgData = getPropertyImage(route.params?.propImage);
+  //     setImage(imgData);
+  //     // console.log("new image: " + image);
+  //   }
+  // }, [route.params?.propImage]);
 
   function handleStart() {
     const numZip = parseInt(zip);
     const numBeds = parseInt(beds);
     const numBaths = parseInt(baths);
     const numSqft = parseInt(sqft);
+
     if (
       !isNaN(numZip) &&
       !isNaN(numBeds) &&
@@ -67,14 +146,19 @@ function AddProperty({ navigation, route }) {
         0.0,
         null
       );
-      // console.log(newProperty.imageUrl);
       navigation.navigate("ListCategories", { property: newProperty });
       // console.log(newProperty);
     }
   }
 
-  function takePicture() {
-    navigation.navigate("Camera", { propImage: placeholderImg });
+  let imagePreview = (
+    <DefaultText style={styles.previewText}>No image taken yet</DefaultText>
+  );
+
+  if (takenImage !== placeholderImg) {
+    imagePreview = (
+      <Image source={{ uri: takenImage[0].uri }} style={styles.imageStyle} />
+    );
   }
 
   // green: #5A6D5D
@@ -143,7 +227,8 @@ function AddProperty({ navigation, route }) {
               />
             </View>
           </View>
-          <DefaultText>Property Type</DefaultText><DefaultText>Insert dropdown</DefaultText>
+          <DefaultText>Property Type</DefaultText>
+          <DefaultText>Insert dropdown</DefaultText>
           {/* Take Photo and Start Estimate buttons */}
           <View style={styles.buttonContainer}>
             <DefaultButton
@@ -169,15 +254,7 @@ function AddProperty({ navigation, route }) {
               </View>
             </Pressable>
           </View>
-          {/* {image ? (
-            <Image
-              source={{ uri: image }}
-              defaultSource={require("../assets/images/placeholder.png")}
-              style={{ width: 100, height: 200 }}
-            />
-          ) : (
-            <DefaultText>No Image</DefaultText>
-          )} */}
+          <View style={styles.imagepreviewcontainer}>{imagePreview}</View>
         </View>
       </KeyboardAvoidingView>
     </ScrollView>
@@ -219,5 +296,21 @@ const styles = StyleSheet.create({
     backgroundColor: "#7b858c30",
     paddingHorizontal: 10,
     borderRadius: 8,
+  },
+  imagepreviewcontainer: {
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+    height: 200,
+    backgroundColor: "#f0cced",
+    marginVertical: 8,
+    borderRadius: 8,
+  },
+  previewText: {
+    color: "#592454",
+  },
+  imageStyle: {
+    width: "100%",
+    height: "100%",
   },
 });

@@ -8,33 +8,6 @@ import * as FileSystem from "expo-file-system";
 function GenerateReportScreen({ navigation, route }) {
   const property = route.params.property;
 
-  function getPropertyImage(uri) {
-    // console.log(uri);
-    if (property.imageUrl) {
-      return fetchImageData(uri);
-    } else {
-      return "https://github.com/ellievmurphy/repair_estimator/blob/development/EstimatorNative/assets/images/placeholder.png?raw=true";
-    }
-  }
-
-  const fetchImageData = async (uri) => {
-    // fetch Base64 string of image data
-    if (uri) {
-      try {
-        const data = await FileSystem.readAsStringAsync(uri, {
-          encoding: FileSystem.EncodingType.Base64,
-        });
-        const base64 = "data:image/png;base64, " + data;
-        // console.log(base64);
-        return await base64;
-      } catch (error) {
-        // Handle error
-        console.error("Error reading file:", error);
-        throw error; // You might want to rethrow or handle the error appropriately
-      }
-    }
-  };
-
   const html = `
     <html>
         <head>
@@ -66,13 +39,13 @@ function GenerateReportScreen({ navigation, route }) {
         .business-info {
         text-align: right;
         }
-
         .property-img {
         display: block;
         padding-top: 50px;
         margin-left: auto;
         margin-right: auto;
         width: 50%;
+        height: 250px
         }
         .main-content {
         flex: 1;
@@ -105,8 +78,9 @@ function GenerateReportScreen({ navigation, route }) {
         </header>
 
         <img
+        id="property-img"
         class="property-img"
-        src="${getPropertyImage(property.imageUrl)}"
+        src="${property.imageUrl}"
         />
         <div class="main-content">
         <br />
@@ -114,7 +88,7 @@ function GenerateReportScreen({ navigation, route }) {
         
         <div>
           <br />
-          Type of home: insert type of home
+          Type of property: insert type of home
             <br />
             ${property.streetAddress} <br />
             ${property.city}, STATE ${property.zip} <br />
