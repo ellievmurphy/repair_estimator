@@ -11,13 +11,8 @@ function RepairCard({ repair, currCategory, updateCatTotal }) {
 
   // Represents RepairInfo.updateTotal()
   function handleUpdateTotal(quantity) {
-    // console.log("NaN old: " + isNaN(total));
-    // console.log("NaN new: " + isNaN(quantity));
     setOldTotal(total);
     setTotal(quantity);
-    
-    // repair.total = total;
-    // console.log("total: $" + total);
   }
 
   useEffect(() => {

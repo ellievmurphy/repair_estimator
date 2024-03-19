@@ -1,3 +1,4 @@
+import { useContext, useEffect, useState } from "react";
 import {
   FlatList,
   Pressable,
@@ -8,39 +9,38 @@ import {
 } from "react-native";
 
 import DefaultText from "../components/ui/DefaultText";
-import { CATEGORIES, EXTERIOR, INTERIOR } from "../data/category-data";
+import {
+  CATEGORIES,
+  EXTERIOR,
+  INTERIOR,
+  MECHANICALS,
+  OTHER,
+} from "../data/category-data";
 import Colors from "../constants/colors";
 import ListItem from "../components/ui/ListItem";
+import { PropertyContext } from "../store/context/property-context";
 
-function ListCategoriesScreen({ navigation, route }) {
-  const property = route.params.property;
+function ListCategoriesScreen({ navigation }) {
+  // const property = route.params.property;
+  const propertyCtx = useContext(PropertyContext);
+
+  // const [totalCost, setTotalCost] = useState(propertyCtx.property.totalCost);
+
+  // useEffect(() => {
+  //   if (propertyCtx) {
+  //     console.log(propertyCtx)
+  //     setTotalCost(propertyCtx.totalCost);
+  //   }
+  // }, [propertyCtx, setTotalCost]);
 
   return (
     <View style={styles.screen}>
       <DefaultText>
-        Select Category | Total: ${property.totalCost.toFixed(2)}
+        Select Category | Total: ${propertyCtx.property.totalCost.toFixed(2)}
       </DefaultText>
       <View style={styles.listContainer}>
-        {/* <FlatList
-          data={CATEGORIES}
-          keyExtractor={(item) => item.id}
-          renderItem={(itemData) => {
-            return (
-              <View>
-                <ListItem
-                  category={itemData.item}
-                  onPress={() => {
-                    navigation.navigate("ViewCategory", {
-                      category: itemData.item,
-                    });
-                  }}
-                />
-              </View>
-            );
-          }}
-        /> */}
         <SectionList
-          sections={[...EXTERIOR, ...INTERIOR]}
+          sections={[...EXTERIOR, ...INTERIOR, ...MECHANICALS, ...OTHER]}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => {
             // console.log(item)
@@ -51,6 +51,8 @@ function ListCategoriesScreen({ navigation, route }) {
                   onPress={() => {
                     navigation.navigate("ViewCategory", {
                       category: item,
+                      categoryId: item.id,
+                      property: propertyCtx.property,
                     });
                   }}
                 />
@@ -72,7 +74,7 @@ function ListCategoriesScreen({ navigation, route }) {
       <View>
         <Pressable
           onPress={() => {
-            navigation.navigate("GenerateReport", { property: property });
+            navigation.navigate("GenerateReport", { property: propertyCtx.property });
           }}
         >
           <DefaultText style={{ color: Colors.green }}>

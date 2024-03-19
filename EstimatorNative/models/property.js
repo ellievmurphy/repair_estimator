@@ -9,6 +9,7 @@ class Property {
     baths,
     sqft,
     dateInspected,
+    type,
     inspector,
     totalCost,
     repairs
@@ -22,6 +23,7 @@ class Property {
     this.isVacant = isVacant;
     this.zip = zip;
     this.dateInspected = dateInspected;
+    this.type = type;
     this.inspector = inspector;
     this.totalCost = totalCost;
     this.repairs = repairs;

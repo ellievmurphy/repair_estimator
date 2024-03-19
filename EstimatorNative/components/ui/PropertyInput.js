@@ -1,8 +1,14 @@
-import { View, TextInput, StyleSheet } from "react-native";
+import { View, TextInput, StyleSheet, Dimensions } from "react-native";
 
 import DefaultText from "./DefaultText";
 
-function PropertyInput({ title, keyboard, target, targetFunction }) {
+function PropertyInput({
+  title,
+  keyboard,
+  target,
+  targetFunction,
+  autoCapitalize,
+}) {
   return (
     <View>
       <DefaultText>{title}</DefaultText>
@@ -12,6 +18,7 @@ function PropertyInput({ title, keyboard, target, targetFunction }) {
         value={target}
         onChangeText={targetFunction}
         style={styles.input}
+        autoCapitalize={autoCapitalize}
       />
     </View>
   );
@@ -19,13 +26,15 @@ function PropertyInput({ title, keyboard, target, targetFunction }) {
 
 export default PropertyInput;
 
+const deviceWidth = Dimensions.get("window").width;
+
 const styles = StyleSheet.create({
   input: {
     borderColor: "black",
     borderRadius: 8,
     borderWidth: 1,
-    fontSize: 12,
-    padding: 5,
+    fontSize: deviceWidth > 380 ? 16 : 12,
+    padding: deviceWidth > 380 ? 10 : 5,
     maxWidth: "85%",
   },
 });

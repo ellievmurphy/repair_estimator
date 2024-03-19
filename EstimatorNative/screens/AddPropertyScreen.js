@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   View,
   StyleSheet,
@@ -6,14 +6,17 @@ import {
   Switch,
   KeyboardAvoidingView,
   ScrollView,
-  Image,
+  Platform,
   Alert,
+  ActionSheetIOS,
+  Dimensions,
 } from "react-native";
 import {
   launchCameraAsync,
   useCameraPermissions,
   PermissionStatus,
 } from "expo-image-picker";
+import { Picker } from "@react-native-picker/picker";
 
 import { getFormattedDate } from "../util/date";
 import DefaultText from "../components/ui/DefaultText";
@@ -22,10 +25,19 @@ import DefaultButton from "../components/ui/DefaultButton";
 import Property from "../models/property";
 import Title from "../components/ui/Title";
 import Colors from "../constants/colors";
+import {
+  CATEGORIES,
+  EXTERIOR,
+  INTERIOR,
+  MECHANICALS,
+  OTHER,
+} from "../data/category-data";
+import { PropertyContext } from "../store/context/property-context";
 
 function AddProperty({ navigation, route }) {
-  const placeholderImg =
-    "https://github.com/ellievmurphy/repair_estimator/blob/development/EstimatorNative/assets/images/placeholder.png?raw=true";
+  const propertyCtx = useContext(PropertyContext);
+
+  const placeholderImg = "../assets/images/placeholder.png";
 
   const [streetAddress, setStreetAddress] = useState("");
   const [city, setCity] = useState("");
@@ -35,9 +47,18 @@ function AddProperty({ navigation, route }) {
   const [baths, setBaths] = useState("");
   const [sqft, setSqft] = useState("");
   const date = new Date();
+  const [selectedType, setSelectedType] = useState("Single Family");
+  const propertyTypes = [
+    "Single Family",
+    "Condo/Townhouse",
+    "Multi Family",
+    "Commercial",
+    "Cancel",
+  ];
+  const initRepairs = [...CATEGORIES];
 
   const [image, setImage] = useState(null);
-  const [takenImage, setTakenImage] = useState(placeholderImg);
+  const [takenImage, setTakenImage] = useState(null);
   const [cameraPermissionInformation, requestPermission] =
     useCameraPermissions();
 
@@ -59,31 +80,6 @@ function AddProperty({ navigation, route }) {
     return true;
   }
 
-  // async function getPropertyImage(uri) {
-  //   // console.log(uri);
-  //   await fetchImageData(uri).then((data) => setImage(data));
-  //   return image;
-  // }
-
-  // const fetchImageData = async (uri) => {
-  //   // console.log(uri);
-  //   // fetch Base64 string of image data
-  //   if (uri) {
-  //     try {
-  //       const data = await FileSystem.readAsStringAsync(uri, {
-  //         encoding: FileSystem.EncodingType.Base64,
-  //       });
-  //       const base64 = "data:image/png;base64, " + data;
-  //       // console.log(base64);
-  //       return base64;
-  //     } catch (error) {
-  //       // Handle error
-  //       console.error("Error reading file:", error);
-  //       throw error; // You might want to rethrow or handle the error appropriately
-  //     }
-  //   }
-  // };
-
   async function takePicture() {
     const hasPermission = await verifyPermissions();
     if (!hasPermission) {
@@ -102,24 +98,6 @@ function AddProperty({ navigation, route }) {
     }
   }, [takenImage]);
 
-  // useEffect(() => {
-  //   (async () => {
-  //     MediaLibrary.requestPermissionsAsync();
-  //     const cameraStatus = await Camera.requestCameraPermissionsAsync();
-  //     setCameraHasPermission(cameraStatus);
-  //   })();
-  // }, []);
-
-  // // Updates whenever an image is saved from CameraScreen
-  // useEffect(() => {
-  //   if (route.params?.propImage) {
-  //     // console.log("new image: " + route.params?.propImage);
-  //     let imgData = getPropertyImage(route.params?.propImage);
-  //     setImage(imgData);
-  //     // console.log("new image: " + image);
-  //   }
-  // }, [route.params?.propImage]);
-
   function handleStart() {
     const numZip = parseInt(zip);
     const numBeds = parseInt(beds);
@@ -132,7 +110,23 @@ function AddProperty({ navigation, route }) {
       !isNaN(numBaths) &&
       !isNaN(numSqft)
     ) {
-      const newProperty = new Property(
+      // const newProperty = new Property(
+      //   streetAddress,
+      //   city,
+      //   numZip,
+      //   vacant,
+      //   image,
+      //   numBeds,
+      //   numBaths,
+      //   numSqft,
+      //   getFormattedDate(date),
+      //   selectedType,
+      //   "Brooks O'Hearn",
+      //   0.0,
+      //   initRepairs
+      // );
+      // console.log(newProperty.repairs);
+      propertyCtx.updateProperty(
         streetAddress,
         city,
         numZip,
@@ -142,45 +136,98 @@ function AddProperty({ navigation, route }) {
         numBaths,
         numSqft,
         getFormattedDate(date),
-        "Ellie Murphy",
+        selectedType,
+        "Brooks O'Hearn",
         0.0,
-        null
+        initRepairs
       );
-      navigation.navigate("ListCategories", { property: newProperty });
-      // console.log(newProperty);
+      // console.log(propertyCtx.property);
+      navigation.navigate("ListCategories");
     }
-  }
-
-  let imagePreview = (
-    <DefaultText style={styles.previewText}>No image taken yet</DefaultText>
-  );
-
-  if (takenImage !== placeholderImg) {
-    imagePreview = (
-      <Image source={{ uri: takenImage[0].uri }} style={styles.imageStyle} />
-    );
   }
 
   // green: #5A6D5D
   // light grey: #F5F5F4
   // dark grey: #7B858C
   return (
-    <ScrollView style={styles.screen}>
-      <KeyboardAvoidingView style={styles.screen}>
+    <KeyboardAvoidingView style={styles.screen} behavior="padding">
+      <ScrollView style={styles.screen}>
         <View style={styles.container}>
           <Title>New Estimate</Title>
+          <View style={{ flex: 1, flexDirection: "row" }}>
+            <DefaultText style={styles.text}>Property Type:</DefaultText>
+            {Platform.OS === "android" && (
+              <Picker
+                style={{ flex: 1 }}
+                itemStyle={{ flex: 1, color: "black" }}
+                selectedValue={selectedType}
+                onValueChange={(itemValue, itemIndex) =>
+                  setSelectedType(itemValue)
+                }
+              >
+                <Picker.Item label="Single Family" value="Single Family" />
+                <Picker.Item label="Condo/Townhouse" value="Condo/Townhouse" />
+                <Picker.Item label="Multi Family" value="Multi Family" />
+                <Picker.Item label="Commercial" value="Commercial" />
+              </Picker>
+            )}
+            {Platform.OS === "ios" && (
+              <View>
+                <DefaultButton
+                  style={{
+                    flex: 1,
+                    marginLeft: 10,
+                    backgroundColor: Colors.light_green,
+                    borderWidth: 0,
+                  }}
+                  text={selectedType}
+                  pressHandler={() => {
+                    ActionSheetIOS.showActionSheetWithOptions(
+                      {
+                        options: propertyTypes,
+                        cancelButtonIndex: 4,
+                        userInterfaceStyle: "auto",
+                      },
+                      (buttonIndex) => {
+                        if (buttonIndex === 4) {
+                          // cancel action
+                        } else {
+                          switch (buttonIndex) {
+                            case 0:
+                              setSelectedType("Single Family");
+                              break;
+                            case 1:
+                              setSelectedType("Condo/Townhouse");
+                              break;
+                            case 2:
+                              setSelectedType("Multi Family");
+                              break;
+                            default:
+                              setSelectedType("Commercial");
+                              break;
+                          }
+                        }
+                      }
+                    );
+                  }}
+                />
+              </View>
+            )}
+          </View>
           {/* Address input */}
           <PropertyInput
             title={"Street Address"}
             keyboard={"default"}
             target={streetAddress}
             targetFunction={setStreetAddress}
+            autoCapitalize={"words"}
           />
           <PropertyInput
             title={"City"}
             keyboard={"default"}
             target={city}
             targetFunction={setCity}
+            autoCapitalize={"words"}
           />
           <PropertyInput
             title={"Zip"}
@@ -190,14 +237,20 @@ function AddProperty({ navigation, route }) {
           />
           {/* Vacancy and date of inspection */}
           <View style={styles.bbContainer}>
-            <DefaultText>Vacant?</DefaultText>
+            <DefaultText
+              style={[styles.text, { paddingRight: deviceWidth > 380 ? 5 : 0 }]}
+            >
+              Vacant?
+            </DefaultText>
             <Switch
               trackColor={{ false: "#5A6D5Dc82", true: Colors.green }}
               thumbColor={vacant ? Colors.light_grey : Colors.light_grey}
               onValueChange={setVacancy}
               value={vacant}
             />
-            <DefaultText style={{ marginHorizontal: 10 }}>Date</DefaultText>
+            <DefaultText style={[styles.text, { marginHorizontal: 10 }]}>
+              Date
+            </DefaultText>
             <View style={styles.dateContainer}>
               <DefaultText>{getFormattedDate(date)}</DefaultText>
             </View>
@@ -227,8 +280,7 @@ function AddProperty({ navigation, route }) {
               />
             </View>
           </View>
-          <DefaultText>Property Type</DefaultText>
-          <DefaultText>Insert dropdown</DefaultText>
+
           {/* Take Photo and Start Estimate buttons */}
           <View style={styles.buttonContainer}>
             <DefaultButton
@@ -254,22 +306,28 @@ function AddProperty({ navigation, route }) {
               </View>
             </Pressable>
           </View>
-          <View style={styles.imagepreviewcontainer}>{imagePreview}</View>
         </View>
-      </KeyboardAvoidingView>
-    </ScrollView>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
 
 export default AddProperty;
 
+const deviceWidth = Dimensions.get("window").width;
+
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
+    paddingLeft: deviceWidth > 380 ? 5 : 0,
+    marginBottom: 20,
   },
   container: {
     flex: 1,
     paddingHorizontal: 15,
+  },
+  text: {
+    fontSize: deviceWidth > 380 ? 16 : 12,
   },
   bbContainer: {
     flexDirection: "row",
@@ -280,9 +338,10 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flexDirection: "row",
-    marginTop: 10,
+    marginTop: deviceWidth > 380 ? 30 : 10,
   },
   startButtonContainer: {
+    marginLeft: deviceWidth > 380 ? 15 : 0,
     paddingHorizontal: 20,
   },
   button: {
@@ -296,21 +355,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#7b858c30",
     paddingHorizontal: 10,
     borderRadius: 8,
-  },
-  imagepreviewcontainer: {
-    alignItems: "center",
-    justifyContent: "center",
-    width: "100%",
-    height: 200,
-    backgroundColor: "#f0cced",
-    marginVertical: 8,
-    borderRadius: 8,
-  },
-  previewText: {
-    color: "#592454",
-  },
-  imageStyle: {
-    width: "100%",
-    height: "100%",
   },
 });

@@ -2,7 +2,7 @@ import Category from "../models/category";
 import { REPAIRS } from "./repair-data";
 
 
-export const CATEGORIES = [
+const CATEGORIES = [
     new Category('c1', "Concrete/Asphalt", 0.0, REPAIRS.filter((repair) => repair.categoryId === 'c1'), false, "exterior", []),
     new Category('c2', "Decks", 0.0, REPAIRS.filter((repair) => repair.categoryId === 'c2'), false, "exterior", []),
     new Category('c3', "Exterior Painting", 0.0, REPAIRS.filter((repair) => repair.categoryId === 'c3'), false, "exterior", []),
@@ -35,7 +35,21 @@ export const CATEGORIES = [
     new Category('c27', "Basement", 0.0, REPAIRS.filter((repair) => repair.categoryId === 'c27'), false, "interior", []),
     new Category('c30', "Foundation", 0.0, REPAIRS.filter((repair) => repair.categoryId === 'c30'), false, "interior", []),
 
+    new Category('c31', "HVAC", 0.0, REPAIRS.filter((repair) => repair.categoryId === 'c31'), false, "mechanicals", []),
+    new Category('c32', "Plumbing", 0.0, REPAIRS.filter((repair) => repair.categoryId === 'c32'), false, "mechanicals", []),
+    new Category('c33', "Electrical", 0.0, REPAIRS.filter((repair) => repair.categoryId === 'c33'), false, "mechanicals", []),
+
+    new Category('c34', "Demo & Dumpsters", 0.0, REPAIRS.filter((repair) => repair.categoryId === 'c34'), false, "other", []),
+    new Category('c35', "Termites/Abatement", 0.0, REPAIRS.filter((repair) => repair.categoryId === 'c35'), false, "other", []),
+    new Category('c36', "Permits", 0.0, REPAIRS.filter((repair) => repair.categoryId === 'c36'), false, "other", []),
+    new Category('c37', "Extra", 0.0, REPAIRS.filter((repair) => repair.categoryId === 'c37'), false, "other", []),
+    new Category('c38', "Contingency", 0.0, REPAIRS.filter((repair) => repair.categoryId === 'c38'), false, "other", []),
+
 ];
 
-export const EXTERIOR = [{ type: "Exterior", data: CATEGORIES.filter((category) => category.type === "exterior") }];
-export const INTERIOR = [{ type: "Interior", data: CATEGORIES.filter((category) => category.type === "interior") }];
+const EXTERIOR = [{ type: "Exterior", data: CATEGORIES.filter((category) => category.type === "exterior") }];
+const INTERIOR = [{ type: "Interior", data: CATEGORIES.filter((category) => category.type === "interior") }];
+const MECHANICALS = [{ type: "Mechanicals", data: CATEGORIES.filter((category) => category.type === "mechanicals") }];
+const OTHER = [{ type: "Other", data: CATEGORIES.filter((category) => category.type === "other") }];
+
+export {EXTERIOR, INTERIOR, MECHANICALS, OTHER, CATEGORIES};

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import {
   Pressable,
   StyleSheet,
@@ -9,7 +9,7 @@ import {
   StatusBar,
 } from "react-native";
 import DefaultText from "../ui/DefaultText";
-import { Entypo } from "@expo/vector-icons";
+import { Entypo, Ionicons } from "@expo/vector-icons";
 import PagerView from "react-native-pager-view";
 import {
   launchCameraAsync,
@@ -20,19 +20,30 @@ import {
 import Colors from "../../constants/colors";
 import RepairCard from "./RepairCard";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { PropertyContext } from "../../store/context/property-context";
 
-function ViewCategory({ route }) {
-  const category = route.params.category;
+function ViewCategory({ navigation, route }) {
+  const propertyCtx = useContext(PropertyContext);
+  const property = propertyCtx.property;
+  const category = propertyCtx.property.repairs.filter(id === route.params.categoryId);
+  // let propertyTotalCost = property.totalCost;
+
   const [catCost, setCatCost] = useState(0.0);
   const [comments, setComments] = useState("");
   const [images, setImages] = useState(category.images);
+  const [propertyTotal, setPropertyTotal] = useState(propertyCtx.property.totalCost);
 
   // Passed to and called by RepairCard as RepairCard.updateCatTotal()
   function updateCatTotal(newTotal, oldTotal) {
     // console.log("sanity: $" + newTotal);
-    category.cost += newTotal - oldTotal;
 
+    // console.log(property.repairs[category.name]);
+
+    const oldCost = catCost;
     setCatCost(catCost + newTotal - oldTotal);
+    // setPropertyTotal(propertyTotal - oldCost + catCost);
+    //set property.repairs.filter(category.name)
+   
   }
 
   // const [image, setImage] = useState(null);
@@ -87,6 +98,26 @@ function ViewCategory({ route }) {
 
   return (
     <SafeAreaView style={styles.rootContainer}>
+      <Pressable
+        style={({ pressed }) =>
+          pressed
+            ? [
+                { opacity: 0.5, backgroundColor: "#ffff" },
+                { justifyContent: "center" },
+              ]
+            : { justifyContent: "center" }
+        }
+        onPress={() => {
+          propertyCtx.property.totalCost = propertyTotal;
+          navigation.navigate({
+            name: "ListCategories",
+            params: { property: property },
+            merge: true,
+          });
+        }}
+      >
+        <Ionicons name="arrow-back-circle-outline" size={24} color="black" />
+      </Pressable>
       <View style={styles.body}>
         <DefaultText style={styles.title}>{category.name}</DefaultText>
         <ScrollView

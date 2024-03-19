@@ -3,20 +3,20 @@ import UNITS from "../models/repair-units";
 
 export const REPAIRS = [
   // c1: Concrete Asphalt
-  new Repair("c1", "Demo existing concrete or asphalt", false, 0.0, UNITS.SF, 2.0, 0),
-  new Repair("c1", "Concrete installed for driveway/patio/sidewalk", false, 0.0, UNITS.SF, 7.0, 0),
-  new Repair("c1", "Asphalt installed in driveway", false, 0.0, UNITS.SF, 4.0, 0),
-  new Repair("c1", "Gravel installed for driveway/sidewalk", false, 0.0, UNITS.SF, 2.0, 0),
+  new Repair("r1", "c1", "Demo existing concrete or asphalt", false, 0.0, UNITS.SF, 2.0, 0),
+  new Repair("r2", "c1", "Concrete installed for driveway/patio/sidewalk", false, 0.0, UNITS.SF, 7.0, 0),
+  new Repair("r3", "c1", "Asphalt installed in driveway", false, 0.0, UNITS.SF, 4.0, 0),
+  new Repair("r4", "c1", "Gravel installed for driveway/sidewalk", false, 0.0, UNITS.SF, 2.0, 0),
 
   // c2: Decks
-  new Repair("c2", "New deck 15'x15'(add permit if 30\" off ground", false, 0.0, UNITS.EA, 3000.0, 0),
-  new Repair("c2", "New deck 10'x10'", false, 0.0, UNITS.EA, 2000.0, 0),
-  new Repair("c2", "New deck - treated lumber", false, 0.0, UNITS.SF, 15.0, 0),
-  new Repair("c2", "New deck - cedar material", false, 0.0, UNITS.SF, 19.0, 0),
-  new Repair("c2", "Decking material replacement only", false, 0.0, UNITS.SF, 7.0, 0),
-  new Repair("c2", "Sand & refinish deck only", false, 0.0, UNITS.SF, 2.0, 0),
-  new Repair("c2", "New railings - wood", false, 0.0, UNITS.LF, 20.0, 0),
-  new Repair("c2", "New railings - metal", false, 0.0, UNITS.LF, 40.0, 0),
+  new Repair("r5", "c2", "New deck 15'x15'(add permit if 30\" off ground", false, 0.0, UNITS.EA, 3000.0, 0),
+  new Repair("r6", "c2", "New deck 10'x10'", false, 0.0, UNITS.EA, 2000.0, 0),
+  new Repair("r7", "c2", "New deck - treated lumber", false, 0.0, UNITS.SF, 15.0, 0),
+  new Repair("r8", "c2", "New deck - cedar material", false, 0.0, UNITS.SF, 19.0, 0),
+  new Repair("r9", "c2", "Decking material replacement only", false, 0.0, UNITS.SF, 7.0, 0),
+  new Repair("r10", "c2", "Sand & refinish deck only", false, 0.0, UNITS.SF, 2.0, 0),
+  new Repair("r11", "c2", "New railings - wood", false, 0.0, UNITS.LF, 20.0, 0),
+  new Repair("r12", "c2", "New railings - metal", false, 0.0, UNITS.LF, 40.0, 0),
 
   // c3: Exterior Painting
   new Repair("c3", "Painting both exterior & interior (whole property)", false, 0.0, UNITS.SF, 4.0, 0),
@@ -215,5 +215,51 @@ export const REPAIRS = [
   new Repair("c30", "Repair existing foundation -  stair mud jacking (will vary)", false, 0.0, UNITS.EA, 800.0, 0),
   new Repair("c30", "Repair existing foundation - bowing walls support with I beams", false, 0.0, UNITS.EA, 800.0, 0),
   new Repair("c30", "Repair existing foundation - settled walls support w/piers", false, 0.0, UNITS.EA, 1200.0, 0),
+
+  //c31: HVAC
+  new Repair("c31", "Gas fired forced hot air heating system, ac system, & ductwork", false, 0.0, UNITS.EA, 6000.0, 0),
+  new Repair("c31", "Gas fired forced hot air heating system & ductwork", false, 0.0, UNITS.EA, 4000.0, 0),
+  new Repair("c31", "Gas fired forced hot air unit only", false, 0.0, UNITS.EA, 1700.0, 0),
+  new Repair("c31", "Air conditioning unit only", false, 0.0, UNITS.EA, 2000.0, 0),
+  new Repair("c31", "Replace forced air ductwork only", false, 0.0, UNITS.EA, 2300.0, 0),
+  new Repair("c31", "Replace boiler & hot water baseboard system", false, 0.0, UNITS.EA, 6500.0, 0),
+  new Repair("c31", "Replace boiler unit only", false, 0.0, UNITS.EA, 3000.0, 0),
+  new Repair("c31", "Wall heater (install new or remove & replace)", false, 0.0, UNITS.EA, 600.0, 0),
+  new Repair("c31", "Service heating & cooling system only", false, 0.0, UNITS.EA, 500.0, 0),
+
+  //c32: Plumbing
+  new Repair("c32", "New plumbing system in entire house (1,500 sq. ft 3/2 house)", false, 0.0, UNITS.EA, 7000.0, 0),
+  new Repair("c32", "Replace tankless hot water heater", false, 0.0, UNITS.EA, 1500.0, 0),
+  new Repair("c32", "Replace gas hot water heater - 40 gallon", false, 0.0, UNITS.EA, 1000.0, 0),
+  
+  //c33: Electrical
+  new Repair("c33", "Rewire entire house, new panel, & lighting fixtures (1,500 sqft)", false, 0.0, UNITS.EA, 7000.0, 0),
+  new Repair("c33", "Basic electrical work for house & lighting fixtures (1500 sq. ft)", false, 0.0, UNITS.EA, 3000.0, 0),
+  new Repair("c33", "Replace electrical panel only", false, 0.0, UNITS.EA, 2000.0, 0),
+  new Repair("c33", "Replace all lighting fixtures only (1500 sq. ft. house)", false, 0.0, UNITS.EA, 2000.0, 0),
+
+  //c34: Demo & Dumpsters
+  new Repair("c34", "Demolition work (cost to fill one 40 yd dumpster)", false, 0.0, UNITS.EA, 500.0, 0),
+  new Repair("c34", "Dumpster rental (40 yard)", false, 0.0, UNITS.EA, 500.0, 0),
+  
+  //c35: Termites/Abatement
+  new Repair("c35", "Termite fumigation & treatment", false, 0.0, UNITS.LS, 1000.0, 0),
+  new Repair("c35", "Mold removal & abatement - minimum", false, 0.0, UNITS.LS, 2000.0, 0),
+  new Repair("c35", "Asbestos removal & abatement - minimum", false, 0.0, UNITS.LS, 1500.0, 0),
+  
+  //c36: Permits
+  new Repair("c36", "Construction permits for remodel (city)", false, 0.0, UNITS.EA, 1500.0, 0),
+  new Repair("c36", "Construction permits for addition (city)", false, 0.0, UNITS.EA, 5000.0, 0),
+  new Repair("c36", "Construction permits for deck (city)", false, 0.0, UNITS.EA, 600.0, 0),
+  new Repair("c36", "Construction permits over the counter", false, 0.0, UNITS.EA, 750.0, 0),
+  new Repair("c36", "Construction permits for full submittal (county)", false, 0.0, UNITS.EA, 1500.0, 0),
+  new Repair("c36", "Construction permits for addition (county)", false, 0.0, UNITS.EA, 5000.0, 0),
+  new Repair("c36", "Construction permits for deck (county)", false, 0.0, UNITS.EA, 600.0, 0),
+
+  //c37: Extra
+  new Repair("c37", "Extra", false, 0.0, UNITS.EA, 0.0, 0),
+
+  //c38: Contingency
+  new Repair("c38", "Contingency", false, 0.0, UNITS.EA, 10.0, 0),
 
 ];
