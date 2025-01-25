@@ -1,0 +1,7 @@
+{
+    "recommendations": [
+        "esbenp.prettier-vscode",
+        "msjsdiag.vscode-react-native",
+        "ms-dotnettools.vscode-dotnet-runtime"
+    ]
+}
