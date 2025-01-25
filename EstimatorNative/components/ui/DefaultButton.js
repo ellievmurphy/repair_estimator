@@ -2,7 +2,7 @@ import { StyleSheet, Pressable, View } from "react-native";
 
 import DefaultText from "./DefaultText";
 
-function DefaultButton({pressHandler, style, text}) {
+function DefaultButton({pressHandler, style, text, textStyle}) {
   return (
     <Pressable
       style={({ pressed }) =>
@@ -14,7 +14,7 @@ function DefaultButton({pressHandler, style, text}) {
       // android_ripple={{ color: "black" }}
     >
       <View>
-        <DefaultText style={[styles.text, styles.button]}>
+        <DefaultText style={[styles.text, styles.button, textStyle]}>
           {text}
         </DefaultText>
       </View>

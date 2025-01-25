@@ -7,13 +7,16 @@
     "icon": "./assets/images/EstimatorLogo.png",
     "userInterfaceStyle": "light",
     "backgroundColor": "#F5F5F4",
+    "newArchEnabled": false,
     "plugins": [
       [
         "expo-camera",
         {
           "cameraPermission": "Allow Estimator to access your camera."
         }
-      ]
+      ],
+      "expo-font",
+      "expo-sqlite"
     ],
     "splash": {
       "image": "./assets/splash.png",

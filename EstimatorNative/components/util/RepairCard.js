@@ -18,7 +18,7 @@ function RepairCard({ repair, currCategory, updateCatTotal }) {
   useEffect(() => {
     // repair.total = total;
     updateCatTotal(total, oldTotal);
-  }, [updateCatTotal, total, oldTotal]);
+  }, [total, oldTotal]);
 
   function updateShowing() {
     setShowInfo(!showInfo);

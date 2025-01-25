@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   View,
   StyleSheet,
@@ -32,22 +32,37 @@ import {
   MECHANICALS,
   OTHER,
 } from "../data/category-data";
-import { PropertyContext } from "../store/context/property-context";
+import * as ReactQuery from "@tanstack/react-query";
+import {
+  createPropertyMutationOptions,
+  useProperty,
+} from "../lib/properties/properties-queries";
+import { createInitCategoryMutation } from "../lib/categories/categories-queries";
 
 function AddProperty({ navigation, route }) {
-  const propertyCtx = useContext(PropertyContext);
+  const { data: properties, error: propertyError } = useProperty();
+  const propertyData = properties?.[0]
+    ? properties[0].length === 0 ?? new Property()
+    : new Property();
+  const propertyMutation = ReactQuery.useMutation(
+    createPropertyMutationOptions("")
+  );
 
   const placeholderImg = "../assets/images/placeholder.png";
 
-  const [streetAddress, setStreetAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [zip, setZip] = useState("");
-  const [vacant, setVacancy] = useState("");
-  const [beds, setBeds] = useState("");
-  const [baths, setBaths] = useState("");
-  const [sqft, setSqft] = useState("");
-  const date = new Date();
-  const [selectedType, setSelectedType] = useState("Single Family");
+  const [streetAddress, setStreetAddress] = useState(
+    propertyData.streetAddress ?? ""
+  );
+  const [city, setCity] = useState(propertyData.city ?? "");
+  const [zip, setZip] = useState(propertyData.zip ?? "");
+  const [vacant, setVacancy] = useState(propertyData.vacant ?? "");
+  const [beds, setBeds] = useState(propertyData.beds ?? "");
+  const [baths, setBaths] = useState(propertyData.baths ?? "");
+  const [sqft, setSqft] = useState(propertyData.sqft ?? "");
+  const date = propertyData.dateInspected ?? new Date();
+  const [selectedType, setSelectedType] = useState(
+    propertyData.type ?? "Single Family"
+  );
   const propertyTypes = [
     "Single Family",
     "Condo/Townhouse",
@@ -55,9 +70,9 @@ function AddProperty({ navigation, route }) {
     "Commercial",
     "Cancel",
   ];
-  const initRepairs = [...CATEGORIES];
+  const initCategories = [...CATEGORIES];
 
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState(propertyData.imageUrl ?? null);
   const [takenImage, setTakenImage] = useState(null);
   const [cameraPermissionInformation, requestPermission] =
     useCameraPermissions();
@@ -98,7 +113,7 @@ function AddProperty({ navigation, route }) {
     }
   }, [takenImage]);
 
-  function handleStart() {
+  async function handleStart() {
     const numZip = parseInt(zip);
     const numBeds = parseInt(beds);
     const numBaths = parseInt(baths);
@@ -110,28 +125,12 @@ function AddProperty({ navigation, route }) {
       !isNaN(numBaths) &&
       !isNaN(numSqft)
     ) {
-      // const newProperty = new Property(
-      //   streetAddress,
-      //   city,
-      //   numZip,
-      //   vacant,
-      //   image,
-      //   numBeds,
-      //   numBaths,
-      //   numSqft,
-      //   getFormattedDate(date),
-      //   selectedType,
-      //   "Brooks O'Hearn",
-      //   0.0,
-      //   initRepairs
-      // );
-      // console.log(newProperty.repairs);
-      propertyCtx.updateProperty(
+      const newProperty = new Property(
         streetAddress,
         city,
         numZip,
         vacant,
-        image,
+        image ?? placeholderImg,
         numBeds,
         numBaths,
         numSqft,
@@ -139,12 +138,17 @@ function AddProperty({ navigation, route }) {
         selectedType,
         "Brooks O'Hearn",
         0.0,
-        initRepairs
+        []
       );
-      // console.log(propertyCtx.property);
+      await createInitCategoryMutation(initCategories);
+      
+      await propertyMutation.mutate({propertyId: streetAddress + "_" + date.toLocaleString(), inspector: "Brooks O'Hearn", params: newProperty});
+      // console.log("newProperty", newProperty);
       navigation.navigate("ListCategories");
     }
   }
+
+  if (propertyError) console.log("property error:", propertyError);
 
   // green: #5A6D5D
   // light grey: #F5F5F4
@@ -341,7 +345,7 @@ const styles = StyleSheet.create({
     marginTop: deviceWidth > 380 ? 30 : 10,
   },
   startButtonContainer: {
-    marginLeft: deviceWidth > 380 ? 15 : 0,
+    marginLeft: deviceWidth > 400 ? 15 : 0,
     paddingHorizontal: 20,
   },
   button: {

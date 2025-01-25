@@ -1,7 +1,9 @@
-import { Pressable, StyleSheet, View } from "react-native";
+import { Dimensions, Pressable, StyleSheet, View } from "react-native";
 import DefaultText from "./DefaultText";
 
 function ListItem({ category, onPress }) {
+  const deviceWidth = Dimensions.get("window").width;
+
   return (
     <View style={styles.rootContainer}>
       <Pressable
@@ -12,7 +14,7 @@ function ListItem({ category, onPress }) {
         ]}
         onPress={onPress}
       >
-        <DefaultText>{category.name}</DefaultText>
+        <DefaultText style={{fontSize: deviceWidth > 380 ? 16 : 12}}>{category.name}</DefaultText>
       </Pressable>
     </View>
   );

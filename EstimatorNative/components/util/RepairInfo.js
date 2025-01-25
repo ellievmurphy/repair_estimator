@@ -18,6 +18,8 @@ function RepairInfo({ repair, show, updateTotal, repTotal }) {
       return;
     }
     updateTotal(quantDouble * repair.costPerUnit);
+    repair.quantity = quantDouble;
+    repair.total = quantDouble * repair.costPerUnit;
   }
 
   return (
@@ -25,10 +27,10 @@ function RepairInfo({ repair, show, updateTotal, repTotal }) {
       <View style={styles.cardContainer}>
         <View style={styles.unitContainer}>
           <DefaultText style={[styles.text, { marginRight: 10 }]}>
-            Per {repair.unit}: ${repair.costPerUnit.toFixed(2)}
+            Per {repair.unit}: ${repair.costPerUnit}
           </DefaultText>
           <DefaultText style={styles.text}>
-            Total: ${repTotal.toFixed(2)}
+            Total: ${repTotal}
           </DefaultText>
         </View>
         <View style={styles.unitContainer}>

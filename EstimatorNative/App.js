@@ -1,6 +1,8 @@
 import { StyleSheet, Text, View, Pressable } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import * as ReactQuery from "@tanstack/react-query";
+import Entypo from "@expo/vector-icons/Entypo";
 
 import ListCategoriesScreen from "./screens/ListCategoriesScreen";
 import IntroductoryScreen from "./screens/IntroductoryScreen";
@@ -10,9 +12,9 @@ import ViewCategory from "./components/util/ViewCategory";
 import CameraScreen from "./screens/CameraScreen";
 import GenerateReportScreen from "./screens/GenerateReportScreen";
 import RepairCameraScreen from "./screens/RepairCameraScreen";
-import PropertyContextProvider from "./store/context/property-context";
 
 const Stack = createNativeStackNavigator();
+const queryClient = new ReactQuery.QueryClient();
 
 export default function App() {
   // green: #5A6D5D
@@ -20,7 +22,7 @@ export default function App() {
   // dark grey: #7B858C
 
   return (
-    <PropertyContextProvider>
+    <ReactQuery.QueryClientProvider client={queryClient}>
       <NavigationContainer>
         <Stack.Navigator
           initialRouteName="Introductory"
@@ -34,12 +36,14 @@ export default function App() {
           <Stack.Screen
             name="NewProperty"
             component={AddPropertyScreen}
-            options={{ title: "" }}
+            options={{
+              title: "",
+            }}
           />
           <Stack.Screen
             name="ListCategories"
             component={ListCategoriesScreen}
-            options={{ title: "" }}
+            options={styles.invisibleHeader}
           />
           <Stack.Screen
             name="ViewCategory"
@@ -52,8 +56,12 @@ export default function App() {
           />
         </Stack.Navigator>
       </NavigationContainer>
-    </PropertyContextProvider>
+    </ReactQuery.QueryClientProvider>
   );
+}
+
+export function RightHeader() {
+  return <Entypo name="dots-three-vertical" size={20} color="black" />;
 }
 
 const styles = StyleSheet.create({
@@ -62,5 +70,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+  invisibleHeader: {
+    title: "",
+    headerStyle: { backgroundColor: "#F5F5F4" },
+    headerShadowVisible: false,
   },
 });

@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import {
   Pressable,
   StyleSheet,
@@ -20,30 +20,44 @@ import {
 import Colors from "../../constants/colors";
 import RepairCard from "./RepairCard";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { PropertyContext } from "../../store/context/property-context";
+import Property from "../../models/property";
+import { useProperty } from "../../lib/properties/properties-queries";
 
 function ViewCategory({ navigation, route }) {
-  const propertyCtx = useContext(PropertyContext);
-  const property = propertyCtx.property;
-  const category = propertyCtx.property.repairs.filter(id === route.params.categoryId);
-  // let propertyTotalCost = property.totalCost;
+  // function used to calculate the sum of all the totals when the screen is loaded
+  function calculateSum(arr) {
+    let sum = 0;
+    arr.forEach(element => {
+      sum += element.total
+    });
+    return sum;
+  }
 
-  const [catCost, setCatCost] = useState(0.0);
+  // console.log(propertyCtx.property.repairs.filter((category) => category.id === route.params.categoryId));
+  const category = route.params.category;
+  const property = route.params.property;
+
+  const [catCost, setCatCost] = useState(
+    // function used to calculate the sum of all the totals when the screen is loaded
+    calculateSum(category.repairs)
+  );
   const [comments, setComments] = useState("");
   const [images, setImages] = useState(category.images);
-  const [propertyTotal, setPropertyTotal] = useState(propertyCtx.property.totalCost);
+  const [propertyTotal, setPropertyTotal] = useState(
+    propertyCtx.property.totalCost
+  );
+
+  useEffect(() => {
+    property.totalCost = propertyTotal;
+  }, [propertyTotal]);
 
   // Passed to and called by RepairCard as RepairCard.updateCatTotal()
   function updateCatTotal(newTotal, oldTotal) {
-    // console.log("sanity: $" + newTotal);
-
-    // console.log(property.repairs[category.name]);
-
-    const oldCost = catCost;
     setCatCost(catCost + newTotal - oldTotal);
-    // setPropertyTotal(propertyTotal - oldCost + catCost);
-    //set property.repairs.filter(category.name)
-   
+    const totalCost = property.totalCost + newTotal - oldTotal; // total cost of the entire property
+    setPropertyTotal(totalCost);
+    category.cost = catCost;
+    console.log("property cost after: $" + propertyCtx.property.totalCost);
   }
 
   // const [image, setImage] = useState(null);
@@ -135,23 +149,25 @@ function ViewCategory({ navigation, route }) {
               </View>
             ))}
           </View>
-          <DefaultText>Images: </DefaultText>
-          <PagerView style={styles.viewPager} initialPage={0}>
-            {images[0] ? (
-              images.map((image, index) => (
-                <View key={index} style={styles.page}>
-                  <Image
-                    source={{ uri: image.base64 }}
-                    style={{ width: 200, height: 200 }}
-                  />
-                </View>
-              ))
-            ) : (
-              <DefaultText style={{ textAlign: "center" }}>
-                No Images Added
-              </DefaultText>
-            )}
-          </PagerView>
+          <View style={{ flex: 1 }}>
+            <DefaultText>Images: </DefaultText>
+            <PagerView style={styles.viewPager} initialPage={0}>
+              {images[0] ? (
+                images.map((image, index) => (
+                  <View key={index} style={styles.page}>
+                    <Image
+                      source={{ uri: image.base64 }}
+                      style={{ width: 200, height: 200 }}
+                    />
+                  </View>
+                ))
+              ) : (
+                <DefaultText style={{ textAlign: "center" }}>
+                  No Images Added
+                </DefaultText>
+              )}
+            </PagerView>
+          </View>
         </ScrollView>
       </View>
 
@@ -167,7 +183,7 @@ function ViewCategory({ navigation, route }) {
 
         <View style={styles.footer}>
           <DefaultText style={styles.footerText}>
-            Total Cost: ${catCost.toFixed(2)}
+            Total Cost: ${catCost}
           </DefaultText>
           <Pressable
             style={({ pressed }) => (pressed ? [styles.pressedItem] : [])}
@@ -207,8 +223,9 @@ const styles = StyleSheet.create({
     paddingBottom: 100,
   },
   viewPager: {
+    height: 250,
     width: "100%",
-    paddingBottom: "20%",
+    // paddingBottom: "20%",
   },
   page: {
     flex: 1,

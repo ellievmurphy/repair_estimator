@@ -4,9 +4,38 @@ import * as Print from "expo-print";
 import { shareAsync } from "expo-sharing";
 import moment from "moment";
 import * as FileSystem from "expo-file-system";
+import Property from "../models/property";
 
 function GenerateReportScreen({ navigation, route }) {
-  const property = route.params.property;
+  const propertyCtx = new Property(); //TODO: fix this ! hardcoded until database working
+  const property = propertyCtx.property;
+  // console.log(property);
+  // only keep categories with at least some repair needed
+  const catsWithRepairs = propertyCtx.property.repairs
+    .filter((category) => category.cost > 0)
+    .map(
+      (category, index) =>
+        `<h1> ${3 + index} : ${
+          category.name
+        } </h1> <br /> <div>${category.repairs
+          .filter((repair) => repair.total > 0)
+          .map((repair, index) =>
+            getRepair(repair)
+          )}</div> <div>Images:<br /> ${category.images.map((catImage, index) =>
+          showCatImage(catImage)
+        )}</div> <div class="pagebreak"></div>`
+    );
+  // console.log(catsWithRepairs);
+  const catStartPage = 4; // page number repair categories start on
+
+  function showCatImage(image) {
+    return `<img class="cat-img" src=${image.base64} />`;
+  }
+
+  function getRepair(repair) {
+    const retVal = `<h3>${repair.name}</h3> <div>Cost: $${repair.total} | Quantity: ${repair.quantity}</div>`;
+    return retVal;
+  }
 
   function getImage() {
     if (!property.imageUrl) {
@@ -73,6 +102,10 @@ function GenerateReportScreen({ navigation, route }) {
         .inspection-detail {
         text-align: center;
         }
+        .cat-img {
+          width: 200px;
+          height: 200px;
+        }
     </style>
     <body>
         <header>
@@ -130,6 +163,9 @@ function GenerateReportScreen({ navigation, route }) {
         <div>
         <h1 class="toc-header">TABLE OF CONTENTS</h1>
         <section>insert table of contents here</section>
+        <ul>
+          <li>1: Inspection Detail pg. 3</li>
+        <ul>
         </div>
 
         <div class="pagebreak"></div>
@@ -198,6 +234,11 @@ function GenerateReportScreen({ navigation, route }) {
         evaluation for the presence or absence of molds, Inspector recommends contacting a certified
         industrial hygienist or qualified laboratory testing service for these activities.
     </p>
+
+    <div class="pagebreak"></div>
+
+    ${catsWithRepairs}
+
     <footer>Shamrock Homes LLC 720-949-6454</footer>
 
     </body>

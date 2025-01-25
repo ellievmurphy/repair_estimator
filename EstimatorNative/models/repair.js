@@ -1,5 +1,6 @@
 class Repair {
-  constructor(categoryId, name, isNeeded, quantity, unit, costPerUnit, total) {
+  constructor(id, categoryId, name, isNeeded, quantity, unit, costPerUnit, total) {
+    this.id = id;
     this.categoryId = categoryId;
     this.name = name;
     this.isNeeded = isNeeded;
